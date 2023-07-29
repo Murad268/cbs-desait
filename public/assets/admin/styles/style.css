@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+
+.admin__sidebar {
+    padding: 20px;
+    width: 300px;
+    height: 100vh;
+    background: #494B4D;
+}
+
+.admin__sidebar ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.admin__sidebar ul a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.admin__data{
+    padding-top: 5px;
+    padding-left: 5px;
+    width: 100%;
+
+    font-weight: bold;
+}
+.main {
+    display: flex;
+}
+
+
+table {
+    width: 100%;
+}
+
+.main__field {
+    color: blue
+}
