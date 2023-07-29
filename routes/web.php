@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\ChoseUsController;
 use App\Http\Controllers\admin\HeaderBannerController;
 use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\PortfolioFilterController;
@@ -25,4 +26,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('/header__banner', HeaderBannerController::class);
         Route::resource('/portfolio__filter', PortfolioFilterController::class);
         Route::resource('/portfolio', PortfolioController::class);
+        Route::resource('/chose_us', ChoseUsController::class);
 });

@@ -16,7 +16,7 @@ class CreatePortfolioItemRequest extends FormRequest
     public function rules()
     {
         return [
-            "portfolio_item_img" => "required",
+            "portfolio_item_img" => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'portfolio_item_title' => "required",
             'portfolio__item__category_id' => "required"
         ];
