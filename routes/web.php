@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\ChoseUsCompaniesController;
 use App\Http\Controllers\admin\ChoseUsController;
+use App\Http\Controllers\admin\ContactFormController;
 use App\Http\Controllers\admin\HeaderBannerController;
 use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\PortfolioFilterController;
@@ -37,4 +38,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('/work__proccess', WorkProccessController::class);
         Route::resource('/team', TeamController::class);
         Route::resource('/still', StillController::class);
+        Route::resource('/contact__form', ContactFormController::class);
 });

@@ -14,6 +14,14 @@
            @yield('content')
         </div>
     </main>
-<script src="{{asset('assets/admin/scripts/script.js')}}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script src="{{asset('assets/admin/scripts/script.js')}}"></script>
+    <script>
+         ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
 </body>
 </html>

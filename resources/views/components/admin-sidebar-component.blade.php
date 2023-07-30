@@ -12,5 +12,6 @@
             <li><a href="{{route('admin.work__proccess.index')}}">Work Proccess</a></li>
             <li><a href="{{route('admin.team.index')}}">Our Team</a></li>
             <li><a href="{{route('admin.still.index')}}">Still Section</a></li>
+            <li><a href="{{route('admin.contact__form.index')}}">Contact Form</a></li>
         </ul>
     </div>
