@@ -20,7 +20,7 @@
         <tr>
             <td>{{$headerBannerItem->id}}</td>
             <td>
-                <a href="{{asset('assets/front/images/'.$headerBannerItem->banner_img)}}"><img style="width: 150px; height: 50px" src="{{asset('assets/front/images/'.$headerBannerItem->banner_img)}}" alt="{{$headerBannerItem->banner__title}}"></a>
+                <a target="_blank" href="{{asset('assets/front/images/'.$headerBannerItem->banner_img)}}"><img style="width: 150px; height: 50px" src="{{asset('assets/front/images/'.$headerBannerItem->banner_img)}}" alt="{{$headerBannerItem->banner__title}}"></a>
             </td>
             <td>{{$headerBannerItem->banner__title}}</td>
             <td>{{$headerBannerItem->banner_subtitle}}</td>

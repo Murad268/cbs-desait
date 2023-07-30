@@ -21,7 +21,7 @@
         <tr>
             <td>{{$comment->id}}</td>
             <td>
-                <a href="{{asset('assets/front/images/'.$comment->chose_us_img)}}"><img style="width: 50px; height: 50px" src="{{asset('assets/front/images/'.$comment->chose_us_img)}}" alt="{{$comment->chose_us_name}}"></a>
+                <a target="_blank" href="{{asset('assets/front/images/'.$comment->chose_us_img)}}"><img style="width: 50px; height: 50px" src="{{asset('assets/front/images/'.$comment->chose_us_img)}}" alt="{{$comment->chose_us_name}}"></a>
             </td>
             <td>{{$comment->chose_us_name}}</td>
             <td>{{$comment->chose_us_comment}}</td>

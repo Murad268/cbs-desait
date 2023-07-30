@@ -7,5 +7,6 @@
             <li><a href="{{route('admin.portfolio__filter.index')}}">Portfolio Filter</a></li>
             <li><a href="{{route('admin.portfolio.index')}}">Portfolio</a></li>
             <li><a href="{{route('admin.chose_us.index')}}">Chose Us Comments</a></li>
+            <li><a href="{{route('admin.chose__us__companies.index')}}">Chose Us Companies</a></li>
         </ul>
     </div>

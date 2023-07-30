@@ -20,7 +20,7 @@
         <tr>
             <td>{{$portfolioItem->id}}</td>
             <td>
-                <a href="{{asset('assets/front/images/'.$portfolioItem->portfolio_item_img)}}"><img style="width: 50px; height: 50px" src="{{asset('assets/front/images/'.$portfolioItem->portfolio_item_img)}}" alt="{{$portfolioItem->portfolio_item_title}}"></a>
+                <a target="_blank" href="{{asset('assets/front/images/'.$portfolioItem->portfolio_item_img)}}"><img style="width: 50px; height: 50px" src="{{asset('assets/front/images/'.$portfolioItem->portfolio_item_img)}}" alt="{{$portfolioItem->portfolio_item_title}}"></a>
             </td>
             <td>{{$portfolioItem->filter->filter_name}}</td>
             <td>{{$portfolioItem->portfolio_item_title}}</td>
