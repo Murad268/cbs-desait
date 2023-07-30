@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\PortfolioFilterController;
 use App\Http\Controllers\admin\PositionController;
 use App\Http\Controllers\admin\ServicesController;
+use App\Http\Controllers\admin\WorkProccessController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('/chose_us', ChoseUsController::class);
         Route::resource('/chose__us__companies', ChoseUsCompaniesController::class);
         Route::resource('/positions', PositionController::class);
+        Route::resource('/work__proccess', WorkProccessController::class);
 });
