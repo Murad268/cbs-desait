@@ -11,5 +11,6 @@
             <li><a href="{{route('admin.positions.index')}}">Positions</a></li>
             <li><a href="{{route('admin.work__proccess.index')}}">Work Proccess</a></li>
             <li><a href="{{route('admin.team.index')}}">Our Team</a></li>
+            <li><a href="{{route('admin.still.index')}}">Still Section</a></li>
         </ul>
     </div>
