@@ -12,6 +12,7 @@
             <li><a href="{{route('admin.work__proccess.index')}}">Work Proccess</a></li>
             <li><a href="{{route('admin.team.index')}}">Our Team</a></li>
             <li><a href="{{route('admin.still.index')}}">Still Section</a></li>
-            <li><a href="{{route('admin.contact__form.index')}}">Contact Form</a></li>
+            <!-- <li><a href="{{route('admin.contact__form.index')}}">Contact Form</a></li> -->
+            <li><a href="{{route('admin.about__us.index')}}">About Us</a></li>
         </ul>
     </div>

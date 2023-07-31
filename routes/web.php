@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AboutUsController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\ChoseUsCompaniesController;
 use App\Http\Controllers\admin\ChoseUsController;
@@ -39,4 +40,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('/team', TeamController::class);
         Route::resource('/still', StillController::class);
         Route::resource('/contact__form', ContactFormController::class);
+        Route::resource('/about__us', AboutUsController::class);
 });

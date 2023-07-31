@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'portfolio item add')
+@section('title', 'form text change')
 @section('content')
 <form enctype="multipart/form-data" action="{{route('admin.contact__form.update', $form->id)}}" method="post">
     @csrf
