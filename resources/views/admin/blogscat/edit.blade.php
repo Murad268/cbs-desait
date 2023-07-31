@@ -4,13 +4,13 @@
 
 
 @section('content')
-<form enctype="multipart/form-data" action="{{route('admin.portfolio__filter.update', $portfolioFilter->id)}}" method="post">
+<form enctype="multipart/form-data" action="{{route('admin.blogs__categories.update', $category->id)}}" method="post">
     @csrf
     @method('put')
     <div class="mb-3 form-group">
         <label class="mb-1">Filter Title</label>
-        <input value="{{old('filter_name', $portfolioFilter->filter_name)}}" name="filter_name" type="text" class="form-control" placeholder="Enter name">
-        @error('filter_name')
+        <input value="{{old('category', $category->categoy_name)}}" name="categoy_name" type="text" class="form-control" placeholder="Enter name">
+        @error('categoy_name')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}
         </div>
