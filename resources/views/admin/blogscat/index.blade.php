@@ -25,7 +25,6 @@
                         @csrf
                         @method("delete")
                         <input class="btn btn-danger" value="delete" type="submit">
-
                     </form>
                     <a href="{{route('admin.blogs__categories.edit', $category->id)}}" class="btn btn-success">change</a>
                 </div>

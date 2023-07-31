@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AboutUsController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\BlogsCategoriesController;
+use App\Http\Controllers\admin\BlogsController;
 use App\Http\Controllers\admin\ChoseUsCompaniesController;
 use App\Http\Controllers\admin\ChoseUsController;
 use App\Http\Controllers\admin\ContactFormController;
@@ -43,4 +44,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('/contact__form', ContactFormController::class);
         Route::resource('/about__us', AboutUsController::class);
         Route::resource('/blogs__categories', BlogsCategoriesController::class);
+        Route::resource('/blogs', BlogsController::class);
 });

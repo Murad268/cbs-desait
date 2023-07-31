@@ -14,6 +14,7 @@
             <li><a href="{{route('admin.still.index')}}">Still Section</a></li>
             <!-- <li><a href="{{route('admin.contact__form.index')}}">Contact Form</a></li> -->
             <!-- <li><a href="{{route('admin.about__us.index')}}">About Us</a></li> -->
-            <li><a href="{{route('admin.blogs__categories.index')}}">Blogs Categories</a></li>
+            <!-- <li><a href="{{route('admin.blogs__categories.index')}}">Blogs Categories</a></li> -->
+            <li><a href="{{route('admin.blogs.index')}}">Blogs</a></li>
         </ul>
     </div>
