@@ -24,7 +24,6 @@ class WorkProccessController extends Controller
 
     public function store(CreateWorkProccessRequest $request) {
         $img = $request->proccess_icon;
-
         $extension = $img->getClientOriginalExtension();
         $randomName = Str::random(10);
         $imagePath = 'assets/front/icons/';
@@ -77,7 +76,7 @@ class WorkProccessController extends Controller
             $proccess->update($elems);
 
 
-            return redirect()->route('admin.work__proccess.index')->with("message", "verilənlər uğurla güncəlləndi");
+            return redirect()->route('admin.work__proccess.index');
         } catch (Exception $e) {
             echo $e->getMessage();
         }

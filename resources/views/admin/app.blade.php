@@ -38,7 +38,6 @@
         tokenSeparators: [',']
     });
 </script>
-By adding the jQuery script before your custom script.js, the '$' symbol will be recognized, and the error should be resolved.
 
 
 

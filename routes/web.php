@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\ServicesController;
 use App\Http\Controllers\admin\StillController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\WorkProccessController;
+use App\Http\Controllers\SectionTitlesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,4 +46,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('/about__us', AboutUsController::class);
         Route::resource('/blogs__categories', BlogsCategoriesController::class);
         Route::resource('/blogs', BlogsController::class);
+        Route::resource('/section__titles', SectionTitlesController::class);
 });
