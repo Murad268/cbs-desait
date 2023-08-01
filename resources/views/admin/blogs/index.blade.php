@@ -48,7 +48,7 @@
         @endforeach
 
 @else
-<div class="alert alert-warning">
+<div class="mt-2 alert alert-warning">
     table is empty
 </div>
 @endif

@@ -9,9 +9,10 @@
     <thead>
         <tr>
             <th scope="col">No</th>
-            <th scope="col">Banner Img</th>
-            <th scope="col">Banner Category</th>
-            <th scope="col">Banner Title</th>
+            <th scope="col">Portfolio Item Img</th>
+            <th scope="col">Portfolio Categories</th>
+            <th scope="col">Portfolio Title</th>
+            <th scope="col">Portfolio About</th>
             <th scope="col">Controlls</th>
         </tr>
     </thead>
@@ -22,8 +23,11 @@
             <td>
                 <a target="_blank" href="{{asset('assets/front/images/'.$portfolioItem->portfolio_item_img)}}"><img style="width: 50px; height: 50px" src="{{asset('assets/front/images/'.$portfolioItem->portfolio_item_img)}}" alt="{{$portfolioItem->portfolio_item_title}}"></a>
             </td>
-            <td>{{$portfolioItem->filter->filter_name}}</td>
+            <td>{{ implode(', ', $portfolioItem->services()->pluck('name')->toArray()) }}</td>
+
+
             <td>{{$portfolioItem->portfolio_item_title}}</td>
+            <td>{!!$portfolioItem->about_portfolio_item !!}</td>
             <td>
                 <div style="display: flex; column-gap: 10px">
                     <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.portfolio.destroy', $portfolioItem->id)}}">

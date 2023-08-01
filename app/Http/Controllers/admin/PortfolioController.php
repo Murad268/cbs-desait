@@ -7,6 +7,7 @@ use App\Http\Requests\portfolio\CreatePortfolioItemRequest;
 use App\Http\Requests\portfolio\UpdatePortfolioRequest;
 use App\Models\Portfolio;
 use App\Models\PortfolioFilter;
+use App\Models\Services;
 use Illuminate\Http\Request;
 use Exception;
 use Intervention\Image\Facades\Image;
@@ -20,11 +21,13 @@ class PortfolioController extends Controller
 
     public function create()
     {
+        $services = Services::where('service_id', '=', 0)->get();
         $filter = PortfolioFilter::all();
-        return view('admin.portfolio.portfolio_add', ['filter' => $filter]);
+        return view('admin.portfolio.portfolio_add', ['filter' => $filter, 'services' => $services]);
     }
 
     public function store(CreatePortfolioItemRequest $request) {
+
         $img = $request->portfolio_item_img;
 
         $extension = $img->getClientOriginalExtension();
@@ -34,10 +37,14 @@ class PortfolioController extends Controller
         $lasPath = $imagePath . $randomName . "." . $extension;
         Image::make($img)->save($lasPath);
         $portfolio_item_title = $request->portfolio_item_title;
-        $portfolio__item__category_id = $request->portfolio__item__category_id;
-        $elems = ["portfolio__item__category_id" => $portfolio__item__category_id, "portfolio_item_img" => $lastName, 'portfolio_item_title' => $portfolio_item_title];
+        $about_portfolio_item = $request->about_portfolio_item;
+
+        $elems = ['about_portfolio_item'=> $about_portfolio_item, "portfolio_item_img" => $lastName, 'portfolio_item_title' => $portfolio_item_title];
         try {
-            Portfolio::create($elems);
+            $create = Portfolio::create($elems);
+            if($create) {
+                $create->services()->sync($request->portfolio__item__category_id);
+            }
             return redirect()->route('admin.portfolio.index');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -49,9 +56,10 @@ class PortfolioController extends Controller
     {
 
         try {
+            $services = Services::where('service_id', '=', 0)->get();
             $portfolioItem = Portfolio::findOrFail($id);
             $filter = PortfolioFilter::all();
-            return view('admin.portfolio.portfolio_change', ['portfolioItem' => $portfolioItem, 'filter' => $filter]);
+            return view('admin.portfolio.portfolio_change', ['portfolioItem' => $portfolioItem, 'filter' => $filter, 'services' => $services]);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -80,10 +88,14 @@ class PortfolioController extends Controller
                 $lastName =  $portfolio->portfolio_item_img;
             }
 
-            $portfolio__item__category_id = $request->portfolio__item__category_id;
+
             $portfolio_item_title = $request->portfolio_item_title;
-            $elems = ["portfolio__item__category_id" => $portfolio__item__category_id, "portfolio_item_img" => $lastName, 'portfolio_item_title' => $portfolio_item_title];
-            $portfolio->update($elems);
+            $about_portfolio_item = $request->about_portfolio_item;
+            $elems = ['about_portfolio_item' => $about_portfolio_item, "portfolio_item_img" => $lastName, 'portfolio_item_title' => $portfolio_item_title];
+            if($portfolio->update($elems)) {
+                $portfolio->services()->sync($request->portfolio__item__category_id);
+            }
+
             return redirect()->route('admin.portfolio.index');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -92,8 +104,10 @@ class PortfolioController extends Controller
 
     public function destroy($id) {
         try {
-            $headerBanner = Portfolio::findOrFail($id);
-            $headerBanner->delete();
+            $portfolio = Portfolio::findOrFail($id);
+            if($portfolio->delete()) {
+                $portfolio->services()->sync([]);
+            }
             return redirect()->route('admin.portfolio.index');
         } catch (Exception $e) {
             echo $e->getMessage();

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePortfolioRequest extends FormRequest
 {
- 
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -16,7 +16,8 @@ class UpdatePortfolioRequest extends FormRequest
     {
         return [
             'portfolio_item_title' => "required",
-            'portfolio__item__category_id' => "required"
+            'portfolio__item__category_id' => "required",
+            'about_portfolio_item' => "required",
         ];
     }
 }

@@ -23,7 +23,14 @@ class Services extends Model
     public function services() {
         return $this->hasMany(Services::class, 'service_id', 'id');
     }
+    public function portfolios()
+    {
+        return $this->belongsToMany(Portfolio::class, 'portfolios_categories', 'service_id', 'portfolio_id ');
+    }
 
+
+
+    
     public static function boot()
     {
         parent::boot();

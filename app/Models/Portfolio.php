@@ -15,4 +15,9 @@ class Portfolio extends Model
     public function filter() {
         return $this->hasOne(PortfolioFilter::class, 'id', 'portfolio__item__category_id');
     }
+
+    public function services()
+    {
+        return $this->belongsToMany(Services::class, 'portfolios_categories', 'portfolio_id', 'service_id');
+    }
 }
