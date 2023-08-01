@@ -9,9 +9,7 @@ use App\Models\Blog;
 use App\Models\BlogCategories;
 use App\Services\İmageService;
 use Exception;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
+
 
 class BlogsController extends Controller
 {

@@ -8,9 +8,7 @@ use App\Http\Requests\workproccess\UppdateProccessRequest;
 use App\Models\WorkProccess;
 use App\Services\İmageService;
 use Exception;
-use Illuminate\Console\View\Components\Warn;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Str;
+
 class WorkProccessController extends Controller
 {
     public function index() {

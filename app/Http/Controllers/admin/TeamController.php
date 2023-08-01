@@ -9,8 +9,7 @@ use App\Models\Positions;
 use App\Models\Team;
 use App\Services\İmageService;
 use Exception;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Str;
+
 class TeamController extends Controller
 {
     public function index() {

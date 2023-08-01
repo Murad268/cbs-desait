@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\portfolio\PortfolioRequest;
 use App\Models\PortfolioFilter;
 use Exception;
-use Illuminate\Http\Request;
+
 
 class PortfolioFilterController extends Controller
 {

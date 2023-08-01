@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\positions\PositionsRequest;
 use App\Models\Positions;
 use Exception;
-use Illuminate\Http\Request;
+
 
 class PositionController extends Controller
 {

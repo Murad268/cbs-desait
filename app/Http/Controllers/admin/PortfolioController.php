@@ -10,8 +10,7 @@ use App\Models\PortfolioFilter;
 use App\Models\Services;
 use App\Services\İmageService;
 use Exception;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Str;
+
 class PortfolioController extends Controller
 {
     public function index() {

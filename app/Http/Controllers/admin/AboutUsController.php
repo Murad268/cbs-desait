@@ -5,11 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\about\ChangeAboutRequest;
 use App\Models\AbaoutUs;
-use Illuminate\Http\Request;
 use Exception;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Str;
-
 
 class AboutUsController extends Controller
 {
@@ -26,7 +22,6 @@ class AboutUsController extends Controller
 
     public function update($id, ChangeAboutRequest $request) {
         try {
-
             $about = AbaoutUs::findOrFail($id);
             $imageService = app(İmageService::class);
             $result = $imageService->updateImage($request, 'assets/front/images/', 'about_img',  $request->about_img ,  $about->about_img );

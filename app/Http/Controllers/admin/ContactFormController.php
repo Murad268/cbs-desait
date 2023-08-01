@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\form\ContactFormDataRequest;
 use App\Models\ContactForm;
 use Exception;
-use Illuminate\Http\Request;
+
 
 class ContactFormController extends Controller
 {

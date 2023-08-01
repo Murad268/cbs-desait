@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\blogs\BlogsCategoryRequest;
 use App\Models\BlogCategories;
 use Exception;
-use Illuminate\Http\Request;
+
 
 class BlogsCategoriesController extends Controller
 {

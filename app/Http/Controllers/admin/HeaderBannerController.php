@@ -8,8 +8,7 @@ use App\Http\Requests\header_banner\HeaderBannersUpdateReuqest;
 use App\Models\HeaderBanner;
 use App\Services\İmageService;
 use Exception;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Str;
+
 
 class HeaderBannerController extends Controller
 {
@@ -43,7 +42,6 @@ class HeaderBannerController extends Controller
     public function edit($id)
     {
         $headerBanner = HeaderBanner::findOrFail($id);
-
         try {
             return view('admin.headerbanner.header__banner__change', ['headerBanner' => $headerBanner]);
         } catch (Exception $e) {
