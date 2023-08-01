@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('portfolios', function (Blueprint $table) {
-            $table->dropColumn('portfolio__item__category_id');
+        Schema::table('services', function (Blueprint $table) {
+            $table->text('about_service');
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('portfolios', function (Blueprint $table) {
+        Schema::table('services', function (Blueprint $table) {
             //
         });
     }

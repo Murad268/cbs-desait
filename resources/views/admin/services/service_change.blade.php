@@ -30,7 +30,7 @@
     <select name="service_id" class="form-select" aria-label="Default select example">
         <option value="0" selected>Main Service</option>
         @foreach($services as $servicer)
-       
+
             <option {{ $service->service_id == $servicer->id ? 'selected' : '' }} value="{{ $servicer->id }}">{{ $servicer->name }}</option>
         @endforeach
     </select>
@@ -41,7 +41,15 @@
     </div>
     @enderror
   </div>
-
+  <div class="mb-3 form-group">
+        <label class="mb-1">Service Decription</label>
+        <textarea placeholder="Enter service description" id="editor" class="mt-3 mb-3" name="about_service">{{old('about_portfolio_item', $service->about_service)}}</textarea>
+        @error('about_service')
+        <div class="alert alert-danger mt-2" role="alert">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
   <button type="submit" class="btn btn-primary">Change</button>
 </form>
 @endsection

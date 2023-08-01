@@ -39,7 +39,15 @@
         </div>
         @enderror
     </div>
-
+    <div class="mb-3 form-group">
+        <label class="mb-1">Service Decription</label>
+        <textarea placeholder="Enter service description" id="editor" class="mt-3 mb-3" name="about_service">{{old('about_portfolio_item')}}</textarea>
+        @error('about_service')
+        <div class="alert alert-danger mt-2" role="alert">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
     <button type="submit" class="btn btn-primary">Add</button>
 </form>
 @endsection

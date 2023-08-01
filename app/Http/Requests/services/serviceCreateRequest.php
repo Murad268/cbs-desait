@@ -16,6 +16,7 @@ class serviceCreateRequest extends FormRequest
     {
         return [
             "name" => "required",
+            'about_service' => 'required',
             'service_id' => "required"
         ];
     }
