@@ -73,7 +73,11 @@ class BlogsController extends Controller
 
     public function destroy($id) {
         try {
-            Blog::findOrFail($id)->delete();
+            $blog = Blog::findOrFail($id);
+            $blog->delete();
+            $imageService = app(İmageService::class);
+            $imageService->deleteImage('assets/front/images/', $blog->card_img);
+            $imageService->deleteImage('assets/front/images/', $blog->card_banner);
             return redirect()->route('admin.blogs.index');
         } catch (Exception $e) {
             echo $e->getMessage();

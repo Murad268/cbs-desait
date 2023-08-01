@@ -35,6 +35,8 @@ class ChoseUsCompaniesController extends Controller
     public function destroy($id) {
         try {
             $company = ChoseUsCompany::findOrFail($id);
+            $imageService = app(İmageService::class);
+            $imageService->deleteImage('assets/front/icons/', $company->company_img);
             $company->delete();
             return redirect()->route('admin.chose__us__companies.index');
         } catch (Exception $e) {

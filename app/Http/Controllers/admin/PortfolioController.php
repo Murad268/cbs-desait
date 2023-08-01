@@ -86,6 +86,8 @@ class PortfolioController extends Controller
             if($portfolio->delete()) {
                 $portfolio->services()->sync([]);
             }
+            $imageService = app(İmageService::class);
+            $imageService->deleteImage('assets/front/images/', $portfolio->portfolio_item_img);
             return redirect()->route('admin.portfolio.index');
         } catch (Exception $e) {
             echo $e->getMessage();

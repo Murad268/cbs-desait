@@ -71,6 +71,8 @@ class HeaderBannerController extends Controller
     public function destroy($id) {
         try {
             $headerBanner = HeaderBanner::findOrFail($id);
+            $imageService = app(İmageService::class);
+            $imageService->deleteImage('assets/front/images/', $headerBanner->banner_img );
             $headerBanner->delete();
             return redirect()->route('admin.header__banner.index');
         } catch (Exception $e) {

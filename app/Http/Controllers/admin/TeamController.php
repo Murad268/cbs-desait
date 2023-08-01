@@ -65,6 +65,8 @@ class TeamController extends Controller
     public function destroy($id) {
         try {
             $employer = Team::findOrFail($id);
+            $imageService = app(İmageService::class);
+            $imageService->deleteImage('assets/front/images/', $employer->employer_avatar);
             $employer->delete();
             return redirect()->route('admin.team.index');
         } catch (Exception $e) {

@@ -56,4 +56,17 @@ class WorkProccessController extends Controller
             echo $e->getMessage();
         }
     }
+
+
+    public function destroy($id) {
+        try {
+            $pross = WorkProccess::findOrFail($id);
+            $imageService = app(İmageService::class);
+            $imageService->deleteImage('assets/front/icons/', $pross->proccess_icon);
+            $pross->delete();
+            return redirect()->route('admin.work__proccess.index');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }

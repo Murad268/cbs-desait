@@ -69,6 +69,8 @@ class ChoseUsController extends Controller
     public function destroy($id) {
         try {
             $comment = ChooseUs_commentsb::findOrFail($id);
+            $imageService = app(İmageService::class);
+            $imageService->deleteImage('assets/front/images/', $comment->chose_us_img);
             $comment->delete();
             return redirect()->route('admin.chose_us.index');
         } catch (Exception $e) {

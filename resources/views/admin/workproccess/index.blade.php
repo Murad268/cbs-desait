@@ -35,7 +35,7 @@
             </td>
             <td  >
                 <div style="display: flex; column-gap: 10px">
-                <form onclick="return confirm('are you sure?')" method="post" action="">
+                <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.work__proccess.destroy', $proccess->id)}}">
                     @csrf
                     @method("delete")
                     <input class="btn btn-danger" value="delete" type="submit">
