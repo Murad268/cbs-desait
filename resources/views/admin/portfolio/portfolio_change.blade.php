@@ -45,6 +45,21 @@
     </div>
 
     <div class="mb-3 form-group">
+        <label class="mb-1">Portfolio Category</label>
+        <select name="filter_id" class="form-select" aria-label="Default select example">
+            @foreach($filter as $item)
+            <option {{ $portfolioItem->filter_id == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->filter_name }}</option>
+            @endforeach
+        </select>
+        @error('filter_id')
+        <div class="alert alert-danger mt-2" role="alert">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
+
+
+    <div class="mb-3 form-group">
         <label class="mb-1">Portfolio Item Decription</label>
         <textarea placeholder="Enter portfolio item description" id="editor" name="about_portfolio_item" class="mt-3 mb-3" name="content">{{old('about_portfolio_item', $portfolioItem->about_portfolio_item)}}</textarea>
         @error('about_portfolio_item')

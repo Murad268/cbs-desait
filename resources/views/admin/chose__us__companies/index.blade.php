@@ -20,7 +20,7 @@
                 {{$company->id}}
             </td>
             <td>
-                <a target="_blank" href="{{asset('assets/front/images/'.$company->company_img)}}"><img style="width: 120px; height: 50px" src="{{asset('assets/front/images/'.$company->company_img)}}" alt="{{$company->company_img}}"></a>
+                <a target="_blank" href="{{asset('assets/front/icons/'.$company->company_img)}}"><img style="width: 120px; height: 50px" src="{{asset('assets/front/icons/'.$company->company_img)}}" alt="{{$company->company_img}}"></a>
             </td>
             <td>
                 <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.chose__us__companies.destroy', $company->id)}}">

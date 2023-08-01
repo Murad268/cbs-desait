@@ -7,7 +7,7 @@ use App\Http\Requests\team\CreateEmployerRequest;
 use App\Http\Requests\team\UpdateEmployerRequest;
 use App\Models\Positions;
 use App\Models\Team;
-use Illuminate\Http\Request;
+use App\Services\İmageService;
 use Exception;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
@@ -23,16 +23,11 @@ class TeamController extends Controller
         return view('admin.team.team_add', ['positions' => $positions]);
     }
     public function store(CreateEmployerRequest $request) {
-        $img = $request->employer_avatar;
-        $extension = $img->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $imagePath = 'assets/front/images/';
-        $lastName = $randomName . "." . $extension;
-        $lasPath = $imagePath . $randomName . "." . $extension;
-        Image::make($img)->save($lasPath);
+        $imageService = app(İmageService::class);
+        $result = $imageService->downloadImage($request->employer_avatar, 'assets/front/images/');
         $position_id = $request->position_id;
         $employer_name = $request->employer_name;
-        $elems = ["employer_name" => $employer_name, "employer_avatar" => $lastName, 'position_id' => $position_id];
+        $elems = ["employer_name" => $employer_name, "employer_avatar" => $result, 'position_id' => $position_id];
         try {
             Team::create($elems);
             return redirect()->route('admin.team.index');

@@ -8,7 +8,7 @@ use App\Http\Requests\portfolio\UpdatePortfolioRequest;
 use App\Models\Portfolio;
 use App\Models\PortfolioFilter;
 use App\Models\Services;
-use Illuminate\Http\Request;
+use App\Services\İmageService;
 use Exception;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
@@ -27,19 +27,12 @@ class PortfolioController extends Controller
     }
 
     public function store(CreatePortfolioItemRequest $request) {
-
-        $img = $request->portfolio_item_img;
-
-        $extension = $img->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $imagePath = 'assets/front/images/';
-        $lastName = $randomName . "." . $extension;
-        $lasPath = $imagePath . $randomName . "." . $extension;
-        Image::make($img)->save($lasPath);
+        $imageService = app(İmageService::class);
+        $result = $imageService->downloadImage($request->portfolio_item_img, 'assets/front/images/');
         $portfolio_item_title = $request->portfolio_item_title;
         $about_portfolio_item = $request->about_portfolio_item;
-
-        $elems = ['about_portfolio_item'=> $about_portfolio_item, "portfolio_item_img" => $lastName, 'portfolio_item_title' => $portfolio_item_title];
+        $filter_id = $request->filter_id;
+        $elems = ['filter_id' => $filter_id , 'about_portfolio_item'=> $about_portfolio_item, "portfolio_item_img" => $result, 'portfolio_item_title' => $portfolio_item_title];
         try {
             $create = Portfolio::create($elems);
             if($create) {
@@ -91,7 +84,8 @@ class PortfolioController extends Controller
 
             $portfolio_item_title = $request->portfolio_item_title;
             $about_portfolio_item = $request->about_portfolio_item;
-            $elems = ['about_portfolio_item' => $about_portfolio_item, "portfolio_item_img" => $lastName, 'portfolio_item_title' => $portfolio_item_title];
+            $filter_id = $request->filter_id;
+            $elems = ['filter_id' => $filter_id, 'about_portfolio_item' => $about_portfolio_item, "portfolio_item_img" => $lastName, 'portfolio_item_title' => $portfolio_item_title];
             if($portfolio->update($elems)) {
                 $portfolio->services()->sync($request->portfolio__item__category_id);
             }

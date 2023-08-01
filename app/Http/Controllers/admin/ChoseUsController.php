@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\comment\CreateCommentRequest;
 use App\Http\Requests\comment\UpdateCommentRequest;
 use App\Models\ChooseUs_commentsb;
-use Illuminate\Http\Request;
 use Exception;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
@@ -23,18 +22,13 @@ class ChoseUsController extends Controller
     }
 
     public function store(CreateCommentRequest $request) {
-        $img = $request->chose_us_img;
+        $imageService = app(İmageService::class);
+        $result = $imageService->downloadImage($request->chose_us_img, 'assets/front/images/');
 
-        $extension = $img->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $imagePath = 'assets/front/images/';
-        $lastName = $randomName . "." . $extension;
-        $lasPath = $imagePath . $randomName . "." . $extension;
-        Image::make($img)->save($lasPath);
         $chose_us_comment = $request->chose_us_comment;
         $chose_us_name = $request->chose_us_name;
         $chose_us_position = $request->chose_us_position;
-        $elems = ["chose_us_comment" => $chose_us_comment, "chose_us_img" => $lastName, 'chose_us_name' => $chose_us_name, 'chose_us_position' => $chose_us_position];
+        $elems = ["chose_us_comment" => $chose_us_comment, "chose_us_img" => $result, 'chose_us_name' => $chose_us_name, 'chose_us_position' => $chose_us_position];
         try {
             ChooseUs_commentsb::create($elems);
             return redirect()->route('admin.chose_us.index');

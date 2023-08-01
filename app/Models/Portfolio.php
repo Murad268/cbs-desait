@@ -13,7 +13,7 @@ class Portfolio extends Model
     use HasFactory;
 
     public function filter() {
-        return $this->hasOne(PortfolioFilter::class, 'id', 'portfolio__item__category_id');
+        return $this->hasOne(PortfolioFilter::class, 'id', 'filter_id');
     }
 
     public function services()

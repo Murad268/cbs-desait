@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\workproccess\CreateWorkProccessRequest;
 use App\Http\Requests\workproccess\UppdateProccessRequest;
 use App\Models\WorkProccess;
-use Illuminate\Http\Request;
+use App\Services\İmageService;
 use Exception;
 use Illuminate\Console\View\Components\Warn;
 use Intervention\Image\Facades\Image;
@@ -23,16 +23,12 @@ class WorkProccessController extends Controller
     }
 
     public function store(CreateWorkProccessRequest $request) {
-        $img = $request->proccess_icon;
-        $extension = $img->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $imagePath = 'assets/front/icons/';
-        $lastName = $randomName . "." . $extension;
-        $lasPath = $imagePath . $randomName . "." . $extension;
-        Image::make($img)->save($lasPath);
+        $imageService = app(İmageService::class);
+        $result = $imageService->downloadImage($request->proccess_icon, 'assets/front/icons/');
+
         $proccess_title = $request->proccess_title;
         $proccess_desc = $request->proccess_desc;
-        $elems = ["proccess_title" => $proccess_title, "proccess_icon" => $lastName, 'proccess_desc' => $proccess_desc];
+        $elems = ["proccess_title" => $proccess_title, "proccess_icon" => $result, 'proccess_desc' => $proccess_desc];
         try {
             WorkProccess::create($elems);
             return redirect()->route('admin.work__proccess.index');

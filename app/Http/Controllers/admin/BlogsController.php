@@ -7,7 +7,7 @@ use App\Http\Requests\blogs\CreateBlogRequest;
 use App\Http\Requests\blogs\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\BlogCategories;
-use Illuminate\Http\Request;
+use App\Services\İmageService;
 use Exception;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
@@ -29,30 +29,20 @@ class BlogsController extends Controller
 
     public function store(CreateBlogRequest $request)
     {
-        $img = $request->card_img;
+        $imageService = app(İmageService::class);
 
-        $extension = $img->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $imagePath = 'assets/front/images/';
-        $lastName = $randomName . "." . $extension;
-        $lasPath = $imagePath . $randomName . "." . $extension;
-        Image::make($img)->save($lasPath);
+        $result = $imageService->downloadImage($request->card_img, 'assets/front/images/');
+        $result1 = $imageService->downloadImage($request->card_banner, 'assets/front/images/');
 
-        $img1 = $request->card_banner;
 
-        $extension1 = $img1->getClientOriginalExtension();
-        $randomName1 = Str::random(10);
-        $imagePath1 = 'assets/front/images/';
-        $lastName1 = $randomName1 . "." . $extension1;
-        $lasPath1 = $imagePath1 . $randomName1 . "." . $extension1;
-        Image::make($img)->save($lasPath1);
+
 
 
 
         $category_id = $request->category_id;
         $blog_title = $request->blog_title;
         $blog_content = $request->blog_content;
-        $elems = ["category_id" => $category_id, "card_img" => $lastName, 'blog_title' => $blog_title, 'blog_content' => $blog_content, 'card_banner' => $lastName1];
+        $elems = ["category_id" => $category_id, "card_img" => $result, 'blog_title' => $blog_title, 'blog_content' => $blog_content, 'card_banner' => $result1];
 
         try {
             Blog::create($elems);

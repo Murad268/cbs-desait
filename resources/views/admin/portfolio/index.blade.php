@@ -10,7 +10,7 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Portfolio Item Img</th>
-            <th scope="col">Portfolio Categories</th>
+            <th scope="col">Portfolio Services</th>
             <th scope="col">Portfolio Title</th>
             <th scope="col">Portfolio About</th>
             <th scope="col">Controlls</th>

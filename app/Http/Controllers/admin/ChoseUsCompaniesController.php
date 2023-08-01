@@ -4,12 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\chose_us_companies\ChoseUsCompaniesRequest;
-
 use App\Models\ChoseUsCompany;
-use Illuminate\Http\Request;
 use Exception;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Str;
+use App\Services\İmageService;
 class ChoseUsCompaniesController extends Controller
 {
     public function index() {
@@ -23,16 +20,9 @@ class ChoseUsCompaniesController extends Controller
     }
 
     public function store(ChoseUsCompaniesRequest $request) {
-        $img = $request->company_img;
-
-        $extension = $img->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $imagePath = 'assets/front/images/';
-        $lastName = $randomName . "." . $extension;
-        $lasPath = $imagePath . $randomName . "." . $extension;
-        Image::make($img)->save($lasPath);
-
-        $elems = ["company_img" => $lastName];
+        $imageService = app(İmageService::class);
+        $result = $imageService->downloadImage($request->company_img, 'assets/front/icons/');
+        $elems = ["company_img" => $result];
         try {
             ChoseUsCompany::create($elems);
             return redirect()->route('admin.chose__us__companies.index');

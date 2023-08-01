@@ -10,14 +10,14 @@
             <div class="mt-3" style="padding:20px; box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
                 <div style="display: flex; column-gap: 20px" class="card_img">
                     <span style="width: 100px;">Card image</span>
-                    <a target="_blank" href="{{asset($blog->card_img)}}">
-                        <img style="width: 100px; height: 100px" src="{{asset($blog->card_img)}}" alt="">
+                    <a target="_blank" href="{{asset('assets/front/images/'.$blog->card_img)}}">
+                        <img style="width: 100px; height: 100px" src="{{asset('assets/front/images/'.$blog->card_img)}}" alt="">
                     </a>
                 </div>
                 <div style="display: flex; column-gap: 20px" class="mt-3 banner_img">
                     <span style="width: 100px;">Blog Banner</span>
-                    <a target="_blank" href="{{asset($blog->card_banner)}}">
-                        <img style="width: 300px; height: 80px" src="{{asset($blog->card_banner)}}" alt="">
+                    <a target="_blank" href="{{asset('assets/front/images/'.$blog->card_banner)}}">
+                        <img style="width: 300px; height: 80px" src="{{asset('assets/front/images/'.$blog->card_banner)}}" alt="">
                     </a>
                 </div>
                 <div style="display: flex; column-gap: 20px" class="mt-3">
