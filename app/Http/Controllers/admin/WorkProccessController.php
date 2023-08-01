@@ -44,34 +44,13 @@ class WorkProccessController extends Controller
 
     public function update(UppdateProccessRequest $request, $id) {
         try {
-
             $proccess = WorkProccess::findOrFail($id);
-            $randomName = Str::random(10);
-            $imagePath = 'assets/front/icons/';
-            if ($request->hasFile('proccess_icon')) {
-                if (file_exists($imagePath . $proccess->proccess_icon)) {
-                    unlink($imagePath . $proccess->proccess_icon);
-                }
-                $img = $request->proccess_icon;
-
-                $extension = $img->getClientOriginalExtension();
-
-                $lastName = $randomName . "." . $extension;
-                $lasPath = $imagePath . $randomName . "." . $extension;
-                Image::make($img)->save($lasPath);
-            } else {
-                $lastName =  $proccess->proccess_icon;
-            }
-
+            $imageService = app(İmageService::class);
+            $result = $imageService->updateImage($request, 'assets/front/icons/', 'proccess_icon',  $request->proccess_icon ,  $proccess->proccess_icon );
             $proccess_title = $request->proccess_title;
             $proccess_desc = $request->proccess_desc;
-            $elems = ["proccess_desc" => $proccess_desc, "proccess_icon" => $lastName, 'proccess_title' => $proccess_title];
-
-
-
+            $elems = ["proccess_desc" => $proccess_desc, "proccess_icon" => $result, 'proccess_title' => $proccess_title];
             $proccess->update($elems);
-
-
             return redirect()->route('admin.work__proccess.index');
         } catch (Exception $e) {
             echo $e->getMessage();

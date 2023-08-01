@@ -47,26 +47,11 @@ class TeamController extends Controller
         try {
 
             $employer = Team::findOrFail($id);
-            $randomName = Str::random(10);
-            $imagePath = 'assets/front/images/';
-            if ($request->hasFile('employer_avatar')) {
-                if (file_exists($imagePath . $employer->employer_avatar)) {
-                    unlink($imagePath . $employer->employer_avatar);
-                }
-                $img = $request->employer_avatar;
-
-                $extension = $img->getClientOriginalExtension();
-
-                $lastName = $randomName . "." . $extension;
-                $lasPath = $imagePath . $randomName . "." . $extension;
-                Image::make($img)->save($lasPath);
-            } else {
-                $lastName =  $employer->employer_avatar;
-            }
-
+            $imageService = app(İmageService::class);
+            $result = $imageService->updateImage($request, 'assets/front/images/', 'employer_avatar',  $request->employer_avatar ,  $employer->employer_avatar );
             $position_id = $request->position_id;
             $employer_name = $request->employer_name;
-            $elems = ["employer_name" => $employer_name, "employer_avatar" => $lastName, 'position_id' => $position_id];
+            $elems = ["employer_name" => $employer_name, "employer_avatar" => $result, 'position_id' => $position_id];
             $employer->update($elems);
             return redirect()->route('admin.team.index');
         } catch (Exception $e) {

@@ -54,34 +54,13 @@ class HeaderBannerController extends Controller
     public function update(HeaderBannersUpdateReuqest $request, $id)
     {
         try {
-
             $headerBanner = HeaderBanner::findOrFail($id);
-            $randomName = Str::random(10);
-            $imagePath = 'assets/front/images/';
-            if ($request->hasFile('banner_img')) {
-                if (file_exists($imagePath . $headerBanner->banner_img)) {
-                    unlink($imagePath . $headerBanner->banner_img);
-                }
-                $img = $request->banner_img;
-
-                $extension = $img->getClientOriginalExtension();
-
-                $lastName = $randomName . "." . $extension;
-                $lasPath = $imagePath . $randomName . "." . $extension;
-                Image::make($img)->save($lasPath);
-            } else {
-                $lastName =  $headerBanner->banner_img;
-            }
-
+            $imageService = app(İmageService::class);
+            $result = $imageService->updateImage($request, 'assets/front/images/', 'banner_img',  $request->banner_img , $headerBanner->banner_img );
             $banner__title = $request->banner__title;
             $banner_subtitle = $request->banner_subtitle;
-            $elems = ["banner__title" => $banner__title, "banner_img" => $lastName, 'banner_subtitle' => $banner_subtitle];
-
-
-
+            $elems = ["banner__title" => $banner__title, "banner_img" => $result, 'banner_subtitle' => $banner_subtitle];
             $headerBanner->update($elems);
-
-
             return redirect()->route('admin.header__banner.index')->with("message", "verilənlər uğurla güncəlləndi");
         } catch (Exception $e) {
             echo $e->getMessage();

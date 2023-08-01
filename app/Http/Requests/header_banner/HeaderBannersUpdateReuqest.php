@@ -16,8 +16,8 @@ class HeaderBannersUpdateReuqest extends FormRequest
     public function rules()
     {
         return [
-            'banner__title' => 'required|string|max:24',
-            'banner_subtitle' => 'required|string|max:50'
+            'banner__title' => 'required|string',
+            'banner_subtitle' => 'required|string'
         ];
     }
 }

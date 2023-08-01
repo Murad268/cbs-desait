@@ -52,29 +52,13 @@ class ChoseUsController extends Controller
 
     public function update($id, UpdateCommentRequest $request) {
         try {
-
-            $portfolio =    ChooseUs_commentsb::findOrFail($id);
-            $randomName = Str::random(10);
-            $imagePath = 'assets/front/images/';
-            if ($request->hasFile('chose_us_img')) {
-                if (file_exists($imagePath . $portfolio->chose_us_img)) {
-                    unlink($imagePath . $portfolio->chose_us_img);
-                }
-                $img = $request->chose_us_img;
-
-                $extension = $img->getClientOriginalExtension();
-
-                $lastName = $randomName . "." . $extension;
-                $lasPath = $imagePath . $randomName . "." . $extension;
-                Image::make($img)->save($lasPath);
-            } else {
-                $lastName =  $portfolio->chose_us_img;
-            }
-
+            $portfolio = ChooseUs_commentsb::findOrFail($id);
+            $imageService = app(İmageService::class);
+            $result = $imageService->updateImage($request, 'assets/front/images/', 'chose_us_img',  $request->chose_us_img ,  $portfolio->chose_us_img );
             $chose_us_comment = $request->chose_us_comment;
             $chose_us_name = $request->chose_us_name;
             $chose_us_position = $request->chose_us_position;
-            $elems = ["chose_us_comment" => $chose_us_comment, "chose_us_img" => $lastName, 'chose_us_name' => $chose_us_name, 'chose_us_position' => $chose_us_position];
+            $elems = ["chose_us_comment" => $chose_us_comment, "chose_us_img" => $result, 'chose_us_name' => $chose_us_name, 'chose_us_position' => $chose_us_position];
             $portfolio->update($elems);
             return redirect()->route('admin.chose_us.index');
         } catch (Exception $e) {

@@ -28,33 +28,13 @@ class AboutUsController extends Controller
         try {
 
             $about = AbaoutUs::findOrFail($id);
-            $randomName = Str::random(10);
-            $imagePath = 'assets/front/images/';
-            if ($request->hasFile('about_img')) {
-                if (file_exists($imagePath . $about->about_img)) {
-                    unlink($imagePath . $about->about_img);
-                }
-                $img = $request->about_img;
-
-                $extension = $img->getClientOriginalExtension();
-
-                $lastName = $randomName . "." . $extension;
-                $lasPath = $imagePath . $randomName . "." . $extension;
-                Image::make($img)->save($lasPath);
-            } else {
-                $lastName =  $about->about_img;
-            }
-
+            $imageService = app(İmageService::class);
+            $result = $imageService->updateImage($request, 'assets/front/images/', 'about_img',  $request->about_img ,  $about->about_img );
             $about_top = $request->about_top;
             $about_title = $request->about_title;
             $about_text = $request->about_text;
-            $elems = ["about_top" => $about_top, "about_img" => $lastName, 'about_title' => $about_title, 'about_text' => $about_text];
-
-
-
+            $elems = ["about_top" => $about_top, "about_img" => $result, 'about_title' => $about_title, 'about_text' => $about_text];
             $about->update($elems);
-
-
             return redirect()->route('admin.about__us.index');
         } catch (Exception $e) {
             echo $e->getMessage();
