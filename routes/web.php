@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\PortfolioFilterController;
 use App\Http\Controllers\admin\PositionController;
 use App\Http\Controllers\admin\ServicesController;
+use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\StillController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\WorkProccessController;
@@ -47,4 +48,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('/blogs__categories', BlogsCategoriesController::class);
         Route::resource('/blogs', BlogsController::class);
         Route::resource('/section__titles', SectionTitlesController::class);
+        Route::resource('/settings', SettingsController::class);
 });
