@@ -4,6 +4,11 @@
 
 @section('content')
 <a href="{{route('admin.blogs.create')}}" class="btn btn-dark">create</a>
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 @if ($blogs->isNotEmpty())
 
         @foreach($blogs as $blog)

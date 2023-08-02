@@ -3,6 +3,11 @@
 @section('title', 'section descriptions')
 
 @section('content')
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 @if ($descriptions->isNotEmpty())
     <a href="{{route('admin.section__titles.create')}}" class="text-light mb-3 btn btn-warning">create</a>
     @foreach($descriptions as $description)

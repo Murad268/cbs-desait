@@ -24,7 +24,7 @@ class ContactFormController extends Controller
     public function update(ContactFormDataRequest $request, $id) {
         try {
             ContactForm::findOrFail($id)->update($request->all());
-            return redirect()->route('admin.contact__form.index');
+            return redirect()->route('admin.contact__form.index')->with('message', 'the information has been updated to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }

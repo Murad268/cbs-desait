@@ -23,7 +23,7 @@ class PositionController extends Controller
     public function store(PositionsRequest $request) {
         try {
             Positions::create($request->all());
-            return redirect()->route('admin.positions.index');
+            return redirect()->route('admin.positions.index')->with("message", "the information was added to the database");
         }catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -33,7 +33,7 @@ class PositionController extends Controller
         try {
             $position = Positions::findOrFail($id);
             $position->delete();
-            return redirect()->route('admin.positions.index');
+            return redirect()->route('admin.positions.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

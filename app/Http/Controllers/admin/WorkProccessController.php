@@ -29,7 +29,7 @@ class WorkProccessController extends Controller
         $elems = ["proccess_title" => $proccess_title, "proccess_icon" => $result, 'proccess_desc' => $proccess_desc];
         try {
             WorkProccess::create($elems);
-            return redirect()->route('admin.work__proccess.index');
+            return redirect()->route('admin.work__proccess.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -49,7 +49,7 @@ class WorkProccessController extends Controller
             $proccess_desc = $request->proccess_desc;
             $elems = ["proccess_desc" => $proccess_desc, "proccess_icon" => $result, 'proccess_title' => $proccess_title];
             $proccess->update($elems);
-            return redirect()->route('admin.work__proccess.index');
+            return redirect()->route('admin.work__proccess.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -62,7 +62,7 @@ class WorkProccessController extends Controller
             $imageService = app(İmageService::class);
             $imageService->deleteImage('assets/front/icons/', $pross->proccess_icon);
             $pross->delete();
-            return redirect()->route('admin.work__proccess.index');
+            return redirect()->route('admin.work__proccess.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

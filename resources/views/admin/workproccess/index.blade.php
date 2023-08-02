@@ -4,6 +4,11 @@
 
 @section('content')
 <a href="{{route('admin.work__proccess.create')}}" class="mb-3 btn btn-dark">create</a>
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 @if ($proccessess->isNotEmpty())
 <table class="table table-dark">
     <thead>

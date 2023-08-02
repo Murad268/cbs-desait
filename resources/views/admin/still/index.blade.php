@@ -3,6 +3,11 @@
 @section('title', 'portfolio')
 
 @section('content')
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 @if ($still->isNotEmpty())
         @foreach($still as $item)
         <div style="width: 100%;">

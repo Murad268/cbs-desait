@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\about\ChangeAboutRequest;
 use App\Models\AbaoutUs;
 use Exception;
-
+use App\Services\İmageService;
 class AboutUsController extends Controller
 {
     public function index() {
@@ -30,7 +30,7 @@ class AboutUsController extends Controller
             $about_text = $request->about_text;
             $elems = ["about_top" => $about_top, "about_img" => $result, 'about_title' => $about_title, 'about_text' => $about_text];
             $about->update($elems);
-            return redirect()->route('admin.about__us.index');
+            return redirect()->route('admin.about__us.index')->with('message', "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

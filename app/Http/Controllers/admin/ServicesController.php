@@ -31,7 +31,7 @@ class ServicesController extends Controller
     public function store(serviceCreateRequest $request) {
         try {
             Services::create($request->all());
-            return redirect()->route('admin.services.index');
+            return redirect()->route('admin.services.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -49,7 +49,7 @@ class ServicesController extends Controller
     public function update(serviceCreateRequest $request, Services $service) {
         try {
             $service->update($request->all());
-            return redirect()->route('admin.services.index');
+            return redirect()->route('admin.services.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -59,7 +59,7 @@ class ServicesController extends Controller
     public function destroy(Services $service) {
         try {
             $service->delete();
-            return redirect()->route('admin.services.index');
+            return redirect()->route('admin.services.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

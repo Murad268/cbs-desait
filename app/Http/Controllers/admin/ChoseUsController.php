@@ -30,7 +30,7 @@ class ChoseUsController extends Controller
         $elems = ["chose_us_comment" => $chose_us_comment, "chose_us_img" => $result, 'chose_us_name' => $chose_us_name, 'chose_us_position' => $chose_us_position];
         try {
             ChooseUs_commentsb::create($elems);
-            return redirect()->route('admin.chose_us.index');
+            return redirect()->route('admin.chose_us.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -58,7 +58,7 @@ class ChoseUsController extends Controller
             $chose_us_position = $request->chose_us_position;
             $elems = ["chose_us_comment" => $chose_us_comment, "chose_us_img" => $result, 'chose_us_name' => $chose_us_name, 'chose_us_position' => $chose_us_position];
             $portfolio->update($elems);
-            return redirect()->route('admin.chose_us.index');
+            return redirect()->route('admin.chose_us.index')->with('message', 'the information has been updated to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -70,7 +70,7 @@ class ChoseUsController extends Controller
             $imageService = app(İmageService::class);
             $imageService->deleteImage('assets/front/images/', $comment->chose_us_img);
             $comment->delete();
-            return redirect()->route('admin.chose_us.index');
+            return redirect()->route('admin.chose_us.index')->with('message', 'the information was deleted from the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }

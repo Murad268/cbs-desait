@@ -23,7 +23,7 @@ class StillController extends Controller
     public function update(changeStillRequest $request, $id) {
         try {
             Still::findOrFail($id)->update($request->all());
-            return redirect()->route('admin.still.index');
+            return redirect()->route('admin.still.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

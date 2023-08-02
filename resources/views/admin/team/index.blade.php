@@ -3,6 +3,11 @@
 @section('title', 'header banner')
 
 @section('content')
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 <a href="{{route('admin.team.create')}}" class="mb-3 btn btn-dark">create</a>
 @if ($team->isNotEmpty())
 <table class="table table-dark">

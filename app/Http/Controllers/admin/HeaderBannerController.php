@@ -33,7 +33,7 @@ class HeaderBannerController extends Controller
         $elems = ["banner__title" => $banner__title, "banner_img" => $result, 'banner_subtitle' => $banner_subtitle];
         try {
             HeaderBanner::create($elems);
-            return redirect()->route('admin.header__banner.index');
+            return redirect()->route('admin.header__banner.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -59,7 +59,7 @@ class HeaderBannerController extends Controller
             $banner_subtitle = $request->banner_subtitle;
             $elems = ["banner__title" => $banner__title, "banner_img" => $result, 'banner_subtitle' => $banner_subtitle];
             $headerBanner->update($elems);
-            return redirect()->route('admin.header__banner.index')->with("message", "verilənlər uğurla güncəlləndi");
+            return redirect()->route('admin.header__banner.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -72,7 +72,7 @@ class HeaderBannerController extends Controller
             $imageService = app(İmageService::class);
             $imageService->deleteImage('assets/front/images/', $headerBanner->banner_img );
             $headerBanner->delete();
-            return redirect()->route('admin.header__banner.index');
+            return redirect()->route('admin.header__banner.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

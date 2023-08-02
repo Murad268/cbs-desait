@@ -3,6 +3,11 @@
 @section('title', 'our_services')
 
 @section('content')
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 @if ($settings->isNotEmpty())
 <table class="table table-dark">
     <thead>

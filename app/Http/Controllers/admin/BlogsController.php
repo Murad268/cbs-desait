@@ -36,7 +36,7 @@ class BlogsController extends Controller
         $elems = ["category_id" => $category_id, "card_img" => $result, 'blog_title' => $blog_title, 'blog_content' => $blog_content, 'card_banner' => $result1];
         try {
             Blog::create($elems);
-            return redirect()->route('admin.blogs.index');
+            return redirect()->route('admin.blogs.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -63,7 +63,7 @@ class BlogsController extends Controller
             $blog_content = $request->blog_content;
             $elems = ["category_id" => $category_id, "card_img" => $result, 'blog_title' => $blog_title, 'blog_content' => $blog_content, 'card_banner' => $result1];
             $blog->update($elems);
-            return redirect()->route('admin.blogs.index');
+            return redirect()->route('admin.blogs.index')->with('message', 'the information has been updated to the database');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while updating the blog');
         }
@@ -76,7 +76,7 @@ class BlogsController extends Controller
             $imageService = app(İmageService::class);
             $imageService->deleteImage('assets/front/images/', $blog->card_img);
             $imageService->deleteImage('assets/front/images/', $blog->card_banner);
-            return redirect()->route('admin.blogs.index');
+            return redirect()->route('admin.blogs.index')->with('message', 'the information was deleted from the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }

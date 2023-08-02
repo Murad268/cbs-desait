@@ -19,7 +19,7 @@ class SectionTitlesController extends Controller
     public function store(SectionDesqriptionsRequest $request) {
         try {
             SectionTitles::create($request->all());
-            return redirect()->route('admin.section__titles.index');
+            return redirect()->route('admin.section__titles.index')->with("message", "The information was added to the database");
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
@@ -38,7 +38,7 @@ class SectionTitlesController extends Controller
     public function update(SectionDesqriptionsRequest $request, $id) {
         try {
             SectionTitles::findOrFail($id)->update($request->all());
-            return redirect()->route('admin.section__titles.index');
+            return redirect()->route('admin.section__titles.index')->with("message", "the information has been updated to the database");
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

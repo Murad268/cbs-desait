@@ -25,7 +25,7 @@ class ChoseUsCompaniesController extends Controller
         $elems = ["company_img" => $result];
         try {
             ChoseUsCompany::create($elems);
-            return redirect()->route('admin.chose__us__companies.index');
+            return redirect()->route('admin.chose__us__companies.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -38,7 +38,7 @@ class ChoseUsCompaniesController extends Controller
             $imageService = app(İmageService::class);
             $imageService->deleteImage('assets/front/icons/', $company->company_img);
             $company->delete();
-            return redirect()->route('admin.chose__us__companies.index');
+            return redirect()->route('admin.chose__us__companies.index')->with('message', 'the information was deleted from the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }

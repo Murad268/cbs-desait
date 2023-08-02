@@ -23,7 +23,7 @@ class PortfolioFilterController extends Controller
     public function store(PortfolioRequest $request) {
         try {
             PortfolioFilter::create($request->all());
-            return redirect()->route('admin.portfolio__filter.index');
+            return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was added to the database");
         }catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -38,7 +38,7 @@ class PortfolioFilterController extends Controller
         try {
             $portfolioFilter = PortfolioFilter::findOrFail($id);
             $portfolioFilter->update($request->all());
-            return redirect()->route('admin.portfolio__filter.index');
+            return redirect()->route('admin.portfolio__filter.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -48,7 +48,7 @@ class PortfolioFilterController extends Controller
         try {
             $portfolioFilter = PortfolioFilter::findOrFail($id);
             $portfolioFilter->delete();
-            return redirect()->route('admin.portfolio__filter.index');
+            return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

@@ -4,6 +4,11 @@
 
 @section('content')
 <a href="{{route('admin.chose__us__companies.create')}}" class="mb-3 btn btn-dark">create</a>
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 @if ($companies->isNotEmpty())
 <table class="table table-dark">
     <thead>

@@ -36,7 +36,7 @@ class SettingsController extends Controller
             $location	 = $request->location;
             $elems = ["email" => $email, "logo" => $result, 'wp_link' => $wp_link, 'insta_link' => $insta_link, 'fb_link' => $fb_link, 'linkedin_link' => $linkedin_link, 'location' => $location, 'keywords' => $keywords, 'site_description' => $site_description, 'phone_number' => $phone_number];
             $setting->update($elems);
-            return redirect()->route('admin.settings.index');
+            return redirect()->route('admin.settings.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

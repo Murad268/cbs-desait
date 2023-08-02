@@ -37,7 +37,7 @@ class PortfolioController extends Controller
             if($create) {
                 $create->services()->sync($request->portfolio__item__category_id);
             }
-            return redirect()->route('admin.portfolio.index');
+            return redirect()->route('admin.portfolio.index')->with("message", "The information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -73,7 +73,7 @@ class PortfolioController extends Controller
                 $portfolio->services()->sync($request->portfolio__item__category_id);
             }
 
-            return redirect()->route('admin.portfolio.index');
+            return redirect()->route('admin.portfolio.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -87,7 +87,7 @@ class PortfolioController extends Controller
             }
             $imageService = app(İmageService::class);
             $imageService->deleteImage('assets/front/images/', $portfolio->portfolio_item_img);
-            return redirect()->route('admin.portfolio.index');
+            return redirect()->route('admin.portfolio.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

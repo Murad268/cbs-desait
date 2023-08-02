@@ -29,7 +29,7 @@ class TeamController extends Controller
         $elems = ["employer_name" => $employer_name, "employer_avatar" => $result, 'position_id' => $position_id];
         try {
             Team::create($elems);
-            return redirect()->route('admin.team.index');
+            return redirect()->route('admin.team.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -52,7 +52,7 @@ class TeamController extends Controller
             $employer_name = $request->employer_name;
             $elems = ["employer_name" => $employer_name, "employer_avatar" => $result, 'position_id' => $position_id];
             $employer->update($elems);
-            return redirect()->route('admin.team.index');
+            return redirect()->route('admin.team.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -67,7 +67,7 @@ class TeamController extends Controller
             $imageService = app(İmageService::class);
             $imageService->deleteImage('assets/front/images/', $employer->employer_avatar);
             $employer->delete();
-            return redirect()->route('admin.team.index');
+            return redirect()->route('admin.team.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

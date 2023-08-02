@@ -22,7 +22,7 @@ class BlogsCategoriesController extends Controller
     public function store(BlogsCategoryRequest $request) {
         try {
             BlogCategories::create($request->all());
-            return redirect()->route('admin.blogs__categories.index');
+            return redirect()->route('admin.blogs__categories.index')->with('message', 'the information was added to the database');
         }catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -37,7 +37,7 @@ class BlogsCategoriesController extends Controller
         try {
             $categoryFilter = BlogCategories::findOrFail($id);
             $categoryFilter->update($request->all());
-            return redirect()->route('admin.blogs__categories.index');
+            return redirect()->route('admin.blogs__categories.index')->with('message', 'the information has been updated to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -47,7 +47,7 @@ class BlogsCategoriesController extends Controller
     public function destroy($id) {
         try {
             BlogCategories::findOrFail($id)->delete();
-            return redirect()->route('admin.blogs__categories.index');
+            return redirect()->route('admin.blogs__categories.index')->with('message', 'the information was deleted from the database');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
