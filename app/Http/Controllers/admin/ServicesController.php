@@ -5,11 +5,13 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\services\serviceCreateRequest;
 use App\Models\Services;
+use App\Services\DataServices;
 use Exception;
 
 
 class ServicesController extends Controller
 {
+    public function __construct(private DataServices $dataServices){}
     public function index() {
         try {
             $services = Services::where('service_id', '=', 0)->get();
@@ -30,7 +32,8 @@ class ServicesController extends Controller
 
     public function store(serviceCreateRequest $request) {
         try {
-            Services::create($request->all());
+            $service = new Services;
+            $this->dataServices->save($service, $request->all());
             return redirect()->route('admin.services.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();

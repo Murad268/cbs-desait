@@ -5,11 +5,13 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\blogs\BlogsCategoryRequest;
 use App\Models\BlogCategories;
+use App\Services\DataServices;
 use Exception;
 
 
 class BlogsCategoriesController extends Controller
 {
+    public function __construct(private DataServices $dataServices){}
     public function index() {
         $categories = BlogCategories::all();
         return view('admin.blogscat.index', ['categories' => $categories]);
@@ -21,7 +23,8 @@ class BlogsCategoriesController extends Controller
 
     public function store(BlogsCategoryRequest $request) {
         try {
-            BlogCategories::create($request->all());
+            $blogCategories = new BlogCategories;
+            $this->dataServices->save($blogCategories, $request->all());
             return redirect()->route('admin.blogs__categories.index')->with('message', 'the information was added to the database');
         }catch (Exception $e) {
             echo $e->getMessage();

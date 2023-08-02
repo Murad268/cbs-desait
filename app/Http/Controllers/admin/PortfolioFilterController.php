@@ -5,11 +5,13 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\portfolio\PortfolioRequest;
 use App\Models\PortfolioFilter;
+use App\Services\DataServices;
 use Exception;
 
 
 class PortfolioFilterController extends Controller
 {
+    public function __construct(private DataServices $dataServices){}
     public function index() {
         $portfolioFilter = PortfolioFilter::all();
         return view('admin.portfoliofilter.index', ['portfolioFilter' => $portfolioFilter]);
@@ -22,7 +24,8 @@ class PortfolioFilterController extends Controller
 
     public function store(PortfolioRequest $request) {
         try {
-            PortfolioFilter::create($request->all());
+            $filter = new PortfolioFilter;
+            $this->dataServices->save($filter, $request->all());
             return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was added to the database");
         }catch (Exception $e) {
             echo $e->getMessage();
