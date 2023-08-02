@@ -21,7 +21,7 @@
             <td>{{$category->categoy_name}}</td>
             <td>
                 <div style="display: flex; column-gap: 10px">
-                    <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.blogs__categories.destroy', $category->id)}}">
+                    <form onclick="return confirm('are you sure? When a blog category is deleted, all blogs associated with that category will also be deleted')" method="post" action="{{route('admin.blogs__categories.destroy', $category->id)}}">
                         @csrf
                         @method("delete")
                         <input class="btn btn-danger" value="delete" type="submit">

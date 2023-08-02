@@ -21,7 +21,7 @@
             <td>{{$filter->filter_name}}</td>
             <td>
                 <div style="display: flex; column-gap: 10px">
-                    <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.portfolio__filter.destroy', $filter->id)}}">
+                    <form onclick="return confirm('are you sure? When a filter item is deleted, all portfolio items linked to that filter will also be deleted')" method="post" action="{{route('admin.portfolio__filter.destroy', $filter->id)}}">
                         @csrf
                         @method("delete")
                         <input class="btn btn-danger" value="delete" type="submit">

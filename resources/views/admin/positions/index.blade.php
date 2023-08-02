@@ -21,7 +21,7 @@
             <td>{{$position->id}}</td>
             <td>{{$position->position_name}}</td>
             <td>
-                <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.positions.destroy', $position->id)}}">
+                <form onclick="return confirm('are you sure? When a position is deleted, all employees associated with this position will also be deleted')" method="post" action="{{route('admin.positions.destroy', $position->id)}}">
                     @csrf
                     @method("delete")
                     <input class="btn btn-danger" value="delete" type="submit">
