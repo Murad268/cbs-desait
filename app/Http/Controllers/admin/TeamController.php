@@ -8,10 +8,12 @@ use App\Http\Requests\team\UpdateEmployerRequest;
 use App\Models\Positions;
 use App\Models\Team;
 use App\Services\İmageService;
+use App\Services\DataServices;
 use Exception;
 
 class TeamController extends Controller
 {
+    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
     public function index() {
         $team = Team::all();
         return view('admin.team.index', ['team' => $team]);
@@ -22,13 +24,13 @@ class TeamController extends Controller
         return view('admin.team.team_add', ['positions' => $positions]);
     }
     public function store(CreateEmployerRequest $request) {
-        $imageService = app(İmageService::class);
-        $result = $imageService->downloadImage($request->employer_avatar, 'assets/front/images/');
-        $position_id = $request->position_id;
-        $employer_name = $request->employer_name;
-        $elems = ["employer_name" => $employer_name, "employer_avatar" => $result, 'position_id' => $position_id];
+        $result = $this->imageService->downloadImage($request->employer_avatar, 'assets/front/images/');
+        $data = $request->all();
+        $data['employer_avatar'] = $result;
+
         try {
-            Team::create($elems);
+            $team = new Team;
+            $this->dataServices->save($team, $data);
             return redirect()->route('admin.team.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -46,8 +48,7 @@ class TeamController extends Controller
         try {
 
             $employer = Team::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $result = $imageService->updateImage($request, 'assets/front/images/', 'employer_avatar',  $request->employer_avatar ,  $employer->employer_avatar );
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'employer_avatar',  $request->employer_avatar ,  $employer->employer_avatar );
             $position_id = $request->position_id;
             $employer_name = $request->employer_name;
             $elems = ["employer_name" => $employer_name, "employer_avatar" => $result, 'position_id' => $position_id];
@@ -64,8 +65,7 @@ class TeamController extends Controller
     public function destroy($id) {
         try {
             $employer = Team::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $imageService->deleteImage('assets/front/images/', $employer->employer_avatar);
+            $this->imageService->deleteImage('assets/front/images/', $employer->employer_avatar);
             $employer->delete();
             return redirect()->route('admin.team.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {

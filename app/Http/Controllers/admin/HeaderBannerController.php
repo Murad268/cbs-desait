@@ -7,11 +7,13 @@ use App\Http\Requests\header_banner\HeaderBannerStoreRequest;
 use App\Http\Requests\header_banner\HeaderBannersUpdateReuqest;
 use App\Models\HeaderBanner;
 use App\Services\İmageService;
+use App\Services\DataServices;
 use Exception;
 
 
 class HeaderBannerController extends Controller
 {
+    public function __construct(private İmageService $imageService, private DataServices $dataServices ){}
     public function index()
     {
 
@@ -26,13 +28,12 @@ class HeaderBannerController extends Controller
 
     public function store(HeaderBannerStoreRequest $reuqest)
     {
-        $imageService = app(İmageService::class);
-        $result = $imageService->downloadImage($reuqest->banner_img, 'assets/front/images/');
-        $banner__title = $reuqest->banner__title;
-        $banner_subtitle = $reuqest->banner_subtitle;
-        $elems = ["banner__title" => $banner__title, "banner_img" => $result, 'banner_subtitle' => $banner_subtitle];
+        $result = $this->imageService->downloadImage($reuqest->banner_img, 'assets/front/images/');
+        $data = $reuqest->all();
+        $data['banner_img'] = $result;
         try {
-            HeaderBanner::create($elems);
+            $banner = new HeaderBanner;
+            $this->dataServices->save($banner, $data);
             return redirect()->route('admin.header__banner.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -53,8 +54,7 @@ class HeaderBannerController extends Controller
     {
         try {
             $headerBanner = HeaderBanner::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $result = $imageService->updateImage($request, 'assets/front/images/', 'banner_img',  $request->banner_img , $headerBanner->banner_img );
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'banner_img',  $request->banner_img , $headerBanner->banner_img );
             $banner__title = $request->banner__title;
             $banner_subtitle = $request->banner_subtitle;
             $elems = ["banner__title" => $banner__title, "banner_img" => $result, 'banner_subtitle' => $banner_subtitle];
@@ -69,8 +69,7 @@ class HeaderBannerController extends Controller
     public function destroy($id) {
         try {
             $headerBanner = HeaderBanner::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $imageService->deleteImage('assets/front/images/', $headerBanner->banner_img );
+            $this->imageService->deleteImage('assets/front/images/', $headerBanner->banner_img );
             $headerBanner->delete();
             return redirect()->route('admin.header__banner.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {

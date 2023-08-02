@@ -7,10 +7,12 @@ use App\Http\Requests\workproccess\CreateWorkProccessRequest;
 use App\Http\Requests\workproccess\UppdateProccessRequest;
 use App\Models\WorkProccess;
 use App\Services\İmageService;
+use App\Services\DataServices;
 use Exception;
 
 class WorkProccessController extends Controller
 {
+    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
     public function index() {
         $proccessess = WorkProccess::all();
         return view('admin.workproccess.index', ['proccessess' => $proccessess]);
@@ -21,14 +23,12 @@ class WorkProccessController extends Controller
     }
 
     public function store(CreateWorkProccessRequest $request) {
-        $imageService = app(İmageService::class);
-        $result = $imageService->downloadImage($request->proccess_icon, 'assets/front/icons/');
-
-        $proccess_title = $request->proccess_title;
-        $proccess_desc = $request->proccess_desc;
-        $elems = ["proccess_title" => $proccess_title, "proccess_icon" => $result, 'proccess_desc' => $proccess_desc];
+        $result = $this->imageService->downloadImage($request->proccess_icon, 'assets/front/icons/');
+        $data = $request->all();
+        $data['proccess_icon'] = $result;
         try {
-            WorkProccess::create($elems);
+            $proccess = new WorkProccess;
+            $this->dataServices->save($proccess, $data);
             return redirect()->route('admin.work__proccess.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -43,8 +43,7 @@ class WorkProccessController extends Controller
     public function update(UppdateProccessRequest $request, $id) {
         try {
             $proccess = WorkProccess::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $result = $imageService->updateImage($request, 'assets/front/icons/', 'proccess_icon',  $request->proccess_icon ,  $proccess->proccess_icon );
+            $result = $this->imageService->updateImage($request, 'assets/front/icons/', 'proccess_icon',  $request->proccess_icon ,  $proccess->proccess_icon );
             $proccess_title = $request->proccess_title;
             $proccess_desc = $request->proccess_desc;
             $elems = ["proccess_desc" => $proccess_desc, "proccess_icon" => $result, 'proccess_title' => $proccess_title];
@@ -59,8 +58,7 @@ class WorkProccessController extends Controller
     public function destroy($id) {
         try {
             $pross = WorkProccess::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $imageService->deleteImage('assets/front/icons/', $pross->proccess_icon);
+            $this->imageService->deleteImage('assets/front/icons/', $pross->proccess_icon);
             $pross->delete();
             return redirect()->route('admin.work__proccess.index')->with("message", "the information was deleted from the database");
         } catch (Exception $e) {

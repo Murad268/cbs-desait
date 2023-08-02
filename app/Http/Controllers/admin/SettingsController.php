@@ -24,7 +24,7 @@ class SettingsController extends Controller
         try {
             $setting = Setting::findOrFail($id);
             $imageService = app(İmageService::class);
-            $result = $imageService->updateImage($request, 'assets/front/icons/', 'logo',  $request->logo , $setting->logo );
+            $result = $imageService->updateImage($request, 'assets/front/icons/', 'logo',  $setting->logo );
             $keywords = $request->keywords;
             $site_description = $request->site_description;
             $phone_number = $request->phone_number;

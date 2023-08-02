@@ -14,11 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        {
-            $this->app->bind(İmageService::class, function ($app) {
-                return new İmageService();
-            });
-        }
+      
     }
 
     /**

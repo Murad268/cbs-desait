@@ -19,14 +19,14 @@ class İmageService
         return $lastName;
     }
 
-    public function updateImage($request, $path, $check, $element, $hasElement) {
+    public function updateImage($request, $path, $check, $hasElement) {
         $randomName = Str::random(10);
         $imagePath =  $path;
         if ($request->hasFile($check)) {
-            if (file_exists($imagePath .  $element)) {
-                unlink($imagePath .  $element);
+            if (file_exists($imagePath .  $hasElement)) {
+                unlink($imagePath .  $hasElement);
             }
-            $img = $element;
+            $img = $request->$check;
             $extension = $img->getClientOriginalExtension();
             $lastName = $randomName . "." . $extension;
             $lasPath = $imagePath . $randomName . "." . $extension;

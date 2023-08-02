@@ -8,11 +8,13 @@ use App\Http\Requests\blogs\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\BlogCategories;
 use App\Services\İmageService;
+use App\Services\DataServices;
 use Exception;
 
 
 class BlogsController extends Controller
 {
+    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
     public function index()
     {
         $blogs = Blog::all();
@@ -27,15 +29,15 @@ class BlogsController extends Controller
 
     public function store(CreateBlogRequest $request)
     {
-        $imageService = app(İmageService::class);
-        $result = $imageService->downloadImage($request->card_img, 'assets/front/images/');
-        $result1 = $imageService->downloadImage($request->card_banner, 'assets/front/images/');
-        $category_id = $request->category_id;
-        $blog_title = $request->blog_title;
-        $blog_content = $request->blog_content;
-        $elems = ["category_id" => $category_id, "card_img" => $result, 'blog_title' => $blog_title, 'blog_content' => $blog_content, 'card_banner' => $result1];
+
+        $result = $this->imageService->downloadImage($request->card_img, 'assets/front/images/');
+        $result1 = $this->imageService->downloadImage($request->card_banner, 'assets/front/images/');
+        $data = $request->all();
+        $data['card_img'] = $result;
+        $data['card_banner'] = $result1;
         try {
-            Blog::create($elems);
+            $blog = new Blog;
+            $this->dataServices->save($blog, $data);
             return redirect()->route('admin.blogs.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -55,9 +57,8 @@ class BlogsController extends Controller
     {
         try {
             $blog = Blog::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $result = $imageService->updateImage($request, 'assets/front/images/', 'card_img',  $request->card_img , $blog->card_img );
-            $result1= $imageService->updateImage($request, 'assets/front/images/', 'card_banner',  $request->card_banner , $blog->card_banner );
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'card_img',  $request->card_img , $blog->card_img );
+            $result1= $this->imageService->updateImage($request, 'assets/front/images/', 'card_banner',  $request->card_banner , $blog->card_banner );
             $category_id = $request->category_id;
             $blog_title = $request->blog_title;
             $blog_content = $request->blog_content;
@@ -73,9 +74,8 @@ class BlogsController extends Controller
         try {
             $blog = Blog::findOrFail($id);
             $blog->delete();
-            $imageService = app(İmageService::class);
-            $imageService->deleteImage('assets/front/images/', $blog->card_img);
-            $imageService->deleteImage('assets/front/images/', $blog->card_banner);
+            $this->imageService->deleteImage('assets/front/images/', $blog->card_img);
+            $this->imageService->deleteImage('assets/front/images/', $blog->card_banner);
             return redirect()->route('admin.blogs.index')->with('message', 'the information was deleted from the database');
         } catch (Exception $e) {
             echo $e->getMessage();

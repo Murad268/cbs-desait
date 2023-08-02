@@ -7,8 +7,10 @@ use App\Http\Requests\chose_us_companies\ChoseUsCompaniesRequest;
 use App\Models\ChoseUsCompany;
 use Exception;
 use App\Services\İmageService;
+use App\Services\DataServices;
 class ChoseUsCompaniesController extends Controller
 {
+    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
     public function index() {
         $companies = ChoseUsCompany::all();
         return view('admin.chose__us__companies.index', ['companies' => $companies]);
@@ -20,11 +22,12 @@ class ChoseUsCompaniesController extends Controller
     }
 
     public function store(ChoseUsCompaniesRequest $request) {
-        $imageService = app(İmageService::class);
-        $result = $imageService->downloadImage($request->company_img, 'assets/front/icons/');
-        $elems = ["company_img" => $result];
+        $result = $this->imageService->downloadImage($request->company_img, 'assets/front/icons/');
+        $data = $request->all();
+        $data['company_img'] = $result;
         try {
-            ChoseUsCompany::create($elems);
+            $company = new ChoseUsCompany;
+            $this->dataServices->save($company, $data);
             return redirect()->route('admin.chose__us__companies.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -35,8 +38,7 @@ class ChoseUsCompaniesController extends Controller
     public function destroy($id) {
         try {
             $company = ChoseUsCompany::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $imageService->deleteImage('assets/front/icons/', $company->company_img);
+            $this->imageService->deleteImage('assets/front/icons/', $company->company_img);
             $company->delete();
             return redirect()->route('admin.chose__us__companies.index')->with('message', 'the information was deleted from the database');
         } catch (Exception $e) {

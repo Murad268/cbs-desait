@@ -9,6 +9,7 @@ use Exception;
 use App\Services\İmageService;
 class AboutUsController extends Controller
 {
+    public function __construct(private İmageService $imageService){}
     public function index() {
         $about = AbaoutUs::all();
         return view('admin.aboutus.index', ['about' => $about]);
@@ -23,8 +24,7 @@ class AboutUsController extends Controller
     public function update($id, ChangeAboutRequest $request) {
         try {
             $about = AbaoutUs::findOrFail($id);
-            $imageService = app(İmageService::class);
-            $result = $imageService->updateImage($request, 'assets/front/images/', 'about_img',  $request->about_img ,  $about->about_img );
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'about_img',  $request->about_img ,  $about->about_img );
             $about_top = $request->about_top;
             $about_title = $request->about_title;
             $about_text = $request->about_text;
