@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\admin\AboutUsController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\BlogsCategoriesController;
@@ -16,9 +17,11 @@ use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\StillController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\WorkProccessController;
+use App\Http\Controllers\front\AboutController as FrontAboutController;
+use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\SectionTitlesController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\front\BlogsController as FrontBlogsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,3 +53,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::resource('/section__titles', SectionTitlesController::class);
         Route::resource('/settings', SettingsController::class);
 });
+
+
+
+Route::group(['as' => 'front.'], function() {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/about', [FrontAboutController::class, 'index'])->name('about');
+    Route::get('/blogs', [FrontBlogsController::class, 'index'])->name('blogs');
+});
+

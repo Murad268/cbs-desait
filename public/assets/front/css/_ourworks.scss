@@ -1,0 +1,98 @@
+.ourworks {
+   padding: 50px 0;
+   .ourworks__header__body__second {
+      padding: 40px 0;
+   }
+   &__title {
+      color: var(--main-blue);
+      font-family: var(--gotham);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.024px;
+      margin-bottom: 32px;
+
+   }
+   .section__title{
+      max-width: 553px;
+      margin-bottom: 20px;
+      margin-bottom: 50px;
+   }
+   &__header {
+      padding: 20px 0 20px 40px;
+      width: 100%;
+
+      background-size: cover;
+  
+      .section__desc {
+         color: var(--main-white) !important
+      }
+      .main__title {
+         margin-bottom: 20px;
+         color: var(--main-white) !important;
+         margin-bottom: 40px;
+      }
+      &__body {
+         max-width: 400px;
+         &__btns {
+            display: flex;
+            align-items: center;
+            column-gap: 15px;
+            margin-top: 30px;
+            .second {
+               width: 135px;
+               height: 40px;
+               border-radius: 15px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               color: var(--main-white);
+               font-family: var(--gotham);
+               font-weight: 500;
+               text-decoration: none;
+               border: 1px solid var(--main-white);
+            }
+            .first {
+               background: yellow;
+               width: 135px;
+               height: 40px;
+               border-radius: 15px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               color: var(--main-white);
+               font-family: var(--gotham);
+               font-weight: 500;
+               text-decoration: none;
+            }
+         }
+      }
+   }
+}
+
+.about__ourworks {
+   &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      @media(max-width: 1150px) {
+         width: 100%;
+         flex-direction: column;
+         justify-content: center;
+         row-gap: 40px;
+         width: 100%;
+        .about__ourworks__left, .about__ourworks__right {
+         margin: 0 auto;
+        }
+      }
+   }
+   &__left, &__right {
+      max-width: 461px;
+   }
+}
+
+.ourteam-main {
+   margin-top: 0 !important;
+   padding-top: 0 !important;
+   // margin-top: -40px;
+}
