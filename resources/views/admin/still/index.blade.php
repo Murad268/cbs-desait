@@ -10,7 +10,7 @@
 @endif
 @if ($still->isNotEmpty())
         @foreach($still as $item)
-        <div style="width: 100%;">
+        <div class="mb-5" style="width: 100%;">
             <div class="mb-3" style="display: flex;">
                 <div style="width:150px">Still Title</div>
                 <div style="width:600px">{{$item->still_title}}</div>

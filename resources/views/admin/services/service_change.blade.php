@@ -29,10 +29,11 @@
     <label class="mb-1">Service Sup Service</label>
     <select name="service_id" class="form-select" aria-label="Default select example">
         <option value="0" selected>Main Service</option>
-        @foreach($services as $servicer)
-
-            <option {{ $service->service_id == $servicer->id ? 'selected' : '' }} value="{{ $servicer->id }}">{{ $servicer->name }}</option>
-        @endforeach
+        @if($service->service_id != 0)
+            @foreach($services as $servicer)
+                <option {{ $service->service_id == $servicer->id ? 'selected' : '' }} value="{{ $servicer->id }}">{{ $servicer->name }}</option>
+            @endforeach
+        @endif
     </select>
 
     @error('service_id')

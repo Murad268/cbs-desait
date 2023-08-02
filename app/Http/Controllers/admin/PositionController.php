@@ -25,7 +25,7 @@ class PositionController extends Controller
     public function store(PositionsRequest $request) {
         try {
             $positions = new Positions;
-            $this->dataServices->save($positions, $request->all());
+            $this->dataServices->save($positions, $request->all(), 'create');
             return redirect()->route('admin.positions.index')->with("message", "the information was added to the database");
         }catch (Exception $e) {
             echo $e->getMessage();

@@ -27,7 +27,7 @@ class ChoseUsCompaniesController extends Controller
         $data['company_img'] = $result;
         try {
             $company = new ChoseUsCompany;
-            $this->dataServices->save($company, $data);
+            $this->dataServices->save($company, $data, 'create');
             return redirect()->route('admin.chose__us__companies.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();

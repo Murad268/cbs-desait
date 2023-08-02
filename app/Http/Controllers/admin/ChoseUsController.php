@@ -28,7 +28,7 @@ class ChoseUsController extends Controller
         $data['chose_us_img'] = $result;
         try {
             $ch = new ChooseUs_commentsb;
-            $this->dataServices->save($ch, $data);
+            $this->dataServices->save($ch, $data, 'create');
             return redirect()->route('admin.chose_us.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -51,11 +51,9 @@ class ChoseUsController extends Controller
         try {
             $portfolio = ChooseUs_commentsb::findOrFail($id);
             $result = $this->imageService->updateImage($request, 'assets/front/images/', 'chose_us_img',  $request->chose_us_img ,  $portfolio->chose_us_img );
-            $chose_us_comment = $request->chose_us_comment;
-            $chose_us_name = $request->chose_us_name;
-            $chose_us_position = $request->chose_us_position;
-            $elems = ["chose_us_comment" => $chose_us_comment, "chose_us_img" => $result, 'chose_us_name' => $chose_us_name, 'chose_us_position' => $chose_us_position];
-            $portfolio->update($elems);
+            $data = $request->all();
+            $data['chose_us_img'] = $result;
+            $this->dataServices->save($portfolio, $data, 'update');;
             return redirect()->route('admin.chose_us.index')->with('message', 'the information has been updated to the database');
         } catch (Exception $e) {
             echo $e->getMessage();

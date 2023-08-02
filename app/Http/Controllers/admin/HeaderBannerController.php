@@ -33,7 +33,7 @@ class HeaderBannerController extends Controller
         $data['banner_img'] = $result;
         try {
             $banner = new HeaderBanner;
-            $this->dataServices->save($banner, $data);
+            $this->dataServices->save($banner, $data, 'create');
             return redirect()->route('admin.header__banner.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -54,11 +54,10 @@ class HeaderBannerController extends Controller
     {
         try {
             $headerBanner = HeaderBanner::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'banner_img',  $request->banner_img , $headerBanner->banner_img );
-            $banner__title = $request->banner__title;
-            $banner_subtitle = $request->banner_subtitle;
-            $elems = ["banner__title" => $banner__title, "banner_img" => $result, 'banner_subtitle' => $banner_subtitle];
-            $headerBanner->update($elems);
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'banner_img', $headerBanner->banner_img );
+            $data = $request->all();
+            $data['banner_img'] = $result;
+            $this->dataServices->save($headerBanner, $data, 'update');
             return redirect()->route('admin.header__banner.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();

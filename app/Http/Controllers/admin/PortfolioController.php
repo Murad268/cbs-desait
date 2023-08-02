@@ -34,7 +34,7 @@ class PortfolioController extends Controller
         unset($data['portfolio__item__category_id'] );
         try {
             $portfolio = new Portfolio;
-            $this->dataServices->save($portfolio, $data, 'services', $request->portfolio__item__category_id);
+            $this->dataServices->save($portfolio, $data, 'create', 'services', $request->portfolio__item__category_id);
             return redirect()->route('admin.portfolio.index')->with("message", "The information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -59,14 +59,12 @@ class PortfolioController extends Controller
 
         try {
             $portfolio = Portfolio::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'portfolio_item_img',  $request->portfolio_item_img ,  $portfolio->portfolio_item_img );
-            $portfolio_item_title = $request->portfolio_item_title;
-            $about_portfolio_item = $request->about_portfolio_item;
-            $filter_id = $request->filter_id;
-            $elems = ['filter_id' => $filter_id, 'about_portfolio_item' => $about_portfolio_item, "portfolio_item_img" => $result, 'portfolio_item_title' => $portfolio_item_title];
-            if($portfolio->update($elems)) {
-                $portfolio->services()->sync($request->portfolio__item__category_id);
-            }
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'portfolio_item_img', $portfolio->portfolio_item_img );
+            $data = $request->all();
+            $data['portfolio_item_img'] = $result;
+            unset($data['portfolio__item__category_id'] );
+            $this->dataServices->save($portfolio, $data, 'update', 'services', $request->portfolio__item__category_id);
+
 
             return redirect()->route('admin.portfolio.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {

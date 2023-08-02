@@ -4,12 +4,25 @@ namespace App\Services;
 class DataServices
 {
 
-    public function save($model, $data, $relation = '', $sync = false) {
-        $create = $model->create($data);
-        if ($sync) {
-            if ($create != false) {
-                $create->$relation()->sync($sync); // $sync should be an array of related category IDs
+    public function save($model, $data, $proccess = 'create', $relation = '', $sync = false) {
+        if($proccess == 'create') {
+            $create = $model->create($data);
+            if ($sync) {
+                if ($create != false) {
+                    $create->$relation()->sync($sync);
+                }
             }
+        } else {
+         
+            $update = $model->update($data);
+            if ($sync) {
+
+                if ($update != false) {
+                    $update->$relation()->sync($sync);
+                }
+            }
+
         }
+
     }
 }

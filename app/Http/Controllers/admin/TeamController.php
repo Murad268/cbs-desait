@@ -30,7 +30,7 @@ class TeamController extends Controller
 
         try {
             $team = new Team;
-            $this->dataServices->save($team, $data);
+            $this->dataServices->save($team, $data, 'create');
             return redirect()->route('admin.team.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -48,11 +48,10 @@ class TeamController extends Controller
         try {
 
             $employer = Team::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'employer_avatar',  $request->employer_avatar ,  $employer->employer_avatar );
-            $position_id = $request->position_id;
-            $employer_name = $request->employer_name;
-            $elems = ["employer_name" => $employer_name, "employer_avatar" => $result, 'position_id' => $position_id];
-            $employer->update($elems);
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'employer_avatar', $employer->employer_avatar );
+            $data = $request->all();
+            $data['employer_avatar'] = $result;
+            $this->dataServices->save($employer, $data, 'update');
             return redirect()->route('admin.team.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();

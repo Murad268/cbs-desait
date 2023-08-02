@@ -25,7 +25,7 @@ class PortfolioFilterController extends Controller
     public function store(PortfolioRequest $request) {
         try {
             $filter = new PortfolioFilter;
-            $this->dataServices->save($filter, $request->all());
+            $this->dataServices->save($filter, $request->all(), 'create');
             return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was added to the database");
         }catch (Exception $e) {
             echo $e->getMessage();
@@ -41,6 +41,7 @@ class PortfolioFilterController extends Controller
         try {
             $portfolioFilter = PortfolioFilter::findOrFail($id);
             $portfolioFilter->update($request->all());
+            $this->dataServices->save($portfolioFilter, $request->all(), 'update');
             return redirect()->route('admin.portfolio__filter.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();

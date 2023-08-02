@@ -24,7 +24,7 @@ class BlogsCategoriesController extends Controller
     public function store(BlogsCategoryRequest $request) {
         try {
             $blogCategories = new BlogCategories;
-            $this->dataServices->save($blogCategories, $request->all());
+            $this->dataServices->save($blogCategories, $request->all(), 'create');
             return redirect()->route('admin.blogs__categories.index')->with('message', 'the information was added to the database');
         }catch (Exception $e) {
             echo $e->getMessage();
@@ -39,7 +39,7 @@ class BlogsCategoriesController extends Controller
     public function update($id, BlogsCategoryRequest $request) {
         try {
             $categoryFilter = BlogCategories::findOrFail($id);
-            $categoryFilter->update($request->all());
+            $this->dataServices->save($categoryFilter, $request->all(), 'update');
             return redirect()->route('admin.blogs__categories.index')->with('message', 'the information has been updated to the database');
         } catch (Exception $e) {
             echo $e->getMessage();

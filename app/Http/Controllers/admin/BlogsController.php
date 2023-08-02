@@ -37,7 +37,7 @@ class BlogsController extends Controller
         $data['card_banner'] = $result1;
         try {
             $blog = new Blog;
-            $this->dataServices->save($blog, $data);
+            $this->dataServices->save($blog, $data, 'create');
             return redirect()->route('admin.blogs.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -55,15 +55,15 @@ class BlogsController extends Controller
 
     public function update(UpdateBlogRequest $request, $id)
     {
+
         try {
             $blog = Blog::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'card_img',  $request->card_img , $blog->card_img );
-            $result1= $this->imageService->updateImage($request, 'assets/front/images/', 'card_banner',  $request->card_banner , $blog->card_banner );
-            $category_id = $request->category_id;
-            $blog_title = $request->blog_title;
-            $blog_content = $request->blog_content;
-            $elems = ["category_id" => $category_id, "card_img" => $result, 'blog_title' => $blog_title, 'blog_content' => $blog_content, 'card_banner' => $result1];
-            $blog->update($elems);
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'card_img', $blog->card_img );
+            $result1= $this->imageService->updateImage($request, 'assets/front/images/', 'card_banner', $blog->card_banner );
+            $data = $request->all();
+            $data['card_img'] = $result;
+            $data['card_banner'] = $result1;
+            $this->dataServices->save($blog, $data, 'update');
             return redirect()->route('admin.blogs.index')->with('message', 'the information has been updated to the database');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while updating the blog');

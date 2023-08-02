@@ -5,11 +5,13 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\still\changeStillRequest;
 use App\Models\Still;
+use App\Services\DataServices;
 use Exception;
 use Illuminate\Http\Request;
 
 class StillController extends Controller
 {
+    public function __construct(private DataServices $dataServices){}
     public function index() {
         $still = Still::all();
         return view('admin.still.index', ['still' => $still]);
@@ -22,7 +24,8 @@ class StillController extends Controller
 
     public function update(changeStillRequest $request, $id) {
         try {
-            Still::findOrFail($id)->update($request->all());
+            $still = Still::findOrFail($id);
+            $this->dataServices->save($still, $request->all(), 'update');
             return redirect()->route('admin.still.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();

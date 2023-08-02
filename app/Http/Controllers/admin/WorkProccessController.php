@@ -28,7 +28,7 @@ class WorkProccessController extends Controller
         $data['proccess_icon'] = $result;
         try {
             $proccess = new WorkProccess;
-            $this->dataServices->save($proccess, $data);
+            $this->dataServices->save($proccess, $data, 'create');
             return redirect()->route('admin.work__proccess.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -43,11 +43,10 @@ class WorkProccessController extends Controller
     public function update(UppdateProccessRequest $request, $id) {
         try {
             $proccess = WorkProccess::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/icons/', 'proccess_icon',  $request->proccess_icon ,  $proccess->proccess_icon );
-            $proccess_title = $request->proccess_title;
-            $proccess_desc = $request->proccess_desc;
-            $elems = ["proccess_desc" => $proccess_desc, "proccess_icon" => $result, 'proccess_title' => $proccess_title];
-            $proccess->update($elems);
+            $result = $this->imageService->updateImage($request, 'assets/front/icons/', 'proccess_icon', $proccess->proccess_icon );
+            $data = $request->all();
+            $data['proccess_icon'] = $result;
+            $this->dataServices->save($proccess, $data, 'update');
             return redirect()->route('admin.work__proccess.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();

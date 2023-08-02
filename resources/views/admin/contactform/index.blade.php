@@ -17,7 +17,7 @@
             </div>
             <div style="display: flex; ">
                 <div style="width:150px">Form Subtitle</div>
-                <div style="width:600px">{{$item->form_subtitle}}</div>
+                <div style="width:600px">{!! $item->form_subtitle !!}</div>
             </div>
             <a href="{{route('admin.contact__form.edit', $item->id)}}" class="mt-3 btn btn-primary">Change</a>
         </div>

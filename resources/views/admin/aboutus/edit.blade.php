@@ -6,7 +6,7 @@
     @csrf
     @method('put')
     <div class="mb-3 form-group">
-        <label class="mb-1">About  Image</label>
+        <label class="mb-1">About Image</label>
         <input name="about_img" type="file" class="form-control" >
     </div>
     <div class="mb-3 form-group">

@@ -33,7 +33,7 @@ class ServicesController extends Controller
     public function store(serviceCreateRequest $request) {
         try {
             $service = new Services;
-            $this->dataServices->save($service, $request->all());
+            $this->dataServices->save($service, $request->all(), 'create');
             return redirect()->route('admin.services.index')->with("message", "the information was added to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -49,9 +49,10 @@ class ServicesController extends Controller
 
     }
 
-    public function update(serviceCreateRequest $request, Services $service) {
+    public function update(serviceCreateRequest $request, $id) {
         try {
-            $service->update($request->all());
+            $service =  Services::findOrFail($id);
+            $this->dataServices->save($service, $request->all(), 'update');;
             return redirect()->route('admin.services.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
