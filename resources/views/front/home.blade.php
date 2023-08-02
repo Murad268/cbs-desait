@@ -547,35 +547,33 @@
         <div class="container">
             <div class="contact__wrapper">
                 <div class="contact__info">
-                    <div class="section__title">Bizə yazmaqdan çəkinməyin</div>
+                    <div class="section__title">{{$formTexts->form_title}}</div>
                     <div class="contact__body">
-                        Speak to our Business Director, Steve. With no salespeople, you always get to talk straight to one of
-                        our discipline leaders.
-                        Help us understand what you need by filling out the form and we’ll be in touch.
+                        {!! $formTexts->form_subtitle !!}
                     </div>
                     <div class="contact__footer">
                         <div class="contact__footer__adress">
                             <strong>ADDRESS:</strong>
                             <div>
-                                Əhməd Rəcəbli küç, 56.
+                                {{$settings->location}}
                             </div>
                         </div>
                         <div class="contact__footer__phone">
                             <strong>ƏLAQƏ:</strong>
                             <div>
-                                info@crazyinnovations@gmail.com
+                            {{$settings->eamil}}
                             </div>
                             <div>
-                                +994-70-777-77-77
+                            {{$settings->phone_number}}
                             </div>
                         </div>
                     </div>
                     <div class="header__top__right__links">
                         <ul>
-                            <li><a href=""><i class="fa-brands fa-whatsapp"></i></a></li>
-                            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-                            <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
-                            <li><a href=""><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            <li><a href="{{$settings->wp_link}}"><i class="fa-brands fa-whatsapp"></i></a></li>
+                            <li><a href="{{$settings->insta_link}}"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="{{$settings->fb_link}}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="{{$settings->linkedin_link}}"><i class="fa-brands fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
                 </div>
