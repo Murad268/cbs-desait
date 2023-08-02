@@ -26,7 +26,7 @@
     @yield('content')
 
 
-    @include('front.includes.footer')
+   <x-home-footer-component/>
    @include('front.includes.foot')
 </body>
 

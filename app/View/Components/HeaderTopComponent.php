@@ -5,7 +5,7 @@ namespace App\View\Components;
 use App\Models\Setting;
 use Illuminate\View\Component;
 
-class frontNavbarComponent extends Component
+class HeaderTopComponent extends Component
 {
     /**
      * Create a new component instance.
@@ -24,7 +24,7 @@ class frontNavbarComponent extends Component
      */
     public function render()
     {
-        $settings = Setting::first();
-        return view('components.front-navbar-component', ['settings' => $settings]);
+        $settings = Setting::firstOrFail();
+        return view('components.header-top-component', ['settings' => $settings]);
     }
 }

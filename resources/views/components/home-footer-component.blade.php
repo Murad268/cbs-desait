@@ -4,7 +4,7 @@
             <ul>
                 <li class="footer__logo">
                     <a href="">
-                        <img src="{{asset('assets/front/icons/LOGO.svg')}}" alt="">
+                        <img src="{{asset('assets/front/icons/'.$settings->logo)}}" alt="">
                     </a>
                 </li>
                 <li class="footer__div">
@@ -12,10 +12,10 @@
                 </li>
                 <li>
                     <ul class="header__top__right__links">
-                        <li><a href=""><i class="fa-brands fa-whatsapp"></i></a></li>
-                        <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href=""><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    <li><a href="{{$settings->wp_link}}"><i class="fa-brands fa-whatsapp"></i></a></li>
+                        <li><a href="{{$settings->insta_link}}"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="{{$settings->fb_link}}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="{{$settings->linkedin_link}}"><i class="fa-brands fa-linkedin-in"></i></a></li>
                     </ul>
                 </li>
                 <li class="footer__div">

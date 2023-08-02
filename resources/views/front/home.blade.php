@@ -4,65 +4,32 @@
 <main class="main__main">
     <section class="banner">
         <div class="banner__sliders">
+            @foreach($headerBanner as $item)
             <div class="banner__slider">
-                <img src="{{asset('assets/front/images/image.png')}}" alt="">
+                <img src="{{asset('assets/front/images/'.$item->banner_img)}}" alt="">
                 <div class="banner__slider__body">
-                    <div class="main__title">Marketinqinizi növbəti səviyyələrə daşıyın.</div>
-                    <div class="section__desc">Müasir agentliklər yalnız müştəriləri uğur qazandıqda uğur qazanır. Bizi
-                        hərəkətə gətirən bu rəhbər prinsipdir. Tamamilə müştəri müvəffəqiyyətinə odaklanacaq qədər çevik bir
-                        agentlik yaratdıq.
+                    <div class="main__title">{{$item->banner__title}}</div>
+                    <div class="section__desc">{{$item->banner_subtitle}}
                     </div>
                     <div class="banner__slider__body__btns">
-                        <a class="btn_withBg">
+                        <a href="#services" class="btn_withBg">
                             XİDMƏTLƏRİMİZ
                         </a>
-                        <a class="btn__withoutBg">Portfolİo</a>
+                        <a href="{{route('front.portfolio')}}" class="btn__withoutBg">Portfolio</a>
                     </div>
                 </div>
             </div>
-            <div class="banner__slider">
-                <img src="{{asset('assets/front/images/image.png')}}" alt="">
-                <div class="banner__slider__body">
-                    <div class="main__title">Marketinqinizi növbəti səviyyələrə daşıyın.</div>
-                    <div class="section__desc">Müasir agentliklər yalnız müştəriləri uğur qazandıqda uğur qazanır. Bizi
-                        hərəkətə gətirən bu rəhbər prinsipdir. Tamamilə müştəri müvəffəqiyyətinə odaklanacaq qədər çevik bir
-                        agentlik yaratdıq.
-                    </div>
-                    <div class="banner__slider__body__btns">
-                        <a class="btn_withBg">
-                            XİDMƏTLƏRİMİZ
-                        </a>
-                        <a class="btn__withoutBg">Portfolİo</a>
-                    </div>
-                </div>
-            </div>
-            <div class="banner__slider">
-                <img src="{{asset('assets/front/images/image.png')}}" alt="">
-                <div class="banner__slider__body">
-                    <div class="main__title">Marketinqinizi növbəti səviyyələrə daşıyın.</div>
-                    <div class="section__desc">Müasir agentliklər yalnız müştəriləri uğur qazandıqda uğur qazanır. Bizi
-                        hərəkətə gətirən bu rəhbər prinsipdir. Tamamilə müştəri müvəffəqiyyətinə odaklanacaq qədər çevik bir
-                        agentlik yaratdıq.
-                    </div>
-                    <div class="banner__slider__body__btns">
-                        <a class="btn_withBg">
-                            XİDMƏTLƏRİMİZ
-                        </a>
-                        <a class="btn__withoutBg">Portfolİo</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </section>
-    <section class="services">
+    <section id="services" class="services">
         <div class="container">
             <div class="services__top">
                 <div class="section__title">Xidmətlərimiz</div>
                 <div>
                     <div class="section__desc">
-                        Peşəkar komandamız sizin şirkətinizin ehtiyaclarına uyğun olaraq ehtiyacınız olan xidmətləri təyin
-                        edib satışlarınızın artırılmasında və brendinizin daha böyük auditoriya tərəfindən tanınmasında sizə
-                        kömək edəcək.
+                        {{$descriptions[0]->section__desc}}
                     </div>
                     <a class="btn__withoutBg">Bİzİmlə əlaqə</a>
                 </div>
@@ -144,9 +111,7 @@
                 <div class="section__title">Portfoliomuz</div>
                 <div>
                     <div class="section__desc">
-                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. Far
-                        far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-                        blind texts.
+                    {{$descriptions[1]->section__desc}}
                     </div>
 
                 </div>
@@ -232,7 +197,7 @@
                 <div class="section__title">Bizi Seçənlər</div>
                 <div>
                     <div class="section__desc">
-                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                    {{$descriptions[2]->section__desc}}
                     </div>
                 </div>
             </div>
@@ -496,9 +461,7 @@
                 <div class="section__title">Komandamız</div>
                 <div>
                     <div class="section__desc">
-                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. Far
-                        far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-                        blind texts.
+                        {{$descriptions[3]->section__desc}}
                     </div>
 
                 </div>
