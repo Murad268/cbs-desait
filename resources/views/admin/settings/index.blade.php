@@ -31,7 +31,7 @@
             <td>{{$setting->id}}</td>
             <td>
                 <a href="{{asset('assets/front/icons/'.$setting->logo)}}">
-                    <img style="width: 100px; height: 50px" src="{{asset('assets/front/icons/'.$setting->logo)}}" alt="">
+                    <img style="width: 100px; height: 40px" src="{{asset('assets/front/icons/'.$setting->logo)}}" alt="">
                 </a>
             </td>
             <td>{!!mb_strlen($setting->keywords)> 20 ? mb_substr($setting->keywords, 0, 20).'...':$setting->keywords!!}</td>

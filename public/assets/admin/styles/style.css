@@ -48,3 +48,10 @@ table {
 .main__field {
     color: blue
 }
+
+
+.admin__sidebar a.active{
+    color: blueviolet !important;
+    border: 1px solid black;
+    padding:  10px 5px;
+}
