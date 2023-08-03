@@ -15,9 +15,9 @@ class CreateCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'chose_us_position' => 'required|string|max:12',
-            'chose_us_name' => 'required|string|max:24',
-            'chose_us_comment' => 'required|string|max:50',
+            'chose_us_position' => 'required',
+            'chose_us_name' => 'required',
+            'chose_us_comment' => 'required|string|max:150',
             'chose_us_img' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ];
     }

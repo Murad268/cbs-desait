@@ -335,7 +335,7 @@
 
    .header__top__right__links {
       ul {
-       
+
 
          a {
             text-decoration: none;
@@ -563,7 +563,7 @@
          .slick-current {
             margin: 0 40px;
             margin-top: -90px;
-           
+
             .us_chosen__slider__bottom__slide__name ,   .us_chosen__slider__bottom__slide__position{
                display: block;
             }
@@ -593,7 +593,7 @@
                font-size: 16px;
                font-style: normal;
                font-weight: 400;
-               line-height: 26px; 
+               line-height: 26px;
                letter-spacing: 0.32px;
                margin-top: 4px;
                display: none;
@@ -648,7 +648,7 @@
                font-size: 16px;
                font-style: normal;
                font-weight: 400;
-               line-height: 26px; 
+               line-height: 26px;
                letter-spacing: 0.32px;
             }
          }
@@ -686,13 +686,13 @@
       row-gap: 90px;
       &>div {
          width: 100%;
-     
+
       }
       .us_chosen__icons {
          padding-left: 0;
       }
    }
-   
+
    .services {
 
       &__top {
@@ -807,7 +807,7 @@
       }
    }
 
-  
+
 }
 
 @media(max-width: 450px) {
@@ -841,10 +841,10 @@
          li {
            margin: 0 auto;
          }
-       
+
       }
    }
- 
+
 
    .banner {
       &__sliders {
@@ -910,3 +910,6 @@
 }
 
 
+.us_chosen__icon {
+    height: 37px !important;
+}

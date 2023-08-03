@@ -50,10 +50,10 @@ class ChoseUsController extends Controller
     public function update($id, UpdateCommentRequest $request) {
         try {
             $portfolio = ChooseUs_commentsb::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'chose_us_img',  $request->chose_us_img ,  $portfolio->chose_us_img );
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'chose_us_img', $portfolio->chose_us_img );
             $data = $request->all();
             $data['chose_us_img'] = $result;
-            $this->dataServices->save($portfolio, $data, 'update');;
+            $this->dataServices->save($portfolio, $data, 'update');
             return redirect()->route('admin.chose_us.index')->with('message', 'the information has been updated to the database');
         } catch (Exception $e) {
             echo $e->getMessage();

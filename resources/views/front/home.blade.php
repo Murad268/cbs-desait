@@ -60,7 +60,6 @@
                     <div class="section__desc">
                     {{$descriptions[1]->section__desc}}
                     </div>
-
                 </div>
             </div>
             <div class="portfolio__filter">
@@ -79,7 +78,6 @@
                     <div class="portfolio__item__name">{{$item->portfolio_item_title}}</div>
                 </div>
                 @endforeach
-
             </div>
             <a href="" class="btn__withoutBg">
                 HAMISINA BAX
@@ -102,159 +100,43 @@
             <div class="us_chosen__wrapper">
                 <div class="us_chosen__slider">
                     <div class="us_chosen__slider__top">
-                        <div class="us_chosen__slider__top__slide">
-                            <div class="us_chosen__slider__top__slide__quote1">
-                                <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
+                        @foreach($comments as $comment)
+                            <div class="us_chosen__slider__top__slide">
+                                <div class="us_chosen__slider__top__slide__quote1">
+                                    <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
+                                </div>
+                                <div class="us_chosen__slider__top__slide__quote2">
+                                    <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
+                                </div>
+                                <span>{{$comment->chose_us_comment}}</span>
                             </div>
-                            <div class="us_chosen__slider__top__slide__quote2">
-                                <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
-                            </div>
-                            <span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's1</span>
-                        </div>
-                        <div class="us_chosen__slider__top__slide">
-                            <div class="us_chosen__slider__top__slide__quote1">
-                                <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__top__slide__quote2">
-                                <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
-                            </div>
-                            <span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's2</span>
-                        </div>
-                        <div class="us_chosen__slider__top__slide">
-                            <div class="us_chosen__slider__top__slide__quote1">
-                                <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__top__slide__quote2">
-                                <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
-                            </div>
-                            <span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's3</span>
-                        </div>
-                        <div class="us_chosen__slider__top__slide">
-                            <div class="us_chosen__slider__top__slide__quote1">
-                                <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__top__slide__quote2">
-                                <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
-                            </div>
-                            <span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's4</span>
-                        </div>
-                        <div class="us_chosen__slider__top__slide">
-                            <div class="us_chosen__slider__top__slide__quote1">
-                                <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__top__slide__quote2">
-                                <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
-                            </div>
-                            <span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's5</span>
-                        </div>
-                        <div class="us_chosen__slider__top__slide">
-                            <div class="us_chosen__slider__top__slide__quote1">
-                                <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__top__slide__quote2">
-                                <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
-                            </div>
-                            <span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's6</span>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="us_chosen__slider__bottom">
-                        <div class="us_chosen__slider__bottom__slide">
+                    @foreach($comments as $comment)
+                    <div class="us_chosen__slider__bottom__slide">
                             <div class="us_chosen__slider__bottom__slide__img">
-                                <img src="{{asset('assets/front/images/man.png')}}" alt="">
+                                <img src="{{asset('assets/front/images/'.$comment->chose_us_img)}}" alt="">
                             </div>
                             <div class="us_chosen__slider__bottom__slide__name">
-                                Ayxan Rəcəbov1
+                                {{$comment->chose_us_name}}
                             </div>
                             <div class="us_chosen__slider__bottom__slide__position">
-                                CEO of Zenbil
+                                {{$comment->chose_us_position}}
                             </div>
                         </div>
-                        <div class="us_chosen__slider__bottom__slide">
-                            <div class="us_chosen__slider__bottom__slide__img">
-                                <img src="{{asset('assets/front/images/man.png')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__name">
-                                Ayxan Rəcəbov2
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__position">
-                                CEO of Zenbil
-                            </div>
-                        </div>
-                        <div class="us_chosen__slider__bottom__slide">
-                            <div class="us_chosen__slider__bottom__slide__img">
-                                <img src="{{asset('assets/front/images/man.png')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__name">
-                                Ayxan Rəcəbov3
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__position">
-                                CEO of Zenbil
-                            </div>
-                        </div>
-                        <div class="us_chosen__slider__bottom__slide">
-                            <div class="us_chosen__slider__bottom__slide__img">
-                                <img src="{{asset('assets/front/images/man.png')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__name">
-                                Ayxan Rəcəbov4
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__position">
-                                CEO of Zenbil
-                            </div>
-                        </div>
-                        <div class="us_chosen__slider__bottom__slide">
-                            <div class="us_chosen__slider__bottom__slide__img">
-                                <img src="{{asset('assets/front/images/man.png')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__name">
-                                Ayxan Rəcəbov5
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__position">
-                                CEO of Zenbil
-                            </div>
-                        </div>
-                        <div class="us_chosen__slider__bottom__slide">
-                            <div class="us_chosen__slider__bottom__slide__img">
-                                <img src="{{asset('assets/front/images/man.png')}}" alt="">
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__name">
-                                Ayxan Rəcəbov6
-                            </div>
-                            <div class="us_chosen__slider__bottom__slide__position">
-                                CEO of Zenbil
-                            </div>
-                        </div>
+                    @endforeach
+
+
                     </div>
                 </div>
                 <div class="us_chosen__icons">
                     <div class="us_chosen__icons__wrapper">
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
-                        <div class="us_chosen__icon">
-                            <img src="{{asset('assets/front/icons/logo 1.svg')}}" alt="">
-                        </div>
+                        @foreach($companies as $company)
+                            <div class="us_chosen__icon">
+                                <img src="{{asset('assets/front/icons/'.$company->company_img)}}" alt="">
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
