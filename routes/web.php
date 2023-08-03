@@ -22,6 +22,7 @@ use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\SectionTitlesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\front\BlogsController as FrontBlogsController;
+use App\Http\Controllers\front\ContactController;
 use App\Http\Controllers\front\OurWorkController;
 use App\Http\Controllers\front\PortfolioMainController;
 use App\Http\Controllers\front\ServiceMainController;
@@ -68,5 +69,6 @@ Route::group(['as' => 'front.'], function() {
     Route::get('/portfolio', [PortfolioMainController::class, 'index'])->name('portfolio');
     Route::get('/service', [ServiceMainController::class, 'index'])->name('service');
     Route::get('/our__work', [OurWorkController::class, 'index'])->name('our__work');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 });
 

@@ -7,9 +7,7 @@
                         <img src="{{asset('assets/front/icons/'.$settings->logo)}}" alt="">
                     </a>
                 </li>
-                <li class="footer__div">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
+
                 <li>
                     <ul class="header__top__right__links">
                     <li><a href="{{$settings->wp_link}}"><i class="fa-brands fa-whatsapp"></i></a></li>
@@ -25,42 +23,38 @@
 
             <ul class="footer__categories">
                 <li class="footer__categories__title">SƏHİFƏLƏR</li>
-                <li><a href="">Əsas Səhifə</a></li>
-                <li><a href="">Haqqımızda</a></li>
-                <li><a href="">Xidmətlərimiz</a></li>
-                <li><a href="">İşlərimiz</a></li>
-                <li><a href="">Bloq</a></li>
-                <li><a href="">Əlaqə</a></li>
+                <li><a href="{{route('front.index')}}">Əsas Səhifə</a></li>
+                <li><a href="{{route('front.about')}}">Haqqımızda</a></li>
+                <li><a href="{{route('front.portfolio')}}">İşlərimiz</a></li>
+                <li><a href="{{route('front.blogs')}}">Bloq</a></li>
+                <li><a href="{{route('front.contact')}}">Əlaqə</a></li>
             </ul>
             <ul class="footer__categories">
                 <li class="footer__categories__title">RƏQƏMSAL</li>
-                <li><a href="">SMM</a></li>
-                <li><a href="">UX/UI dizayn</a></li>
-                <li><a href="">SEO</a></li>
-                <li><a href="">Marketing həlləri</a></li>
-                <li><a href="">E-mail Marketinq</a></li>
+                @foreach($services as $service)
+                <li><a href="">{{$service->name}}</a></li>
+                @endforeach
             </ul>
             <ul class="footer__categories">
-                <li class="footer__categories__title">DİGƏR XİDMƏTLƏR</li>
-                <li><a href="">Brendinq</a></li>
-                <li><a href="">Qrafik Dizayn</a></li>
-                <li><a href="">Video Marketinq</a></li>
-                <li><a href="">Kontent Marketinq</a></li>
-                <li><a href="">Marketinq Konsultasiyası</a></li>
+                <li class="footer__categories__title">{{$lastService->name}}</li>
+                @foreach($lastService->services as $item)
+                    <li><a href="">{{$item->name}}</a></li>
+                @endforeach
+              
             </ul>
             <ul class="footer__contacts">
                 <li class="footer__categories__title">ƏLAQƏ</li>
                 <li>
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>Əhməd Rəcəbli küç, 56.</span>
+                    <span>{{$settings->location}}</span>
                 </li>
                 <li>
                     <i class="fa fa-phone" aria-hidden="true"></i>
-                    <span>+994 12 5655723</span>
+                    <span>{{$settings->phone_number}}</span>
                 </li>
                 <li>
                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <span>info@crazyinnovations.az</span>
+                    <span>{{$settings->email}}</span>
                 </li>
             </ul>
         </div>

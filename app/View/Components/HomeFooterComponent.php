@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Services;
 use App\Models\Setting;
 use Illuminate\View\Component;
 
@@ -25,6 +26,11 @@ class HomeFooterComponent extends Component
     public function render()
     {
         $settings = Setting::firstOrFail();
-        return view('components.home-footer-component', ['settings' => $settings]);
+        $services = Services::where("service_id", 0)->get();
+        if ($services->count() > 0) {
+            $services->pop();
+        }
+        $lastService = Services::where("service_id", 0)->get()->last();
+        return view('components.home-footer-component', ['settings' => $settings, 'services' => $services, 'lastService' => $lastService]);
     }
 }

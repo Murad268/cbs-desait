@@ -150,72 +150,25 @@
                 İş prosessimiz
             </div>
             <div class="process__wrapper">
+                @php
+                    $num = 1
+                @endphp
+                @foreach($proccessess as $proccess)
                 <div class="process__card">
                     <div class="process__card__img">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
+                        <img src="{{asset('assets/front/icons/'.$proccess->proccess_icon)}}" alt="">
                     </div>
                     <div class="card__title">
-                        1. Müzakirə
+                        {{$num}}. {{$proccess->proccess_title}}
                     </div>
                     <div class="section__desc">
                         Layihə barədə müzakirə və müştəri istəklərinin müəyyən edilməsi
                     </div>
                 </div>
-                <div class="process__card">
-                    <div class="process__card__img">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        1. Müzakirə
-                    </div>
-                    <div class="section__desc">
-                        Layihə barədə müzakirə və müştəri istəklərinin müəyyən edilməsi
-                    </div>
-                </div>
-                <div class="process__card">
-                    <div class="process__card__img">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        1. Müzakirə
-                    </div>
-                    <div class="section__desc">
-                        Layihə barədə müzakirə və müştəri istəklərinin müəyyən edilməsi
-                    </div>
-                </div>
-                <div class="process__card">
-                    <div class="process__card__img">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        1. Müzakirə
-                    </div>
-                    <div class="section__desc">
-                        Layihə barədə müzakirə və müştəri istəklərinin müəyyən edilməsi
-                    </div>
-                </div>
-                <div class="process__card">
-                    <div class="process__card__img">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        1. Müzakirə
-                    </div>
-                    <div class="section__desc">
-                        Layihə barədə müzakirə və müştəri istəklərinin müəyyən edilməsi
-                    </div>
-                </div>
-                <div class="process__card">
-                    <div class="process__card__img">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        1. Müzakirə
-                    </div>
-                    <div class="section__desc">
-                        Layihə barədə müzakirə və müştəri istəklərinin müəyyən edilməsi
-                    </div>
-                </div>
+                @php
+                    $num++
+                @endphp
+                @endforeach
             </div>
         </div>
     </section>
@@ -223,10 +176,8 @@
     <section class="still">
         <div class="container">
             <div class="still__body">
-                <div class="main__title">Hələ də axtarışdasınız?</div>
-                <div class="section__desc">We’ve helped some of the UK’s most successful businesses with their digital
-                    products. Knowing the right approach and then executing isn’t easy. Whatever your need, we’ll be happy to
-                    give you the right advice and explore how we can best help.</div>
+                <div class="main__title">{{$still->still_title}}</div>
+                <div class="section__desc">{!! $still->still_description !!}</div>
                 <div class="btn_withBg">
                     Let’s Talk
                 </div>
@@ -247,77 +198,23 @@
             </div>
             <div class="our__team__main">
                 <div class="our__team__wrapper">
+                    @foreach($team as $item)
                     <div class="our__team__column">
                         <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
+                            <img src="{{asset('assets/front/images/'.$item->employer_avatar)}}" alt="">
                         </div>
                         <div class="our__team__column__name">
-                            Musa C.
+                            {{$item->employer_name}}
                         </div>
                         <div class="our__team__column__position">
-                            CEO, Partner
+                            {{$item->position->position_name}}
                         </div>
                     </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="prev-button"><i class="fa-solid fa-angle-left"></i></div>
                 <div class="next-button"><i class="fa-solid fa-angle-right"></i></div>
             </div>
-
         </div>
     </section>
 

@@ -12,6 +12,10 @@ use App\Models\PortfolioFilter;
 use App\Models\SectionTitles;
 use App\Models\Services;
 use App\Models\Setting;
+use App\Models\Still;
+use App\Models\Team;
+use App\Models\WorkProccess;
+
 class HomeController extends Controller
 {
     public function index() {
@@ -24,6 +28,9 @@ class HomeController extends Controller
         $portfolio = Portfolio::all();
         $companies = ChoseUsCompany::all();
         $comments = ChooseUs_commentsb::all();
-        return view('front.home', ['headerBanner' => $headerBanner, 'descriptions' => $descriptions, 'formTexts' => $formTexts, 'settings' => $settings, 'services' => $services, 'pFilter' => $pFilter, 'portfolio' => $portfolio, 'companies' => $companies, 'comments' => $comments]);
+        $proccessess = WorkProccess::all();
+        $still = Still::firstOrFail();
+        $team = Team::all();
+        return view('front.home', ['headerBanner' => $headerBanner, 'descriptions' => $descriptions, 'formTexts' => $formTexts, 'settings' => $settings, 'services' => $services, 'pFilter' => $pFilter, 'portfolio' => $portfolio, 'companies' => $companies, 'comments' => $comments, 'proccessess' => $proccessess, 'still' => $still, 'team' => $team]);
     }
 }
