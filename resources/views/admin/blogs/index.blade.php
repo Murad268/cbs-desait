@@ -5,7 +5,7 @@
 @section('content')
 <a href="{{route('admin.blogs.create')}}" class="btn btn-dark">create</a>
 @if(session()->has('message'))
-    <div class="alert alert-success">
+    <div class="mt-3 alert alert-success">
         {{ session('message') }}
     </div>
 @endif

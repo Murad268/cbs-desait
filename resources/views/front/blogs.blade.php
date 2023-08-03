@@ -24,123 +24,21 @@
 <section class="blogs">
     <div class="container">
         <div class="blogs__wrapper">
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span>11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span class="blogs__blog__date">11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span>11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span>11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span>11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span>11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span>11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span>11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
-            <a class="blogs__blog">
-                <div class="blogs__blog__img">
-                    <img src="{{asset('assets/front/images/Rectangle 128.png')}}" alt="">
-                </div>
-                <div class="blogs__blog__top">
-                    <span class="blogs__blog__category">Proqramlaşdırma</span>
-                    <div class="circle"></div>
-                    <span>11 Iyul 2021</span>
-                </div>
-                <div class="blogs__blog__name">
-                    HTML, CSS & JS nədir?
-                </div>
-            </a>
+            @foreach($blogs as $blog)
+                <a class="blogs__blog">
+                    <div class="blogs__blog__img">
+                        <img src="{{asset('assets/front/images/'.$blog->card_img)}}" alt="">
+                    </div>
+                    <div class="blogs__blog__top">
+                        <span class="blogs__blog__category">{{$blog->category->categoy_name}}</span>
+                        <div class="circle"></div>
+                        <span>11 Iyul 2021</span>
+                    </div>
+                    <div class="blogs__blog__name">
+                        {{$blog->blog_title}}
+                    </div>
+                </a>
+            @endforeach
         </div>
     </div>
 </section>

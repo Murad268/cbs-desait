@@ -1,7 +1,7 @@
 <nav class="header__navbar">
     <div class="container">
         <div class="header__navbar__wrapper">
-            <a href="" class="header__navbar__logo active">
+            <a href="{{route('front.index')}}" class="header__navbar__logo active">
                 <img src="{{asset('assets/front/icons/'.$settings->logo)}}" alt="">
             </a>
             <ul class="header__navbar__list">
