@@ -24,7 +24,7 @@ class TeamController extends Controller
         return view('admin.team.team_add', ['positions' => $positions]);
     }
     public function store(CreateEmployerRequest $request) {
-        $result = $this->imageService->downloadImage($request->employer_avatar, 'assets/front/images/');
+        $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'employer_avatar', 'notfound.png');
         $data = $request->all();
         $data['employer_avatar'] = $result;
 

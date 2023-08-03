@@ -16,7 +16,7 @@ class CreateWorkProccessRequest extends FormRequest
     public function rules()
     {
         return [
-            "proccess_icon" => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            "proccess_icon" => 'required|image|mimes:jpeg,jpg,png,svg|max:2048',
             'proccess_title' => "required",
             'proccess_desc' => "required"
         ];

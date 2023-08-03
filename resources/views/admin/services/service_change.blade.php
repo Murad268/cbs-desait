@@ -4,7 +4,7 @@
 
 
 @section('content')
-<form action="{{route('admin.services.update', $service->id)}}" method="post" >
+<form enctype="multipart/form-data" action="{{route('admin.services.update', $service->id)}}" method="post" >
     @csrf
     @method('PUT')
     <div class="mb-3 form-group">

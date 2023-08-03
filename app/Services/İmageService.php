@@ -6,23 +6,27 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 class İmageService
 {
-    public function downloadImage($request, $path)
+    public function downloadImage($request, $path, $check, $default)
     {
-        $img = $request;
-        $extension = $img->getClientOriginalExtension();
-        $randomName = Str::random(10);
-        $imagePath = $path;
-        $lastName = $randomName . "." . $extension;
-        $lasPath = $imagePath . $randomName . "." . $extension;
+        if ($request->hasFile($check)) {
+            $img = $request->$check;
+            $extension = $img->getClientOriginalExtension();
+            $randomName = Str::random(10);
+            $imagePath = $path;
+            $lastName = $randomName . "." . $extension;
+            $lasPath = $imagePath . $randomName . "." . $extension;
 
-        Image::make($img)->save($lasPath);
-        return $lastName;
+            Image::make($img)->save($lasPath);
+            return $lastName;
+        } else {
+            return $default;
+        }
+
     }
 
     public function updateImage($request, $path, $check, $hasElement) {
         $randomName = Str::random(10);
         $imagePath =  $path;
-
         if ($request->hasFile($check)) {
             if (file_exists($imagePath .  $hasElement)) {
                 unlink($imagePath .  $hasElement);
@@ -35,7 +39,7 @@ class İmageService
         } else {
             $lastName =   $hasElement;
         }
-  
+
         return $lastName;
     }
 

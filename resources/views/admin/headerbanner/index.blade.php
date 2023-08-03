@@ -35,16 +35,12 @@
                         @csrf
                         @method("delete")
                         <input class="btn btn-danger" value="delete" type="submit">
-
                     </form>
-
                     <a href="{{route('admin.header__banner.edit', $headerBannerItem->id)}}" class="btn btn-success">change</a>
                 </div>
             </td>
         </tr>
         @endforeach
-
-
     </tbody>
 </table>
 @else

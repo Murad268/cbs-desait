@@ -30,8 +30,8 @@ class BlogsController extends Controller
     public function store(CreateBlogRequest $request)
     {
 
-        $result = $this->imageService->downloadImage($request->card_img, 'assets/front/images/');
-        $result1 = $this->imageService->downloadImage($request->card_banner, 'assets/front/images/');
+        $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'card_img', 'notfound.png');
+        $result1 = $this->imageService->downloadImage($request, 'assets/front/images/', 'card_banner', 'notfound.png');
         $data = $request->all();
         $data['card_img'] = $result;
         $data['card_banner'] = $result1;

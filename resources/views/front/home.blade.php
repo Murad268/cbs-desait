@@ -35,72 +35,19 @@
                 </div>
             </div>
             <div class="services__wrapper">
+                @foreach($services as $service)
                 <div class="services__service">
                     <div class="services__service__icon">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
+                        <img src="{{asset('assets/front/icons/'.$service->services_item_icons)}}" alt="">
                     </div>
                     <div class="card__title">
-                        SEO
+                        {{$service->name}}
                     </div>
                     <div class="services__service__desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod massa neque duis sit in.
+                        {!!mb_strlen($service->about_service) > 93 ? mb_substr($service->about_service, 0, 93).'...' : $service->about_service!!}
                     </div>
                 </div>
-                <div class="services__service">
-                    <div class="services__service__icon">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        SEO
-                    </div>
-                    <div class="services__service__desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod massa neque duis sit in.
-                    </div>
-                </div>
-                <div class="services__service">
-                    <div class="services__service__icon">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        SEO
-                    </div>
-                    <div class="services__service__desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod massa neque duis sit in.
-                    </div>
-                </div>
-                <div class="services__service">
-                    <div class="services__service__icon">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        SEO
-                    </div>
-                    <div class="services__service__desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod massa neque duis sit in.
-                    </div>
-                </div>
-                <div class="services__service">
-                    <div class="services__service__icon">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        SEO
-                    </div>
-                    <div class="services__service__desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod massa neque duis sit in.
-                    </div>
-                </div>
-                <div class="services__service">
-                    <div class="services__service__icon">
-                        <img src="{{asset('assets/front/icons/smm.svg')}}" alt="">
-                    </div>
-                    <div class="card__title">
-                        SEO
-                    </div>
-                    <div class="services__service__desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod massa neque duis sit in.
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -118,70 +65,21 @@
             </div>
             <div class="portfolio__filter">
                 <a href="">HAMISI</a>
-                <a href="">bİznes həllərİ</a>
-                <a href="">rəqəmsal marketİnq</a>
-                <a href="">veb layİhələr</a>
-                <a href="">qablaşdırma</a>
-                <a href="">VİDEO</a>
-                <a href="">DİZAYN</a>
+                @foreach($pFilter as $filter)
+                    <a href="">{{$filter->filter_name}}</a>
+                @endforeach
             </div>
             <div class="portfolio__wrapper">
+                @foreach($portfolio as $item)
                 <div class="portfolio__item">
                     <div class="portfolio__item__img">
-                        <img src="{{asset('assets/front/images/imagecard.png')}}" alt="">
+                        <img src="{{asset('assets/front/images/'.$item->portfolio_item_img)}}" alt="">
                     </div>
-                    <div class="portfolio__item__category">Dizayn</div>
-                    <div class="portfolio__item__name">Mercury ERP Brendbook</div>
+                    <div class="portfolio__item__category">{{$item->filter->filter_name}}</div>
+                    <div class="portfolio__item__name">{{$item->portfolio_item_title}}</div>
                 </div>
-                <div class="portfolio__item">
-                    <div class="portfolio__item__img">
-                        <img src="{{asset('assets/front/images/imagecard.png')}}" alt="">
-                    </div>
-                    <div class="portfolio__item__category">Dizayn</div>
-                    <div class="portfolio__item__name">Mercury ERP Brendbook</div>
-                </div>
-                <div class="portfolio__item">
-                    <div class="portfolio__item__img">
-                        <img src="{{asset('assets/front/images/imagecard.png')}}" alt="">
-                    </div>
-                    <div class="portfolio__item__category">Dizayn</div>
-                    <div class="portfolio__item__name">Mercury ERP Brendbook</div>
-                </div>
-                <div class="portfolio__item">
-                    <div class="portfolio__item__img">
-                        <img src="{{asset('assets/front/images/imagecard.png')}}" alt="">
-                    </div>
-                    <div class="portfolio__item__category">Dizayn</div>
-                    <div class="portfolio__item__name">Mercury ERP Brendbook</div>
-                </div>
-                <div class="portfolio__item">
-                    <div class="portfolio__item__img">
-                        <img src="{{asset('assets/front/images/imagecard.png')}}" alt="">
-                    </div>
-                    <div class="portfolio__item__category">Dizayn</div>
-                    <div class="portfolio__item__name">Mercury ERP Brendbook</div>
-                </div>
-                <div class="portfolio__item">
-                    <div class="portfolio__item__img">
-                        <img src="{{asset('assets/front/images/imagecard.png')}}" alt="">
-                    </div>
-                    <div class="portfolio__item__category">Dizayn</div>
-                    <div class="portfolio__item__name">Mercury ERP Brendbook</div>
-                </div>
-                <div class="portfolio__item">
-                    <div class="portfolio__item__img">
-                        <img src="{{asset('assets/front/images/imagecard.png')}}" alt="">
-                    </div>
-                    <div class="portfolio__item__category">Dizayn</div>
-                    <div class="portfolio__item__name">Mercury ERP Brendbook</div>
-                </div>
-                <div class="portfolio__item">
-                    <div class="portfolio__item__img">
-                        <img src="{{asset('assets/front/images/imagecard.png')}}" alt="">
-                    </div>
-                    <div class="portfolio__item__category">Dizayn</div>
-                    <div class="portfolio__item__name">Mercury ERP Brendbook</div>
-                </div>
+                @endforeach
+
             </div>
             <a href="" class="btn__withoutBg">
                 HAMISINA BAX
@@ -436,7 +334,6 @@
                         Layihə barədə müzakirə və müştəri istəklərinin müəyyən edilməsi
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

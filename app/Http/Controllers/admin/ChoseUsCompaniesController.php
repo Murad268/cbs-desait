@@ -22,7 +22,7 @@ class ChoseUsCompaniesController extends Controller
     }
 
     public function store(ChoseUsCompaniesRequest $request) {
-        $result = $this->imageService->downloadImage($request->company_img, 'assets/front/icons/');
+        $result = $this->imageService->downloadImage($request, 'assets/front/icons/', 'company_img', 'notfound.png');
         $data = $request->all();
         $data['company_img'] = $result;
         try {

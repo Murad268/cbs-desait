@@ -14,6 +14,7 @@
     <thead>
         <tr>
             <th scope="col">No</th>
+            <th scope="col">Service Img</th>
             <th scope="col">Service Name</th>
             <th scope="col">Service Slug</th>
             <th scope="col">Service Description</th>
@@ -23,7 +24,12 @@
     <tbody>
         @foreach($services as $service)
         <tr style="background-color: #212529;">
-            <th class="main__field" scope="row">{{$service->id}}</th>
+            <td class="main__field" scope="row">{{$service->id}}</td>
+            <td>
+                <a target="_blank" href="{{asset('assets/front/icons/'.$service->services_item_icons)}}">
+                    <img style="width: 52px; height: 58px" src="{{asset('assets/front/icons/'.$service->services_item_icons)}}" alt="">
+                </a>
+            </td>
             <td class="main__field">{{$service->name}}</td>
             <td class="main__field">{{$service->slug}}</td>
             <td class="main__field">{!! mb_strlen($service->about_service) > 150 ? mb_substr($service->about_service, 0, 150):$service->about_service !!}</td>
@@ -43,6 +49,11 @@
         @foreach($service->services as $subservices)
         <tr style="background-color: #212529;">
             <th scope="row">{{$subservices->id}}</th>
+            <td>
+                <a target="_blank" href="{{asset('assets/front/icons/'.$subservices->services_item_icons)}}">
+                    <img style="width: 52px; height: 58px" src="{{asset('assets/front/icons/'.$subservices->services_item_icons)}}" alt="">
+                </a>
+            </td>
             <td>{{$subservices->name}}</td>
             <td>{{$subservices->slug}}</td>
             <td class="main__field">{!! mb_strlen($subservices->about_service) > 150 ? mb_substr($subservices->about_service, 0, 150).'...' : $subservices->about_service !!}</td>

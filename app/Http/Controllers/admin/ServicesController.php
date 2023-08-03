@@ -33,7 +33,7 @@ class ServicesController extends Controller
     }
 
     public function store(serviceCreateRequest $request) {
-        $result = $this->imageService->downloadImage($request->services_item_icons, 'assets/front/icons/');
+        $result = $this->imageService->downloadImage($request, 'assets/front/icons/', 'services_item_icons', 'notfound.png');
         $data = $request->all();
         $data['services_item_icons'] = $result;
         try {
@@ -57,7 +57,7 @@ class ServicesController extends Controller
     public function update(updateServiceRequest $request, $id) {
         try {
             $service = Services::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/icons/', 'services_item_icons', $request->services_item_icons );
+            $result = $this->imageService->updateImage($request, 'assets/front/icons/', 'services_item_icons', $request->services_item_icons);
             $data = $request->all();
             $data['services_item_icons'] = $result;
             $this->dataServices->save($service, $data, 'update');;

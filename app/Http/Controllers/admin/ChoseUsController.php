@@ -23,7 +23,7 @@ class ChoseUsController extends Controller
     }
 
     public function store(CreateCommentRequest $request) {
-        $result = $this->imageService->downloadImage($request->chose_us_img, 'assets/front/images/');
+        $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'chose_us_img', 'notfound.png');
         $data = $request->all();
         $data['chose_us_img'] = $result;
         try {

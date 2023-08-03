@@ -28,7 +28,7 @@ class PortfolioController extends Controller
     }
 
     public function store(CreatePortfolioItemRequest $request) {
-        $result = $this->imageService->downloadImage($request->portfolio_item_img, 'assets/front/images/');
+        $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'portfolio_item_img', 'notfound.png');
         $data = $request->all();
         $data['portfolio_item_img'] = $result;
         unset($data['portfolio__item__category_id'] );

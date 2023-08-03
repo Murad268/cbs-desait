@@ -15,6 +15,7 @@ class updateServiceRequest extends FormRequest
     public function rules()
     {
         return [
+            "services_item_icons" => "image|mimes:jpeg,jpg,png|max:2048",
             "name" => "required",
             'about_service' => 'required',
             'service_id' => "required"

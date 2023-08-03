@@ -28,7 +28,7 @@ class HeaderBannerController extends Controller
 
     public function store(HeaderBannerStoreRequest $reuqest)
     {
-        $result = $this->imageService->downloadImage($reuqest->banner_img, 'assets/front/images/');
+        $result = $this->imageService->downloadImage($reuqest, 'assets/front/images/', 'banner_img', 'notfound.png');
         $data = $reuqest->all();
         $data['banner_img'] = $result;
         try {

@@ -23,7 +23,7 @@ class WorkProccessController extends Controller
     }
 
     public function store(CreateWorkProccessRequest $request) {
-        $result = $this->imageService->downloadImage($request->proccess_icon, 'assets/front/icons/');
+        $result = $this->imageService->downloadImage($request, 'assets/front/icons/', 'proccess_icon', 'notfound.png');
         $data = $request->all();
         $data['proccess_icon'] = $result;
         try {

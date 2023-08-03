@@ -15,6 +15,7 @@ class UppdateProccessRequest extends FormRequest
     public function rules()
     {
         return [
+            "proccess_icon" => 'image|mimes:jpeg,jpg,png,svg|max:2048',
             'proccess_title' => "required",
             'proccess_desc' => "required"
         ];
