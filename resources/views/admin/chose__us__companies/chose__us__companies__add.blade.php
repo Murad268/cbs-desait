@@ -8,7 +8,7 @@
     @csrf
     <div class="mb-3 form-group">
         <label class="mb-1">Choese Us Company Image</label>
-        <input name="company_img" type="file" class="form-control" placeholder="Enter name">
+        <input name="company_img" type="file" class="form-control">
         @error('company_img')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\front;
-
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class BlogsController extends Controller
 {
@@ -14,7 +13,9 @@ class BlogsController extends Controller
         return view('front.blogs', ['blogs' => $blogs]);
     }
 
-    public function blog() {
-        return view('front.blog');
+    public function blog($id) {
+        $blog = Blog::findOrFail($id);
+        $settings = Setting::firstOrFail();
+        return view('front.blog', ['blog' => $blog, 'settings' => $settings]);
     }
 }

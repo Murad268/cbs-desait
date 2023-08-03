@@ -19,7 +19,7 @@
 
     <div class="mb-3 form-group">
         <label class="mb-1">Portfolio Item Image</label>
-        <input name="portfolio_item_img" type="file" class="form-control" placeholder="Enter name">
+        <input name="portfolio_item_img" type="file" class="form-control" >
         @error('portfolio_item_img')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

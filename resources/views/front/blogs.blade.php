@@ -25,14 +25,14 @@
     <div class="container">
         <div class="blogs__wrapper">
             @foreach($blogs as $blog)
-                <a class="blogs__blog">
+                <a href="{{route('front.blog', $blog->id)}}" class="blogs__blog">
                     <div class="blogs__blog__img">
                         <img src="{{asset('assets/front/images/'.$blog->card_img)}}" alt="">
                     </div>
                     <div class="blogs__blog__top">
                         <span class="blogs__blog__category">{{$blog->category->categoy_name}}</span>
                         <div class="circle"></div>
-                        <span>11 Iyul 2021</span>
+                        <span>{{$blog->convertDate($blog->created_at)}}</span>
                     </div>
                     <div class="blogs__blog__name">
                         {{$blog->blog_title}}

@@ -17,7 +17,7 @@
     </div>
     <div class="mb-3 form-group">
         <label class="mb-1">Service Name</label>
-        <input name="name" value="{{old('name')}}" type="text" class="form-control" placeholder="Enter name">
+        <input name="name" value="{{old('name')}}" type="text" class="form-control" placeholder="Enter service name">
         @error('name')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

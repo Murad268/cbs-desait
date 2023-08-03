@@ -17,7 +17,7 @@
         <div class="container">
             <div class="still__body">
                 <div class="section__desc"><span>PORTFOLIO</span> <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    <span>Layihə adı</span>
+                    <span>{{$work->portfolio_item_title}}</span>
                 </div>
                 <div class="main__title">Our works</div>
             </div>
@@ -27,8 +27,7 @@
     <section class="ourworks">
         <div class="container">
             <div class="ourworks__title">LAYİHƏ ADI</div>
-            <div class="section__title">Product design for
-                a customer experience platform
+            <div class="section__title">{{$work->portfolio_item_title}}
             </div>
             <div style="background-image: url('https://images.ctfassets.net/pdf29us7flmy/4JU61ygq6O2SH7JFL4Kmwq/a414c63b49c1a13656cbde5f66597c55/shutterstock_1073291759_optimized__1_.jpeg?w=720&q=100&fm=jpg');" class="ourworks__header">
                 <div class="ourworks__header__body">
@@ -60,15 +59,19 @@
         <div class="container">
             <div class="about__ourworks__wrapper">
                 <div class="about__ourworks__left">
-                    <div class="ourworks__title">LAYİHƏ ADI</div>
+                    <div class="ourworks__title">HAQQINDA</div>
                     <div class="section__desc">
-                        The original vision of TextMagic was to help companies connect with clients by sending text messages. But as their vision came true, the company started to expand to support more sophisticated communication capabilities.
+                        {!!$work->about_portfolio_item !!}
                     </div>
                 </div>
                 <div class="about__ourworks__right">
-                    <div class="ourworks__title">LAYİHƏ ADI</div>
+                    <div class="ourworks__title">ROLLARIMIZ</div>
                     <div class="section__desc">
-                        The original vision of TextMagic was to help companies connect with clients by sending text messages. But as their vision came true, the company started to expand to support more sophisticated communication capabilities.
+                        <ul>
+                            @foreach($work->services as $item)
+                            <li>{{$item->name}}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -106,72 +109,19 @@
 
             <div class="our__team__main">
                 <div class="our__team__wrapper">
+                    @foreach($team as $item)
                     <div class="our__team__column">
                         <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
+                            <img src="{{asset('assets/front/images/'.$item->employer_avatar)}}" alt="">
                         </div>
                         <div class="our__team__column__name">
-                            Musa C.
+                            {{$item->employer_name}}
                         </div>
                         <div class="our__team__column__position">
-                            CEO, Partner
+                            {{$item->position->position_name}}
                         </div>
                     </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="prev-button"><i class="fa-solid fa-angle-left"></i></div>
                 <div class="next-button"><i class="fa-solid fa-angle-right"></i></div>

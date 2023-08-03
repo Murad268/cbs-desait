@@ -10,7 +10,7 @@
 
                 <li>
                     <ul class="header__top__right__links">
-                    <li><a href="{{$settings->wp_link}}"><i class="fa-brands fa-whatsapp"></i></a></li>
+                        <li><a href="{{$settings->wp_link}}"><i class="fa-brands fa-whatsapp"></i></a></li>
                         <li><a href="{{$settings->insta_link}}"><i class="fa-brands fa-instagram"></i></a></li>
                         <li><a href="{{$settings->fb_link}}"><i class="fa-brands fa-facebook-f"></i></a></li>
                         <li><a href="{{$settings->linkedin_link}}"><i class="fa-brands fa-linkedin-in"></i></a></li>
@@ -40,7 +40,7 @@
                 @foreach($lastService->services as $item)
                     <li><a href="">{{$item->name}}</a></li>
                 @endforeach
-              
+
             </ul>
             <ul class="footer__contacts">
                 <li class="footer__categories__title">ƏLAQƏ</li>

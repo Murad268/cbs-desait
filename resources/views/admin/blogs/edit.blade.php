@@ -44,7 +44,7 @@
 
     <div class="mb-3 form-group">
         <label class="mb-1">Blog Title</label>
-        <input value="{{old('blog_title', $blog->blog_title)}}" name="blog_title" type="text" class="form-control" placeholder="Enter name">
+        <input value="{{old('blog_title', $blog->blog_title)}}" name="blog_title" type="text" class="form-control" placeholder="Enter blog title">
         @error('blog_title')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

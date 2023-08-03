@@ -65,10 +65,10 @@ Route::group(['as' => 'front.'], function() {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/about', [FrontAboutController::class, 'index'])->name('about');
     Route::get('/blogs', [FrontBlogsController::class, 'index'])->name('blogs');
-    Route::get('/blog', [FrontBlogsController::class, 'blog'])->name('blog');
+    Route::get('/blog/{id}', [FrontBlogsController::class, 'blog'])->name('blog');
     Route::get('/portfolio', [PortfolioMainController::class, 'index'])->name('portfolio');
     Route::get('/service', [ServiceMainController::class, 'index'])->name('service');
-    Route::get('/our__work', [OurWorkController::class, 'index'])->name('our__work');
+    Route::get('/our__work/{id}', [OurWorkController::class, 'index'])->name('our__work');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 

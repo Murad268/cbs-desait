@@ -58,14 +58,14 @@
                 <div class="section__title">Portfoliomuz</div>
                 <div>
                     <div class="section__desc">
-                    {{$descriptions[1]->section__desc}}
+                        {{$descriptions[1]->section__desc}}
                     </div>
                 </div>
             </div>
             <div class="portfolio__filter">
                 <a style="cursor: pointer" data-id="0">HAMISI</a>
                 @foreach($pFilter as $filter)
-                    <a style="cursor: pointer" data-id="{{$filter->id}}">{{$filter->filter_name}}</a>
+                <a style="cursor: pointer" data-id="{{$filter->id}}">{{$filter->filter_name}}</a>
                 @endforeach
             </div>
             <div class="portfolio__wrapper">
@@ -93,7 +93,7 @@
                 <div class="section__title">Bizi Seçənlər</div>
                 <div>
                     <div class="section__desc">
-                    {{$descriptions[2]->section__desc}}
+                        {{$descriptions[2]->section__desc}}
                     </div>
                 </div>
             </div>
@@ -101,20 +101,20 @@
                 <div class="us_chosen__slider">
                     <div class="us_chosen__slider__top">
                         @foreach($comments as $comment)
-                            <div class="us_chosen__slider__top__slide">
-                                <div class="us_chosen__slider__top__slide__quote1">
-                                    <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
-                                </div>
-                                <div class="us_chosen__slider__top__slide__quote2">
-                                    <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
-                                </div>
-                                <span>{{$comment->chose_us_comment}}</span>
+                        <div class="us_chosen__slider__top__slide">
+                            <div class="us_chosen__slider__top__slide__quote1">
+                                <img src="{{asset('assets/front/icons/format_quote1.svg')}}" alt="">
                             </div>
+                            <div class="us_chosen__slider__top__slide__quote2">
+                                <img src="{{asset('assets/front/icons/format_quote.svg')}}" alt="">
+                            </div>
+                            <span>{{$comment->chose_us_comment}}</span>
+                        </div>
                         @endforeach
                     </div>
                     <div class="us_chosen__slider__bottom">
-                    @foreach($comments as $comment)
-                    <div class="us_chosen__slider__bottom__slide">
+                        @foreach($comments as $comment)
+                        <div class="us_chosen__slider__bottom__slide">
                             <div class="us_chosen__slider__bottom__slide__img">
                                 <img src="{{asset('assets/front/images/'.$comment->chose_us_img)}}" alt="">
                             </div>
@@ -125,7 +125,7 @@
                                 {{$comment->chose_us_position}}
                             </div>
                         </div>
-                    @endforeach
+                        @endforeach
 
 
                     </div>
@@ -133,9 +133,9 @@
                 <div class="us_chosen__icons">
                     <div class="us_chosen__icons__wrapper">
                         @foreach($companies as $company)
-                            <div class="us_chosen__icon">
-                                <img src="{{asset('assets/front/icons/'.$company->company_img)}}" alt="">
-                            </div>
+                        <div class="us_chosen__icon">
+                            <img src="{{asset('assets/front/icons/'.$company->company_img)}}" alt="">
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -151,7 +151,7 @@
             </div>
             <div class="process__wrapper">
                 @php
-                    $num = 1
+                $num = 1
                 @endphp
                 @foreach($proccessess as $proccess)
                 <div class="process__card">
@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 @php
-                    $num++
+                $num++
                 @endphp
                 @endforeach
             </div>
@@ -237,10 +237,10 @@
                         <div class="contact__footer__phone">
                             <strong>ƏLAQƏ:</strong>
                             <div>
-                            {{$settings->eamil}}
+                                {{$settings->eamil}}
                             </div>
                             <div>
-                            {{$settings->phone_number}}
+                                {{$settings->phone_number}}
                             </div>
                         </div>
                     </div>

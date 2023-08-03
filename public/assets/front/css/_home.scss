@@ -155,6 +155,7 @@
    }
 
    &__item {
+    text-decoration: none;
       &__img {
          height: 225px;
 
@@ -185,6 +186,7 @@
          line-height: normal;
          letter-spacing: 0.03px;
          margin-top: 8px;
+         color: var(--main-dark)
       }
    }
 

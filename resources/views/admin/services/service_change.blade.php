@@ -9,7 +9,7 @@
     @method('PUT')
     <div class="mb-3 form-group">
         <label class="mb-1">Services Icon</label>
-        <input name="services_item_icons" type="file" class="form-control" placeholder="Enter name">
+        <input name="services_item_icons" type="file" class="form-control" >
         @error('services_item_icons')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}
@@ -18,7 +18,7 @@
     </div>
   <div class="mb-3 form-group">
     <label class="mb-1">Service Name</label>
-    <input name="name" value="{{old('name', $service->name)}}" type="text" class="form-control" placeholder="Enter name">
+    <input name="name" value="{{old('name', $service->name)}}" type="text" class="form-control" placeholder="Enter service name">
     @error('name')
     <div class="alert alert-danger mt-2" role="alert">
         {{$message}}

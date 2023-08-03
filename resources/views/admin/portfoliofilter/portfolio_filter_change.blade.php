@@ -9,7 +9,7 @@
     @method('put')
     <div class="mb-3 form-group">
         <label class="mb-1">Filter Title</label>
-        <input value="{{old('filter_name', $portfolioFilter->filter_name)}}" name="filter_name" type="text" class="form-control" placeholder="Enter name">
+        <input value="{{old('filter_name', $portfolioFilter->filter_name)}}" name="filter_name" type="text" class="form-control" placeholder="Enter filter title">
         @error('filter_name')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

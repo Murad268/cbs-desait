@@ -7,7 +7,7 @@
     @method('put')
     <div class="mb-3 form-group">
         <label class="mb-1">Still Title</label>
-        <input value="{{old('still_title', $still->still_title)}}" name="still_title" type="text" class="form-control" placeholder="Enter title">
+        <input value="{{old('still_title', $still->still_title)}}" name="still_title" type="text" class="form-control" placeholder="Enter still title">
         @error('still_title')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

@@ -24,9 +24,10 @@
       width: 100%;
 
       background-size: cover;
-  
+
       .section__desc {
-         color: var(--main-white) !important
+         color: var(--main-white) !important;
+
       }
       .main__title {
          margin-bottom: 20px;
@@ -75,6 +76,12 @@
    &__wrapper {
       display: flex;
       justify-content: space-between;
+      ul {
+        margin-right: 450px;
+        @media(max-width: 500px) {
+            margin-right: 0px;
+        }
+      }
       @media(max-width: 1150px) {
          width: 100%;
          flex-direction: column;

@@ -9,7 +9,7 @@
     @method('put')
     <div class="mb-3 form-group">
         <label class="mb-1">Employer Name</label>
-        <input value="{{old('employer_name', $employer->employer_name)}}" name="employer_name" type="text" class="form-control" placeholder="Enter portfolio item title">
+        <input value="{{old('employer_name', $employer->employer_name)}}" name="employer_name" type="text" class="form-control" placeholder="Enter employer name">
         @error('employer_name')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}
@@ -19,7 +19,7 @@
 
     <div class="mb-3 form-group">
         <label class="mb-1">Portfolio Item Image</label>
-        <input name="employer_avatar" type="file" class="form-control" placeholder="Enter name">
+        <input name="employer_avatar" type="file" class="form-control">
         @error('employer_avatar')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}
