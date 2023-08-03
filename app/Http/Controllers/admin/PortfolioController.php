@@ -89,7 +89,7 @@ class PortfolioController extends Controller
         if ($id != 0) {
             $datas = Portfolio::where('filter_id', $id)->with('filter')->get();
         } else {
-            $datas = Portfolio::with('filter')->get();
+            $datas = Portfolio::with('filter')->get(); // Remove the extra parentheses here
         }
 
         $jsonData = $datas->toJson();
