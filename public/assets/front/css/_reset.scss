@@ -159,14 +159,14 @@ body {
  .main__main {
    flex: 1;
  }
- 
+
  footer {
    flex-shrink: 0;
  }
 
 @media(max-width: 1160px) {
    .container {
-      padding: 0 20px 
+      padding: 0 20px
    }
 }
 
@@ -174,7 +174,7 @@ body {
 @media(max-width: 500px) {
    .header__top__right__links {
       justify-content: center !important;
-      column-gap: 10px 
+      column-gap: 10px
    }
 }
 
@@ -190,7 +190,7 @@ body {
          transform: rotate(180deg);
       }
    }
-  
+
 }
 
 .hamburger__menu {
@@ -211,19 +211,19 @@ body {
 
       &__services {
          cursor: pointer;
-         
+
       }
       &.active {
          height: max-content;
       }
    }
    &__services {
-    
+
       margin-top: 30px;
       li {
          border: none !important;
          padding-bottom: 10px !important;
-      
+
       }
    }
    &__contact {
@@ -292,7 +292,7 @@ body {
       .form-check {
         input {
          border-color: var(--main-dark) !important;
-         
+
         }
       }
    }
@@ -315,7 +315,7 @@ body {
       * {
          background: var(--main-dark) !important;
       }
-    
+
    }
    .btn__withoutBg {
       border-color: var(--main-white) !important
@@ -351,4 +351,12 @@ body {
 
  .form-check-input  {
    background-image: url('../icons/x.png') !important
+ }
+
+ .header__navbar__list {
+    a {
+        &.active {
+            color: var(--main-blue) !important
+        }
+    }
  }
