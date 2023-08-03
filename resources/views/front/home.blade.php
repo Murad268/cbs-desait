@@ -63,9 +63,9 @@
                 </div>
             </div>
             <div class="portfolio__filter">
-                <a href="">HAMISI</a>
+                <a style="cursor: pointer" data-id="0">HAMISI</a>
                 @foreach($pFilter as $filter)
-                    <a href="">{{$filter->filter_name}}</a>
+                    <a style="cursor: pointer" data-id="{{$filter->id}}">{{$filter->filter_name}}</a>
                 @endforeach
             </div>
             <div class="portfolio__wrapper">

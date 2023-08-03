@@ -70,5 +70,8 @@ Route::group(['as' => 'front.'], function() {
     Route::get('/service', [ServiceMainController::class, 'index'])->name('service');
     Route::get('/our__work', [OurWorkController::class, 'index'])->name('our__work');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+
+    Route::get('/get_portfolio/{id}', [PortfolioController::class, 'get_portfolio'])->name('get_portfolio');
 });
 

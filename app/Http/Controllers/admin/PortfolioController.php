@@ -83,4 +83,17 @@ class PortfolioController extends Controller
             echo $e->getMessage();
         }
     }
+
+
+    public function get_portfolio($id) {
+        if ($id != 0) {
+            $datas = Portfolio::where('filter_id', $id)->with('filter')->get();
+        } else {
+            $datas = Portfolio::with('filter')->get();
+        }
+
+        $jsonData = $datas->toJson();
+        return response()->json($jsonData);
+    }
+
 }

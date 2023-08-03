@@ -147,9 +147,10 @@
    }
 
    &__wrapper {
+      margin: 0 auto;
       margin-top: 64px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 30px
    }
 
@@ -657,6 +658,9 @@
 }
 
 @media(max-width: 1050px) {
+    .portfolio__wrapper {
+        grid-template-columns: repeat(3, 1fr) !important;
+     }
    .our__team {
       overflow: hidden !important;
 
@@ -783,6 +787,9 @@
 }
 
 @media(max-width: 760px) {
+    .portfolio__wrapper {
+        grid-template-columns: repeat(2, 1fr) !important;
+     }
    .contact {
       &__wrapper {
          flex-direction: column;
@@ -797,6 +804,9 @@
 }
 
 @media(max-width: 550px) {
+    .portfolio__wrapper {
+        grid-template-columns: 1fr !important;
+     }
    .us_chosen__icons__wrapper {
       grid-template-columns: repeat(2, 1fr);
    }
@@ -811,9 +821,7 @@
 }
 
 @media(max-width: 450px) {
-   .portfolio__wrapper {
-      grid-template-columns: 1fr;
-   }
+
 
    .banner {
       .banner__slider__body {
