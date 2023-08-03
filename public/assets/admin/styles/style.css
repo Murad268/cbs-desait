@@ -55,3 +55,18 @@ table {
     border: 1px solid black;
     padding:  10px 5px;
 }
+
+
+.login__container {
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+ }
+ .login__container form {
+    width: 40%;
+
+}

@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\ChoseUsCompaniesController;
 use App\Http\Controllers\admin\ChoseUsController;
 use App\Http\Controllers\admin\ContactFormController;
 use App\Http\Controllers\admin\HeaderBannerController;
+use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\PortfolioFilterController;
 use App\Http\Controllers\admin\PositionController;
@@ -38,8 +39,10 @@ use App\Http\Controllers\front\ServiceMainController;
 |
 */
 
-
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+Route::get('/admin/login', [LoginController::class, 'login'])->name('login');
+Route::post('/admin/enter', [LoginController::class, 'enter'])->name('admin__enter');
+Route::get('/admin/logout', [LoginController::class, 'logout'])->name('logout');
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/', [AdminController::class, "index"])->name("index");
         Route::resource('/services', ServicesController::class);
         Route::resource('/header__banner', HeaderBannerController::class);

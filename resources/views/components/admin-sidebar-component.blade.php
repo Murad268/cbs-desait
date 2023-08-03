@@ -17,5 +17,6 @@
         <li><a class="{{ request()->routeIs('admin.blogs__categories.index') ? 'active' : '' }}" href="{{ route('admin.blogs__categories.index') }}">Blogs Categories</a></li>
         <li><a class="{{ request()->routeIs('admin.blogs.index') ? 'active' : '' }}" href="{{ route('admin.blogs.index') }}">Blogs</a></li>
         <li><a class="{{ request()->routeIs('admin.section__titles.index') ? 'active' : '' }}" href="{{ route('admin.section__titles.index') }}">Section Descriptions</a></li>
+        <li><a onclick="return confirm('are you sure you want to go out?')" href="{{route('logout')}}">Logout</a></li>
     </ul>
 </div>
