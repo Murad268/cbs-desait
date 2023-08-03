@@ -26,17 +26,17 @@
     <section class="digital">
         <div class="digital__wrapper">
             <div class="digital__image">
-                <img src="{{asset('assets/front/images/about.png')}}" alt="">
+                <img src="{{asset('assets/front/images/'.$about->about_img)}}" alt="">
             </div>
             <div class="digital__desc">
                 <div class="digital__desc__title">
                     BİZİ DAHA YAXINDAN TANIYIN
                 </div>
-                <div class="section__title">Rəqəmsal həllər ilə hər zaman yanınızdayıq</div>
+                <div class="section__title">{{$about->about_top}}</div>
                 <div class="section__desc">
-                    Kreativ(bacarıqlı) komandamız və strateji həllərimiz 6 illik fəaliyyət müddətində onlarla tərəfdaşımızın inkişafına, satışlarının artımına və tanınmasına səbəbdir!
+                    {{$about->about_title}}
                     <br>
-                    Tərəfdaşlarımızın inkişafını növbəti səviyyəyə qaldırmaq üçün uzunmüddətli təcrübəmizə əsaslanaraq dizayn, marketinq və biznes problemlərinin öhdəsindən gəlməyi sevirik!
+                    {!! $about->about_text !!}
                 </div>
                 <div class="btn__withoutBg">
                     BİZDƏN GÖRÜŞ AL
@@ -53,81 +53,26 @@
                 <div class="section__title">Komandamız</div>
                 <div>
                     <div class="section__desc">
-                        Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. Far
-                        far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-                        blind texts.
+                        {{$teamText->section__desc}}
                     </div>
 
                 </div>
             </div>
             <div class="our__team__main">
                 <div class="our__team__wrapper">
+                    @foreach($team as $item)
                     <div class="our__team__column">
                         <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
+                            <img src="{{asset('assets/front/images/'.$item->employer_avatar)}}" alt="">
                         </div>
                         <div class="our__team__column__name">
-                            Musa C.
+                            {{$item->employer_name}}
                         </div>
                         <div class="our__team__column__position">
-                            CEO, Partner
+                            {{$item->position->position_name}}
                         </div>
                     </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
-                    <div class="our__team__column">
-                        <div class="our__team__column__img">
-                            <img src="{{asset('assets/front/images/image_team.png')}}" alt="">
-                        </div>
-                        <div class="our__team__column__name">
-                            Musa C.
-                        </div>
-                        <div class="our__team__column__position">
-                            CEO, Partner
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="prev-button"><i class="fa-solid fa-angle-left"></i></div>
                 <div class="next-button"><i class="fa-solid fa-angle-right"></i></div>

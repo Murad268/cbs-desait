@@ -26,7 +26,6 @@ class AboutUsController extends Controller
 
     public function update($id, ChangeAboutRequest $request) {
         try {
-
             $about = AbaoutUs::findOrFail($id);
             $result = $this->imageService->updateImage($request, 'assets/front/images/', 'about_img', $about->about_img );
             $data = $request->all();
