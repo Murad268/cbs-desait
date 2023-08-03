@@ -56,21 +56,20 @@ class PortfolioController extends Controller
 
 
     public function update($id, UpdatePortfolioRequest $request) {
-
         try {
             $portfolio = Portfolio::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'portfolio_item_img', $portfolio->portfolio_item_img );
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'portfolio_item_img', $portfolio->portfolio_item_img);
             $data = $request->all();
             $data['portfolio_item_img'] = $result;
-            unset($data['portfolio__item__category_id'] );
+            unset($data['portfolio__item__category_id']);
             $this->dataServices->save($portfolio, $data, 'update', 'services', $request->portfolio__item__category_id);
-
 
             return redirect()->route('admin.portfolio.index')->with("message", "the information has been updated to the database");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
+
 
     public function destroy($id) {
         try {

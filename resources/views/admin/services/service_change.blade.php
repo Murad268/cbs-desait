@@ -8,8 +8,8 @@
     @csrf
     @method('PUT')
     <div class="mb-3 form-group">
-        <label class="mb-1">Service Icon</label>
-        <input name="services_item_icons" value="{{old('services_item_icons', $service->services_item_icons)}}" type="text" class="form-control" placeholder="Enter icon class">
+        <label class="mb-1">Services Icon</label>
+        <input name="services_item_icons" type="file" class="form-control" placeholder="Enter name">
         @error('services_item_icons')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

@@ -4,11 +4,11 @@
 
 
 @section('content')
-<form action="{{route('admin.services.store')}}" method="post">
+<form enctype="multipart/form-data" action="{{route('admin.services.store')}}" method="post">
     @csrf
     <div class="mb-3 form-group">
-        <label class="mb-1">Service Icon</label>
-        <input name="services_item_icons" value="{{old('services_item_icons')}}" type="text" class="form-control" placeholder="Enter icon class">
+        <label class="mb-1">Services Icon</label>
+        <input name="services_item_icons" type="file" class="form-control">
         @error('services_item_icons')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}
@@ -41,7 +41,7 @@
     </div>
     <div class="mb-3 form-group">
         <label class="mb-1">Service Decription</label>
-        <textarea placeholder="Enter service description" id="editor" class="mt-3 mb-3" name="about_service">{{old('about_portfolio_item')}}</textarea>
+        <textarea placeholder="Enter service description" id="editor" class="mt-3 mb-3" name="about_service">{{old('about_service')}}</textarea>
         @error('about_service')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

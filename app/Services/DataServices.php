@@ -5,6 +5,7 @@ class DataServices
 {
 
     public function save($model, $data, $proccess = 'create', $relation = '', $sync = false) {
+
         if($proccess == 'create') {
             $create = $model->create($data);
             if ($sync) {
@@ -13,16 +14,13 @@ class DataServices
                 }
             }
         } else {
-         
             $update = $model->update($data);
-            if ($sync) {
 
+            if ($sync) {
                 if ($update != false) {
-                    $update->$relation()->sync($sync);
+                    $model->$relation()->sync($sync);
                 }
             }
-
         }
-
     }
 }
