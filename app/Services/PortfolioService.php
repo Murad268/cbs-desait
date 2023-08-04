@@ -17,8 +17,10 @@ class PortfolioService
         $data = $request->all();
         $data['portfolio_item_img'] = $result;
         unset($data['portfolio__item__category_id'] );
+
         try {
             $portfolio = new Portfolio();
+            
             $this->dataServices->save($portfolio, $data, 'create', 'services', $request->portfolio__item__category_id);
         } catch (Exception $e) {
             echo $e->getMessage();

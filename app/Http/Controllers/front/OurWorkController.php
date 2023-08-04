@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 
 class OurWorkController extends Controller
 {
-    public function index($id) {
-        $work = Portfolio::findOrFail($id);
+    public function index($slug) {
+        $work = Portfolio::where('slug', $slug)->first();
         $team = Team::all();
         return view('front.our_work', ['work' => $work, 'team' => $team]);
     }

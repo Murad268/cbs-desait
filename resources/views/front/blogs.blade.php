@@ -25,7 +25,7 @@
     <div class="container">
         <div class="blogs__wrapper">
             @foreach($blogs as $blog)
-                <a href="{{route('front.blog', $blog->id)}}" class="blogs__blog">
+                <a href="{{route('front.blog', $blog->slug)}}" class="blogs__blog">
                     <div class="blogs__blog__img">
                         <img src="{{asset('assets/front/images/'.$blog->card_img)}}" alt="">
                     </div>

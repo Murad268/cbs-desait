@@ -18,7 +18,8 @@ class BlogsController extends Controller
     public function __construct(private BlogsService $blogsService){}
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::with('category')->get();
+
         return view('admin.blogs.index', ['blogs' => $blogs]);
     }
 

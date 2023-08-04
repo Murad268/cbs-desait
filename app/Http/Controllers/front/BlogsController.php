@@ -13,8 +13,8 @@ class BlogsController extends Controller
         return view('front.blogs', ['blogs' => $blogs]);
     }
 
-    public function blog($id) {
-        $blog = Blog::findOrFail($id);
+    public function blog($slug) {
+        $blog = Blog::where('slug', $slug)->first();
         $settings = Setting::firstOrFail();
         return view('front.blog', ['blog' => $blog, 'settings' => $settings]);
     }

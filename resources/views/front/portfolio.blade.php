@@ -49,7 +49,7 @@
         </div>
         <div class="portfolio__wrapper">
             @foreach($portfolio as $item)
-            <a href="{{route('front.our__work', $item->id)}}" class="portfolio__item">
+            <a href="{route('front.our__work', $item->slug)}}" class="portfolio__item">
                 <div class="portfolio__item__img">
                     <img src="{{asset('assets/front/images/'.$item->portfolio_item_img)}}" alt="">
                 </div>

@@ -19,6 +19,7 @@ class BlogsService
         $data = $request->all();
         $data['card_img'] = $result;
         $data['card_banner'] = $result1;
+        dd($data);
         try {
             $blog = new Blog();
             $this->dataServices->save($blog, $data, 'create');
