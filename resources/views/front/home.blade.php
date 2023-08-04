@@ -82,13 +82,13 @@
             </div>
             <div class="portfolio__wrapper">
                 @foreach($portfolio as $item)
-                <div class="portfolio__item">
+                <a href="{{route('front.our__work', $item->id)}}" class="portfolio__item">
                     <div class="portfolio__item__img">
                         <img src="{{asset('assets/front/images/'.$item->portfolio_item_img)}}" alt="">
                     </div>
                     <div class="portfolio__item__category">{{$item->filter->filter_name}}</div>
                     <div class="portfolio__item__name">{{$item->portfolio_item_title}}</div>
-                </div>
+                </a>
                 @endforeach
             </div>
             <a href="" class="btn__withoutBg">

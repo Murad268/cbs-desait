@@ -1,5 +1,14 @@
 @extends('admin.app')
-
+<style>
+    .login__container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+    }
+</style>
 <div class="login__container">
     <form method="post" action="{{ route('admin__enter') }}">
         @csrf

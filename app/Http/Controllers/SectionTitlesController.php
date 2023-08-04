@@ -6,9 +6,11 @@ use App\Http\Requests\descriptions\SectionDesqriptionsRequest;
 use App\Models\SectionTitles;
 use Illuminate\Http\Request;
 use App\Services\DataServices;
+use App\Services\SectionDescService;
+
 class SectionTitlesController extends Controller
 {
-    public function __construct(private DataServices $dataServices){}
+    public function __construct(private SectionDescService $sectionDescService){}
     public function index() {
         return view('admin.sectiontitles.index', ['descriptions' => SectionTitles::all()]);
     }
@@ -18,13 +20,8 @@ class SectionTitlesController extends Controller
     }
 
     public function store(SectionDesqriptionsRequest $request) {
-        try {
-            $titles = new SectionTitles;
-            $this->dataServices->save($titles, $request->all(), 'create');
-            return redirect()->route('admin.section__titles.index')->with("message", "The information was added to the database");
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->sectionDescService->create($request);
+        return redirect()->route('admin.section__titles.index')->with("message", "The information was added to the database");
     }
 
 
@@ -38,12 +35,7 @@ class SectionTitlesController extends Controller
 
 
     public function update(SectionDesqriptionsRequest $request, $id) {
-        try {
-            $section = SectionTitles::findOrFail($id);
-            $this->dataServices->save($section, $request->all(), 'update');
-            return redirect()->route('admin.section__titles.index')->with("message", "the information has been updated to the database");
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->sectionDescService->update($request, $id);
+        return redirect()->route('admin.section__titles.index')->with("message", "the information has been updated to the database");
     }
 }

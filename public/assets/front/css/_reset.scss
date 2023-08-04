@@ -278,6 +278,11 @@ body {
 
 
 .dark-mode__body {
+    .our__services {
+        i {
+            color: var(--main-white) !important
+        }
+    }
    .our__services {
       color: var(--main-white) !important;
       span {
@@ -322,7 +327,7 @@ body {
    }
    .our__services {
        i {
-         color: var(--main-dark) !important
+         color: var(--main-dark) 
       }
    }
    .digital__desc {
