@@ -9,7 +9,12 @@
         .contact {
             margin-top: 60px;
         }
-
+        input, textarea {
+            padding-left: 10px;
+        }
+        textarea {
+            padding-top: 10px;
+        }
     </style>
 @endsection
 @section('content')
@@ -57,29 +62,47 @@
                         </ul>
                     </div>
                 </div>
-                <form class="contact__form">
+                <form method="post" action="{{route('mail')}}" class="contact__form">
+                    @csrf
                     <div>
                         <label for="">Ad / Şirkət</label>
-                        <input type="text">
+                        <input value="{{old('contact_name')}}" name="contact_name" type="text">
+                        @error('contact_name')
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{$message}}
+                            </div>
+                        @enderror
                     </div>
                     <div>
                         <label for="">Telefon nömrəsi </label>
-                        <input type="text">
+                        <input value="{{old('contact_phone')}}" name="contact_phone" type="text">
+                        @error('contact_phone')
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{$message}}
+                            </div>
+                        @enderror
                     </div>
                     <div>
                         <label for="">E-mail</label>
-                        <input type="text">
+                        <input value="{{old('contact_email')}}" name="contact_email" type="text">
+                        @error('contact_email')
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{$message}}
+                            </div>
+                        @enderror
                     </div>
                     <div>
                         <label for="">Mesajınız</label>
-                        <textarea>
-
-                     </textarea>
+                        <textarea name="contact_message">{{old('contact_message')}}</textarea>
+                        @error('contact_message')
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{$message}}
+                            </div>
+                        @enderror
                     </div>
                     <button class="btn_withBg">göndər</button>
                 </form>
             </div>
         </div>
     </section>
-
 @endsection

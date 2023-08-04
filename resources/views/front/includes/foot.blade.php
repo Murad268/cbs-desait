@@ -40,4 +40,12 @@
             })
     }
     filter('.portfolio__wrapper', '.portfolio__filter a')
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var successMessage = '{{ Session::get("success") }}';
+        if (successMessage) {
+            alert(successMessage);
+        }
+    });
 </script>

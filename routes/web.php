@@ -27,6 +27,7 @@ use App\Http\Controllers\front\ContactController;
 use App\Http\Controllers\front\OurWorkController;
 use App\Http\Controllers\front\PortfolioMainController;
 use App\Http\Controllers\front\ServiceMainController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ use App\Http\Controllers\front\ServiceMainController;
 Route::get('/admin/login', [LoginController::class, 'login'])->name('login');
 Route::post('/admin/enter', [LoginController::class, 'enter'])->name('admin__enter');
 Route::get('/admin/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/mail', [MailController::class, 'mail'])->name('mail');
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/', [AdminController::class, "index"])->name("index");
         Route::resource('/services', ServicesController::class);
