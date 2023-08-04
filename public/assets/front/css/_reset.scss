@@ -327,7 +327,7 @@ body {
    }
    .our__services {
        i {
-         color: var(--main-dark) 
+         color: var(--main-dark)
       }
    }
    .digital__desc {
@@ -368,3 +368,38 @@ body {
 
 
 
+.services__service {
+    text-decoration: none ;
+    color: var(--main-dark);
+    transition: 0.4s;
+}
+.services__service:hover {
+    color: var(--main-dark);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.portfolio__item {
+    overflow: hidden;
+}
+
+.portfolio__item__img {
+    height: 255px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.portfolio__item__img img {
+    transition: 0.7s;
+}
+
+.portfolio__item__img:hover img {
+    transform: scale(1.4);
+}
+
+.portfolio__item__img:not(:hover) img {
+    transform: scale(1);
+}
+
+.btn_withBg {
+    text-decoration: none;
+}

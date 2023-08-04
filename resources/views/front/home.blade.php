@@ -48,7 +48,7 @@
             </div>
             <div class="services__wrapper">
                 @foreach($services as $service)
-                <div class="services__service">
+                <a href="" class="services__service">
                     <div class="services__service__icon">
                         <img src="{{asset('assets/front/icons/'.$service->services_item_icons)}}" alt="">
                     </div>
@@ -58,7 +58,7 @@
                     <div class="services__service__desc">
                         {!!mb_strlen($service->about_service) > 93 ? mb_substr($service->about_service, 0, 93).'...' : $service->about_service!!}
                     </div>
-                </div>
+                </a>
                 @endforeach
             </div>
         </div>
@@ -91,7 +91,7 @@
                 </a>
                 @endforeach
             </div>
-            <a href="" class="btn__withoutBg">
+            <a href="{{route('front.portfolio')}}" class="btn__withoutBg">
                 HAMISINA BAX
             </a>
         </div>
@@ -190,9 +190,9 @@
             <div class="still__body">
                 <div class="main__title">{{$still->still_title}}</div>
                 <div class="section__desc">{!! $still->still_description !!}</div>
-                <div class="btn_withBg">
+                <a href="{{route('front.contact')}}" class="btn_withBg">
                     Let’s Talk
-                </div>
+                </a>
             </div>
         </div>
     </section>

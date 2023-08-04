@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 
 class ServiceMainController extends Controller
 {
-    public function index($id) {
-        $service = Services::findOrFail($id);
+    public function index($slug) {
+
+        $service = Services::where('slug', $slug)->first();
+  
         return view('front.service', ['service' => $service]);
     }
 }

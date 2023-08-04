@@ -38,7 +38,7 @@
             <ul class="footer__categories">
                 <li class="footer__categories__title">{{$lastService->name}}</li>
                 @foreach($lastService->services as $item)
-                    <li><a href="">{{$item->name}}</a></li>
+                    <li><a href="{{route('front.service', $item->slug)}}">{{$item->name}}</a></li>
                 @endforeach
 
             </ul>
