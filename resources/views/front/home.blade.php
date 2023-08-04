@@ -43,7 +43,7 @@
                     <div class="section__desc">
                         {{$descriptions[0]->section__desc}}
                     </div>
-                    <a class="btn__withoutBg">Bİzİmlə əlaqə</a>
+                    <a href="{{route('front.contact')}}" class="btn__withoutBg">Bİzİmlə əlaqə</a>
                 </div>
             </div>
             <div class="services__wrapper">
