@@ -2,7 +2,7 @@
     @foreach($services as $service)
     <div class="header__service">
         <div class="header__service__top">
-            <span><a href="">{{$service->name}}</a></span>
+            <span><a href="{{route('front.service', $service->id)}}">{{$service->name}}</a></span>
             <span></span>
         </div>
         <ul>
