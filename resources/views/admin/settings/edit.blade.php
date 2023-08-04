@@ -66,6 +66,15 @@
 
 
     <div class="mb-3 form-group">
+        <label class="mb-1">Map Link</label>
+        <input name="map_link" value="{{old('map_link', $setting->map_link)}}" type="text" class="form-control" placeholder="Enter whatshapp number link">
+        @error('map_link')
+        <div class="alert alert-danger mt-2" role="alert">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
+    <div class="mb-3 form-group">
         <label class="mb-1">Instagram Link</label>
         <input name="insta_link" value="{{old('insta_link', $setting->insta_link)}}" type="text" class="form-control" placeholder="Enter instagram link">
         @error('insta_link')

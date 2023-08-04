@@ -27,7 +27,8 @@ class SettingsRequest extends FormRequest
             'insta_link' => 'required',
             'fb_link' => 'required',
             'linkedin_link' => 'required',
-            'location' => 'required'
+            'location' => 'required',
+            'map_link' => 'required'
         ];
     }
 }

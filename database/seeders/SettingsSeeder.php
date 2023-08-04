@@ -25,7 +25,8 @@ class SettingsSeeder extends Seeder
             'insta_link' => 'template',
             'fb_link' => 'template',
             'linkedin_link' => 'template',
-            'location' => 'template'
+            'location' => 'template',
+            'map_link' => 'template'
         ];
 
         Setting::create($data);
