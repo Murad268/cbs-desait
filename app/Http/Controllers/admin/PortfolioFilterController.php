@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\portfolio\PortfolioRequest;
 use App\Models\PortfolioFilter;
 use App\Services\DataServices;
+use App\Services\PortfolioFilterService;
 use Exception;
 
 
 class PortfolioFilterController extends Controller
 {
-    public function __construct(private DataServices $dataServices){}
+    public function __construct(private PortfolioFilterService $portfolioFilterService){}
     public function index() {
         $portfolioFilter = PortfolioFilter::all();
         return view('admin.portfoliofilter.index', ['portfolioFilter' => $portfolioFilter]);
@@ -23,13 +24,8 @@ class PortfolioFilterController extends Controller
 
 
     public function store(PortfolioRequest $request) {
-        try {
-            $filter = new PortfolioFilter;
-            $this->dataServices->save($filter, $request->all(), 'create');
-            return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was added to the database");
-        }catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->portfolioFilterService->create($request);
+        return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was added to the database");
     }
 
     public function edit($id) {
@@ -38,23 +34,12 @@ class PortfolioFilterController extends Controller
     }
 
     public function update(PortfolioRequest $request, $id) {
-        try {
-            $portfolioFilter = PortfolioFilter::findOrFail($id);
-            $portfolioFilter->update($request->all());
-            $this->dataServices->save($portfolioFilter, $request->all(), 'update');
-            return redirect()->route('admin.portfolio__filter.index')->with("message", "the information has been updated to the database");
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->portfolioFilterService->update($request, $id);
+        return redirect()->route('admin.portfolio__filter.index')->with("message", "the information has been updated to the database");
     }
 
     public function destroy($id) {
-        try {
-            $portfolioFilter = PortfolioFilter::findOrFail($id);
-            $portfolioFilter->delete();
-            return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was deleted from the database");
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->portfolioFilterService->delete($id);
+        return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was deleted from the database");
     }
 }

@@ -26,8 +26,8 @@
         <tr style="background-color: #212529;">
             <td class="main__field" scope="row">{{$service->id}}</td>
             <td>
-                <a target="_blank" href="{{asset('assets/front/icons/'.$service->services_item_icons)}}">
-                    <img style="width: 52px; height: 58px" src="{{asset('assets/front/icons/'.$service->services_item_icons)}}" alt="">
+                <a target="_blank" href="{{$service->services_item_icons !=='notfound.png'?asset('assets/front/icons/'.$service->services_item_icons):'https://scontent.fgyd20-2.fna.fbcdn.net/v/t1.6435-9/65307393_317263482558877_8804215681538064384_n.png?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Hmyz4SA6xvIAX8bsuFr&_nc_ht=scontent.fgyd20-2.fna&oh=00_AfAFNKmuu27An987SjQfQaQDWBGZNrf-p05_SpBfrYtjAQ&oe=64F48F8D'}}">
+                    <img style="width: 52px; height: 58px" src="{{$service->services_item_icons!=='notfound.png'?asset('assets/front/icons/'.$service->services_item_icons):'https://scontent.fgyd20-2.fna.fbcdn.net/v/t1.6435-9/65307393_317263482558877_8804215681538064384_n.png?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Hmyz4SA6xvIAX8bsuFr&_nc_ht=scontent.fgyd20-2.fna&oh=00_AfAFNKmuu27An987SjQfQaQDWBGZNrf-p05_SpBfrYtjAQ&oe=64F48F8D'}}" alt="">
                 </a>
             </td>
             <td class="main__field">{{$service->name}}</td>
@@ -50,8 +50,8 @@
         <tr style="background-color: #212529;">
             <th scope="row">{{$subservices->id}}</th>
             <td>
-                <a target="_blank" href="{{asset('assets/front/icons/'.$subservices->services_item_icons)}}">
-                    <img style="width: 52px; height: 58px" src="{{asset('assets/front/icons/'.$subservices->services_item_icons)}}" alt="">
+                <a target="_blank" href="{{$subservices->services_item_icons!=='notfound.png'?asset('assets/front/icons/'.$subservices->services_item_icons):'https://scontent.fgyd20-2.fna.fbcdn.net/v/t1.6435-9/65307393_317263482558877_8804215681538064384_n.png?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Hmyz4SA6xvIAX8bsuFr&_nc_ht=scontent.fgyd20-2.fna&oh=00_AfAFNKmuu27An987SjQfQaQDWBGZNrf-p05_SpBfrYtjAQ&oe=64F48F8D'}}">
+                    <img style="width: 52px; height: 58px" src="{{$subservices->services_item_icons!=='notfound.png'?asset('assets/front/icons/'.$subservices->services_item_icons):'https://scontent.fgyd20-2.fna.fbcdn.net/v/t1.6435-9/65307393_317263482558877_8804215681538064384_n.png?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Hmyz4SA6xvIAX8bsuFr&_nc_ht=scontent.fgyd20-2.fna&oh=00_AfAFNKmuu27An987SjQfQaQDWBGZNrf-p05_SpBfrYtjAQ&oe=64F48F8D'}}" alt="">
                 </a>
             </td>
             <td>{{$subservices->name}}</td>

@@ -25,8 +25,10 @@ class İmageService
     }
 
     public function updateImage($request, $path, $check, $hasElement) {
+
         $randomName = Str::random(10);
         $imagePath =  $path;
+
         if ($request->hasFile($check)) {
             if (file_exists($imagePath .  $hasElement)) {
                 unlink($imagePath .  $hasElement);

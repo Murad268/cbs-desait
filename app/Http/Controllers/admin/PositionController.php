@@ -5,13 +5,13 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\positions\PositionsRequest;
 use App\Models\Positions;
-use App\Services\DataServices;
-use Exception;
+use App\Services\PositionService;
+
 
 
 class PositionController extends Controller
 {
-    public function __construct(private DataServices $dataServices){}
+    public function __construct(private PositionService $positionService){}
     public function index() {
         $positions = Positions::all();
         return view('admin.positions.index', ['positions' => $positions]);
@@ -23,23 +23,13 @@ class PositionController extends Controller
 
 
     public function store(PositionsRequest $request) {
-        try {
-            $positions = new Positions;
-            $this->dataServices->save($positions, $request->all(), 'create');
-            return redirect()->route('admin.positions.index')->with("message", "the information was added to the database");
-        }catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->positionService->create($request);
+        return redirect()->route('admin.positions.index')->with("message", "the information was added to the database");
     }
 
     public function destroy($id) {
-        try {
-            $position = Positions::findOrFail($id);
-            $position->delete();
-            return redirect()->route('admin.positions.index')->with("message", "the information was deleted from the database");
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->positionService->delete($id);
+        return redirect()->route('admin.positions.index')->with("message", "the information was deleted from the database");
     }
 
 }
