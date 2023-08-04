@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-
-use App\Models\Portfolio;
 use App\Models\Positions;
 use App\Services\İmageService;
 use App\Services\DataServices;

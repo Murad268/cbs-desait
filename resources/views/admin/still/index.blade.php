@@ -17,13 +17,12 @@
             </div>
             <div style="display: flex; ">
                 <div style="width:150px">Still Description</div>
-                <div style="width:600px">{{$item->still_description}}</div>
+                <div style="width:600px">{!! $item->still_description !!}</div>
             </div>
             <a href="{{route('admin.still.edit', $item->id)}}" class="mt-3 btn btn-primary">Change</a>
         </div>
         @endforeach
     </tbody>
-
 @else
 <div class="alert alert-warning">
     table is empty
