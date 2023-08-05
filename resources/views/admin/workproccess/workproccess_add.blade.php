@@ -15,6 +15,7 @@
         </div>
         @enderror
     </div>
+
     <div class="mb-3 form-group">
         <label class="mb-1">Work Proccess Title</label>
         <input value="{{old('proccess_title')}}" name="proccess_title" type="text" class="form-control" placeholder="Enter proccess title">

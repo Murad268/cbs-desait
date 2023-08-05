@@ -13,8 +13,11 @@ class ServicesService
     public function create($request) {
 
         $result = $this->imageService->downloadImage($request, 'assets/front/icons/', 'services_item_icons', 'notfound.png');
+        $result1 = $this->imageService->downloadImage($request, 'assets/front/images/', 'banner_image', 'notfound.png');
         $data = $request->all();
         $data['services_item_icons'] = $result;
+        $data['banner_image'] = $result1;
+
         try {
             $service = new Services();
             $this->dataServices->save($service, $data, 'create');
@@ -29,8 +32,10 @@ class ServicesService
             $service = Services::findOrFail($id);
 
             $result = $this->imageService->updateImage($request, 'assets/front/icons/', 'services_item_icons', $service->services_item_icons);
+            $result1 = $this->imageService->updateImage($request, 'assets/front/images/', 'banner_image', $service->banner_image);
             $data = $request->all();
             $data['services_item_icons'] = $result;
+            $data['banner_image'] = $result1;
             $this->dataServices->save($service, $data, 'update');;
         } catch (Exception $e) {
             echo $e->getMessage();

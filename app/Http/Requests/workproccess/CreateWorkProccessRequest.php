@@ -18,7 +18,7 @@ class CreateWorkProccessRequest extends FormRequest
         return [
             "proccess_icon" => 'required|image|mimes:jpeg,jpg,png,svg|max:2048',
             'proccess_title' => "required",
-            'proccess_desc' => "required"
+            'proccess_desc' => "required",
         ];
     }
 }

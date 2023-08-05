@@ -21,10 +21,6 @@ class OrderService
             $banner->update(['order' => $banner->order - 1]);
             $prevBanner->update(['order' => $prevBanner->order + 1]);
         }
-
-
-
- 
     }
 
 

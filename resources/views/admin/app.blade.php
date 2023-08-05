@@ -11,12 +11,6 @@
         </div>
     </main>
    @include('admin.includes.foot')
-
-
-
-
-
-
 </body>
 
 </html>

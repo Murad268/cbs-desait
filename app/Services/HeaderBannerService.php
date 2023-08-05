@@ -14,11 +14,16 @@ class HeaderBannerService
     public function __construct(private İmageService $imageService, private DataServices $dataServices, private OrderService $orderService){}
 
     public function create($request) {
+
         $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'banner_img', 'notfound.png');
         $data = $request->all();
         $data['banner_img'] = $result;
+        $banner = new HeaderBanner();
+
         try {
-            $banner = new HeaderBanner();
+            $bannerLast = $banner::orderByDesc('order')->first();
+            $data['order'] = $bannerLast->order + 1;
+
             $this->dataServices->save($banner, $data, 'create');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -52,7 +57,6 @@ class HeaderBannerService
 
     public function top($id) {
         $model = new HeaderBanner();
-        dd($model);
         $this->orderService->top($id, $model);
     }
 

@@ -27,7 +27,23 @@
 
 <section class="service">
     <div class="container">
-        {!! $service->about_service !!}
+    <div class="services__contentMain">
+            <div class="service__content1 section__desc">
+                <!-- {{$service->about_service}} -->
+                {!! explode('ZRJBuchHuimage@F!e$N3', $service->about_service)[0] !!}
+            </div>
+            <div class="service__img">
+               <img src="{{asset('assets/front/images/'.$service->banner_image)}}" alt="">
+            </div>
+            <div class="service__content2 section__desc">
+            <?php
+                $aboutService = $service->about_service;
+                $parts = explode('ZRJBuchHuimage@F!e$N3', $aboutService);
+                $result = count($parts) > 1 ? $parts[1] : '';
+                echo $result;
+            ?>
+            </div>
+         </div>
         <div class="service__bottom">
             <div class="service__bottom__accerdeon">
                 @foreach($service->services as $item)

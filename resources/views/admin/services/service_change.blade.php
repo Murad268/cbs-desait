@@ -16,6 +16,15 @@
         </div>
         @enderror
     </div>
+    <div class="mb-3 form-group">
+        <label class="mb-1">Work Banner Image</label>
+        <input name="banner_image" type="file" class="form-control" >
+        @error('banner_image')
+        <div class="alert alert-danger mt-2" role="alert">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
   <div class="mb-3 form-group">
     <label class="mb-1">Service Name</label>
     <input name="name" value="{{old('name', $service->name)}}" type="text" class="form-control" placeholder="Enter service name">
@@ -44,7 +53,8 @@
   </div>
   <div class="mb-3 form-group">
         <label class="mb-1">Service Decription</label>
-        <textarea placeholder="Enter service description" id="editor" class="mt-3 mb-3" name="about_service">{{old('about_portfolio_item', $service->about_service)}}</textarea>
+        <button class="add_photo btn btn-success mb-1">add photo</button>
+        <textarea class="about_service" placeholder="Enter service description" id="editor" class="mt-3 mb-3" name="about_service">{{old('about_portfolio_item', $service->about_service)}}</textarea>
         @error('about_service')
         <div class="alert alert-danger mt-2" role="alert">
             {{$message}}

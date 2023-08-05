@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 class İmageService
 {
     public function downloadImage($request, $path, $check, $default)
+
     {
         if ($request->hasFile($check)) {
             $img = $request->$check;
@@ -17,6 +18,7 @@ class İmageService
             $lasPath = $imagePath . $randomName . "." . $extension;
 
             Image::make($img)->save($lasPath);
+   
             return $lastName;
         } else {
             return $default;

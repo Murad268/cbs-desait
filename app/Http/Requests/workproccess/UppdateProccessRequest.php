@@ -18,6 +18,7 @@ class UppdateProccessRequest extends FormRequest
             "proccess_icon" => 'image|mimes:jpeg,jpg,png,svg|max:2048',
             'proccess_title' => "required",
             'proccess_desc' => "required"
+
         ];
     }
 }
