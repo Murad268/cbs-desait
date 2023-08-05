@@ -3,15 +3,14 @@
 namespace App\Services;
 
 use App\Models\Blog;
-use App\Models\BlogCategories;
-use App\Models\Team;
 use App\Services\İmageService;
 use App\Services\DataServices;
+use App\Services\OrderService;
 use Exception;
 
 class BlogsService
 {
-    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
+    public function __construct(private OrderService $orderService, private İmageService $imageService, private DataServices $dataServices){}
 
     public function create($request) {
         $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'card_img', 'notfound.png');
@@ -19,7 +18,7 @@ class BlogsService
         $data = $request->all();
         $data['card_img'] = $result;
         $data['card_banner'] = $result1;
-     
+
         try {
             $blog = new Blog();
             $this->dataServices->save($blog, $data, 'create');
@@ -54,5 +53,17 @@ class BlogsService
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+
+    public function top($id) {
+        $model = new Blog();
+
+        $this->orderService->top($id, $model);
+    }
+
+    public function bottom($id) {
+        $model = new Blog();
+        $this->orderService->bottom($id, $model);
     }
 }

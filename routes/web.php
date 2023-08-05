@@ -86,7 +86,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
         Route::resource('/contact__form', ContactFormController::class);
         Route::resource('/about__us', AboutUsController::class);
         Route::resource('/blogs__categories', BlogsCategoriesController::class);
+
+
         Route::resource('/blogs', BlogsController::class);
+        Route::get('/blogs/top/{id}', [BlogsController::class, 'top'])->name('blogs.top');
+        Route::get('/blogs/bottom/{id}', [BlogsController::class, 'bottom'])->name('blogs.bottom');
+
+
+
         Route::resource('/section__titles', SectionTitlesController::class);
         Route::resource('/settings', SettingsController::class);
 });

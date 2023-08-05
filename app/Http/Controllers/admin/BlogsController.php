@@ -54,4 +54,17 @@ class BlogsController extends Controller
         $this->blogsService->delete($id);
         return redirect()->route('admin.blogs.index')->with('message', 'the information was deleted from the database');
     }
+
+
+
+    public function top($id) {
+        $this->blogsService->top($id);
+        return redirect()->route('admin.blogs.index');
+    }
+
+
+    public function bottom($id) {
+        $this->blogsService->bottom($id);
+        return redirect()->route('admin.blogs.index');
+    }
 }
