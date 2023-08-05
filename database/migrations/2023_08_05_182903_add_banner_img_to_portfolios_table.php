@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('services', function (Blueprint $table) {
-            $table->string('banner_image')->nullable();
+        Schema::table('portfolios', function (Blueprint $table) {
+            $table->string('banner_img')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('work_proccesses', function (Blueprint $table) {
+        Schema::table('portfolios', function (Blueprint $table) {
             //
         });
     }

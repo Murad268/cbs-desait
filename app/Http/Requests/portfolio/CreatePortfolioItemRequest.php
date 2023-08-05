@@ -17,6 +17,7 @@ class CreatePortfolioItemRequest extends FormRequest
     {
         return [
             "portfolio_item_img" => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'banner_img' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'portfolio_item_title' => "required",
             'portfolio__item__category_id' => "required",
             'about_portfolio_item' => "required",

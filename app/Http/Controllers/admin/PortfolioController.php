@@ -15,7 +15,7 @@ class PortfolioController extends Controller
 {
     public function __construct(private PortfolioService $portfolio){}
     public function index() {
-        $portfolio = Portfolio::orderBy('order')->paginate(10);
+        $portfolio = Portfolio::orderBy('order')->get();
 
         return view('admin.portfolio.index', ['portfolio' => $portfolio]);
     }

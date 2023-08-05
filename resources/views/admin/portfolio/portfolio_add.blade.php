@@ -26,6 +26,16 @@
         </div>
         @enderror
     </div>
+
+    <div class="mb-3 form-group">
+        <label class="mb-1">Portfolio  Banner Image</label>
+        <input name="banner_img" type="file" class="form-control" >
+        @error('banner_img')
+        <div class="alert alert-danger mt-2" role="alert">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
     <div class="mb-3 form-group">
         <label class="mb-1">Used Services</label>
         <br>

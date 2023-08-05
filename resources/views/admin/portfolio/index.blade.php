@@ -15,6 +15,7 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Portfolio Item Img</th>
+            <th scope="col">Portfolio Banner Img</th>
             <th scope="col">Portfolio Services</th>
             <th scope="col">Portfolio Title</th>
             <th scope="col">Portfolio About</th>
@@ -27,6 +28,9 @@
             <td>{{$portfolioItem->id}}</td>
             <td>
                 <a target="_blank" href="{{asset('assets/front/images/'.$portfolioItem->portfolio_item_img)}}"><img style="width: 50px; height: 50px" src="{{asset('assets/front/images/'.$portfolioItem->portfolio_item_img)}}" alt="{{$portfolioItem->portfolio_item_title}}"></a>
+            </td>
+            <td>
+                <a target="_blank" href="{{asset('assets/front/images/'.$portfolioItem->banner_img)}}"><img style="width: 130px; height: 60px" src="{{asset('assets/front/images/'.$portfolioItem->banner_img)}}" alt="{{$portfolioItem->portfolio_item_title}}"></a>
             </td>
             <td>{{ implode(', ', $portfolioItem->services()->pluck('name')->toArray()) }}</td>
 
