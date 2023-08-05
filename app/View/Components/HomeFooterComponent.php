@@ -30,7 +30,7 @@ class HomeFooterComponent extends Component
         if ($services->count() > 0) {
             $services->pop();
         }
-        $lastService = Services::where("service_id", 0)->get()->last();
+        $lastService = Services::where("slug", 'diger-xidmetler')->first();
         return view('components.home-footer-component', ['settings' => $settings, 'services' => $services, 'lastService' => $lastService]);
     }
 }
