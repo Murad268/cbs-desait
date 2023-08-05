@@ -16,7 +16,7 @@ class TeamController extends Controller
 {
     public function __construct(private TeamService $teamService){}
     public function index() {
-        $team = Team::all();
+        $team = Team::orderBy('desc')->get();
         return view('admin.team.index', ['team' => $team]);
     }
 

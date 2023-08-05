@@ -6,11 +6,12 @@ namespace App\Services;
 use App\Models\Portfolio;
 use App\Services\İmageService;
 use App\Services\DataServices;
+use App\Services\OrderService;
 use Exception;
 
 class PortfolioService
 {
-    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
+    public function __construct(private OrderService $orderService, private İmageService $imageService, private DataServices $dataServices){}
 
     public function create($request) {
         $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'portfolio_item_img', 'notfound.png');
@@ -20,7 +21,7 @@ class PortfolioService
 
         try {
             $portfolio = new Portfolio();
-            
+
             $this->dataServices->save($portfolio, $data, 'create', 'services', $request->portfolio__item__category_id);
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -52,5 +53,16 @@ class PortfolioService
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+
+    public function top($id) {
+        $model = new Portfolio();
+        $this->orderService->top($id, $model);
+    }
+
+    public function bottom($id) {
+        $model = new Portfolio();
+        $this->orderService->bottom($id, $model);
     }
 }

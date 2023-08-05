@@ -15,7 +15,8 @@ class PortfolioController extends Controller
 {
     public function __construct(private PortfolioService $portfolio){}
     public function index() {
-        $portfolio = Portfolio::paginate(10);
+        $portfolio = Portfolio::orderBy('order')->paginate(10);
+
         return view('admin.portfolio.index', ['portfolio' => $portfolio]);
     }
 
@@ -67,5 +68,14 @@ class PortfolioController extends Controller
         $jsonData = $datas->toJson();
         return response()->json($jsonData);
     }
+    public function top($id) {
+        $this->portfolio->top($id);
+        return redirect()->route('admin.portfolio.index');
+    }
 
+
+    public function bottom($id) {
+        $this->portfolio->bottom($id);
+        return redirect()->route('admin.portfolio.index');
+    }
 }

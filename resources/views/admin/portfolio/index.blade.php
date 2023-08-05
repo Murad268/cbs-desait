@@ -35,6 +35,8 @@
             <td>{!! mb_strlen($portfolioItem->about_portfolio_item) > 30 ? mb_substr($portfolioItem->about_portfolio_item, 0, 30).'...':$portfolioItem->about_portfolio_item !!}</td>
             <td>
                 <div style="display: flex; column-gap: 10px">
+                    <a href="{{route('admin.portfolio.top', $portfolioItem->id)}}" class="btn btn-success">↑</a>
+                    <a href="{{route('admin.portfolio.bottom', $portfolioItem->id)}}" class="btn btn-success">↓</a>
                     <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.portfolio.destroy', $portfolioItem->id)}}">
                         @csrf
                         @method("delete")

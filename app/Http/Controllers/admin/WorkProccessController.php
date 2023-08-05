@@ -13,7 +13,7 @@ class WorkProccessController extends Controller
 {
     public function __construct(private WorkProccessService $workProccessService){}
     public function index() {
-        $proccessess = WorkProccess::all();
+        $proccessess = WorkProccess::orderBy('desc')->get();
         return view('admin.workproccess.index', ['proccessess' => $proccessess]);
     }
 

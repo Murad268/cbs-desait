@@ -54,6 +54,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
         Route::get('/portfolio__filter/top/{id}', [PortfolioFilterController::class, 'top'])->name('portfolio__filter.top');
         Route::get('/portfolio__filter/bottom/{id}', [PortfolioFilterController::class, 'bottom'])->name('portfolio__filter.bottom');
         Route::resource('/portfolio', PortfolioController::class);
+        Route::get('/portfolio/top/{id}', [PortfolioController::class, 'top'])->name('portfolio.top');
+        Route::get('/portfolio/bottom/{id}', [PortfolioController::class, 'bottom'])->name('portfolio.bottom');
         Route::resource('/chose_us', ChoseUsController::class);
         Route::resource('/chose__us__companies', ChoseUsCompaniesController::class);
         Route::resource('/positions', PositionController::class);

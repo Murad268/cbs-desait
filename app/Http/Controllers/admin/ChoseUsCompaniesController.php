@@ -11,7 +11,7 @@ class ChoseUsCompaniesController extends Controller
 {
     public function __construct(private CompaniesService $companiesService){}
     public function index() {
-        $companies = ChoseUsCompany::all();
+        $companies = ChoseUsCompany::orderBy('desc')->get();
         return view('admin.chose__us__companies.index', ['companies' => $companies]);
     }
 

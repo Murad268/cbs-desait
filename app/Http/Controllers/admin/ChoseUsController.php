@@ -12,7 +12,7 @@ class ChoseUsController extends Controller
 {
     public function __construct(private ChoseUsCommentsService $choseUsCommentsService){}
     public function index() {
-        $comments = ChooseUs_commentsb::all();
+        $comments = ChooseUs_commentsb::orderBy('desc')->get();
         return view('admin.choseus.index', ['comments' => $comments]);
     }
 
