@@ -26,6 +26,8 @@
             <td>{{$filter->filter_name}}</td>
             <td>
                 <div style="display: flex; column-gap: 10px">
+                    <a href="{{route('admin.portfolio__filter.top', $filter->id)}}" class="btn btn-success">↑</a>
+                    <a href="{{route('admin.portfolio__filter.bottom', $filter->id)}}" class="btn btn-success">↓</a>
                     <form onclick="return confirm('are you sure? When a filter item is deleted, all portfolio items linked to that filter will also be deleted')" method="post" action="{{route('admin.portfolio__filter.destroy', $filter->id)}}">
                         @csrf
                         @method("delete")

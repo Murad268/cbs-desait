@@ -15,7 +15,7 @@ class HeaderBannerController extends Controller
     public function __construct(private HeaderBannerService $headerBannerService){}
     public function index()
     {
-        $headerBannerItems = HeaderBanner::all();
+        $headerBannerItems = HeaderBanner::orderBy('order')->get();
         return view('admin.headerbanner.index', ['headerBannerItems' => $headerBannerItems]);
     }
 
@@ -50,5 +50,17 @@ class HeaderBannerController extends Controller
     public function destroy($id) {
         $this->headerBannerService->delete($id);
         return redirect()->route('admin.header__banner.index')->with("message", "the information was deleted from the database");
+    }
+
+
+    public function top($id) {
+        $this->headerBannerService->top($id);
+        return redirect()->route('admin.header__banner.index');
+    }
+
+
+    public function bottom($id) {
+        $this->headerBannerService->bottom($id);
+        return redirect()->route('admin.header__banner.index');
     }
 }

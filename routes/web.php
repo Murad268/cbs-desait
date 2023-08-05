@@ -48,7 +48,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::get('/', [AdminController::class, "index"])->name("index");
         Route::resource('/services', ServicesController::class);
         Route::resource('/header__banner', HeaderBannerController::class);
+        Route::get('/header__banner/top/{id}', [HeaderBannerController::class, 'top'])->name('header__banner.top');
+        Route::get('/header__banner/bottom/{id}', [HeaderBannerController::class, 'bottom'])->name('header__banner.bottom');
         Route::resource('/portfolio__filter', PortfolioFilterController::class);
+        Route::get('/portfolio__filter/top/{id}', [PortfolioFilterController::class, 'top'])->name('portfolio__filter.top');
+        Route::get('/portfolio__filter/bottom/{id}', [PortfolioFilterController::class, 'bottom'])->name('portfolio__filter.bottom');
         Route::resource('/portfolio', PortfolioController::class);
         Route::resource('/chose_us', ChoseUsController::class);
         Route::resource('/chose__us__companies', ChoseUsCompaniesController::class);

@@ -14,7 +14,7 @@ class PortfolioFilterController extends Controller
 {
     public function __construct(private PortfolioFilterService $portfolioFilterService){}
     public function index() {
-        $portfolioFilter = PortfolioFilter::all();
+        $portfolioFilter = PortfolioFilter::orderBy('order')->get();
         return view('admin.portfoliofilter.index', ['portfolioFilter' => $portfolioFilter]);
     }
 
@@ -41,5 +41,16 @@ class PortfolioFilterController extends Controller
     public function destroy($id) {
         $this->portfolioFilterService->delete($id);
         return redirect()->route('admin.portfolio__filter.index')->with("message", "the information was deleted from the database");
+    }
+
+    public function top($id) {
+        $this->portfolioFilterService->top($id);
+        return redirect()->route('admin.portfolio__filter.index');
+    }
+
+
+    public function bottom($id) {
+        $this->portfolioFilterService->bottom($id);
+        return redirect()->route('admin.portfolio__filter.index');
     }
 }
