@@ -16,7 +16,7 @@ class TeamController extends Controller
 {
     public function __construct(private TeamService $teamService){}
     public function index() {
-        $team = Team::orderBy('desc')->get();
+        $team = Team::orderBy('order')->get();
         return view('admin.team.index', ['team' => $team]);
     }
 
@@ -44,5 +44,17 @@ class TeamController extends Controller
     public function destroy($id) {
         $this->teamService->delete($id);
         return redirect()->route('admin.team.index')->with("message", "the information was deleted from the database");
+    }
+
+
+    public function top($id) {
+        $this->teamService->top($id);
+        return redirect()->route('admin.team.index');
+    }
+
+
+    public function bottom($id) {
+        $this->teamService->bottom($id);
+        return redirect()->route('admin.team.index');
     }
 }

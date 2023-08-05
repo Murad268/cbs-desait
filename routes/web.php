@@ -78,6 +78,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
 
 
         Route::resource('/team', TeamController::class);
+        Route::get('/team/top/{id}', [TeamController::class, 'top'])->name('team.top');
+        Route::get('/team/bottom/{id}', [TeamController::class, 'bottom'])->name('team.bottom');
+
+
         Route::resource('/still', StillController::class);
         Route::resource('/contact__form', ContactFormController::class);
         Route::resource('/about__us', AboutUsController::class);
