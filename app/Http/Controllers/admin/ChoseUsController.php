@@ -12,7 +12,7 @@ class ChoseUsController extends Controller
 {
     public function __construct(private ChoseUsCommentsService $choseUsCommentsService){}
     public function index() {
-        $comments = ChooseUs_commentsb::orderBy('desc')->get();
+        $comments = ChooseUs_commentsb::orderBy('order')->get();
         return view('admin.choseus.index', ['comments' => $comments]);
     }
 
@@ -46,5 +46,17 @@ class ChoseUsController extends Controller
     public function destroy($id) {
         $this->choseUsCommentsService->delete($id);
         return redirect()->route('admin.chose_us.index')->with('message', 'the information was deleted from the database');
+    }
+
+
+    public function top($id) {
+        $this->choseUsCommentsService->top($id);
+        return redirect()->route('admin.chose_us.index');
+    }
+
+
+    public function bottom($id) {
+        $this->choseUsCommentsService->bottom($id);
+        return redirect()->route('admin.chose_us.index');
     }
 }

@@ -10,7 +10,7 @@ use Exception;
 
 class CompaniesService
 {
-    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
+    public function __construct(private OrderService $orderService, private İmageService $imageService, private DataServices $dataServices){}
 
     public function create($request) {
         $result = $this->imageService->downloadImage($request, 'assets/front/icons/', 'company_img', 'notfound.png');
@@ -36,5 +36,17 @@ class CompaniesService
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+
+    public function top($id) {
+        $model = new ChoseUsCompany();
+        dd($model);
+        $this->orderService->top($id, $model);
+    }
+
+    public function bottom($id) {
+        $model = new ChoseUsCompany();
+        $this->orderService->bottom($id, $model);
     }
 }

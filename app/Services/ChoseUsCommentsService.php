@@ -5,11 +5,12 @@ namespace App\Services;
 use App\Models\ChooseUs_commentsb;
 use App\Services\İmageService;
 use App\Services\DataServices;
+use App\Services\OrderService;
 use Exception;
 
 class ChoseUsCommentsService
 {
-    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
+    public function __construct(private OrderService $orderService, private İmageService $imageService, private DataServices $dataServices){}
 
     public function create($request) {
         $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'chose_us_img', 'notfound.png');
@@ -46,5 +47,16 @@ class ChoseUsCommentsService
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function top($id) {
+        $model = new ChooseUs_commentsb();
+        dd($model);
+        $this->orderService->top($id, $model);
+    }
+
+    public function bottom($id) {
+        $model = new ChooseUs_commentsb();
+        $this->orderService->bottom($id, $model);
     }
 }

@@ -56,7 +56,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
         Route::resource('/portfolio', PortfolioController::class);
         Route::get('/portfolio/top/{id}', [PortfolioController::class, 'top'])->name('portfolio.top');
         Route::get('/portfolio/bottom/{id}', [PortfolioController::class, 'bottom'])->name('portfolio.bottom');
+
         Route::resource('/chose_us', ChoseUsController::class);
+        Route::get('/chose_us/top/{id}', [ChoseUsController::class, 'top'])->name('chose_us.top');
+        Route::get('/chose_us/bottom/{id}', [ChoseUsController::class, 'bottom'])->name('chose_us.bottom');
+
         Route::resource('/chose__us__companies', ChoseUsCompaniesController::class);
         Route::resource('/positions', PositionController::class);
         Route::resource('/work__proccess', WorkProccessController::class);
