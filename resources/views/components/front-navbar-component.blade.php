@@ -13,7 +13,7 @@
                 <li><a class="{{ request()->routeIs('front.portfolio') ? 'active' : '' }}" href="{{ route('front.portfolio') }}">Portfolio</a></li>
                 <li><a class="{{ request()->routeIs('front.blogs') ? 'active' : '' }}" href="{{ route('front.blogs') }}">Bloq</a></li>
             </ul>
-            <a href="" class="btn__withoutBg">BİZDƏN GÖRÜŞ AL</a>
+            <a href="{{route('front.contact')}}" class="btn__withoutBg">BİZDƏN GÖRÜŞ AL</a>
             <div class="header__hamburger">
                 <span></span><span></span><span></span>
             </div>
