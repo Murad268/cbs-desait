@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'blogs filter add')
+@section('title', 'blogs categories')
 
 @section('content')
 <a href="{{route('admin.blogs__categories.create')}}" class="mb-3 btn btn-dark">create</a>

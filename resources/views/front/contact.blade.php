@@ -1,5 +1,5 @@
 @extends('front.front')
-@section('title', 'home page')
+@section('title', 'contacts')
 @section('content')
 @section('inlines')
 <style>

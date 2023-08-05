@@ -1,5 +1,5 @@
 @extends('front.front')
-@section('title', 'blog')
+@section('title', $blog->blog_title)
 @section('inlines')
 <style>
     .footer {
@@ -66,7 +66,7 @@
       </section>
 
 
- 
+
 
 
    </main>

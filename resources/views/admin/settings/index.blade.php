@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'our_services')
+@section('title', 'settings')
 
 @section('content')
 @if(session()->has('message'))

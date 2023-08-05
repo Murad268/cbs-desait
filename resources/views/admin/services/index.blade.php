@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'our_services')
+@section('title', 'our services')
 
 @section('content')
 <a href="{{route('admin.services.create')}}" class="mb-3 btn btn-dark">create</a>

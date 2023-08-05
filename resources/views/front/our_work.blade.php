@@ -1,5 +1,5 @@
 @extends('front.front')
-@section('title', 'our work')
+@section('title', $work->portfolio_item_title)
 @section('inlines')
 <style>
     .footer {

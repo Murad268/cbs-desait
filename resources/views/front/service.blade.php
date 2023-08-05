@@ -1,5 +1,5 @@
 @extends('front.front')
-@section('title', 'service')
+@section('title', $service->name)
 @section('inlines')
 <style>
     .footer {

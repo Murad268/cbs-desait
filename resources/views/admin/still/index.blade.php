@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'portfolio')
+@section('title', 'still')
 
 @section('content')
 @if(session()->has('message'))
