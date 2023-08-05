@@ -55,7 +55,7 @@
                 </div>
                 @endforeach
             </div>
-            @if($service->slug!='diger-xidmetler')
+            @if($service->slug!='diger-xidmetler' and $service->service_id == 0 )
             <div class="service__bottom__contact">
                 <div class="main__title">{{$service->name}} üçün başlıq</div>
                 <form class="contact__form">
