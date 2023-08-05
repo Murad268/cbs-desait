@@ -55,8 +55,9 @@
                 </div>
                 @endforeach
             </div>
+            @if($service->slug!='diger-xidmetler')
             <div class="service__bottom__contact">
-                <div class="main__title">SEO üçün başlıq</div>
+                <div class="main__title">{{$service->name}} üçün başlıq</div>
                 <form class="contact__form">
                     <div>
                         <label for="">Ad / Şirkət</label>
@@ -73,6 +74,7 @@
                     <button class="btn_withBg">müracİət et</button>
                 </form>
             </div>
+            @endif
         </div>
     </div>
 </section>

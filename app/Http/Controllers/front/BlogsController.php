@@ -15,7 +15,8 @@ class BlogsController extends Controller
 
     public function blog($slug) {
         $blog = Blog::where('slug', $slug)->first();
+        $blogs = Blog::where('id', "!=", $blog->id)->orderBy('created_at', 'desc')->paginate(3);
         $settings = Setting::firstOrFail();
-        return view('front.blog', ['blog' => $blog, 'settings' => $settings]);
+        return view('front.blog', ['blog' => $blog, 'settings' => $settings, 'blogs' => $blogs]);
     }
 }

@@ -65,7 +65,28 @@
          </div>
       </section>
 
-
+    <div class="container">
+    <div class="services__top mt-5">
+        <div class="section__title">Recent Posts</div>
+    </div>
+    <div class="blogs__wrapper recent_blogs mb-5">
+            @foreach($blogs as $blog)
+                <a href="{{route('front.blog', $blog->slug)}}" class="blogs__blog">
+                    <div class="blogs__blog__img">
+                        <img src="{{asset('assets/front/images/'.$blog->card_img)}}" alt="">
+                    </div>
+                    <div class="blogs__blog__top">
+                        <span class="blogs__blog__category">{{$blog->category->categoy_name}}</span>
+                        <div class="circle"></div>
+                        <span>{{$blog->convertDate($blog->created_at)}}</span>
+                    </div>
+                    <div class="blogs__blog__name">
+                        {{$blog->blog_title}}
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </div>
 
 
 

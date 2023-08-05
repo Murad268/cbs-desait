@@ -29,7 +29,7 @@
             <div class="ourworks__title">LAYİHƏ ADI</div>
             <div class="section__title">{{$work->portfolio_item_title}}
             </div>
-            <div style="height: 400px; padding: 0" class="ourworks__header">
+            <div style="height: 400px;" class="ourworks__header">
                 <img style="width: 100%; height: 100%; object-fit: cover" src="{{asset('assets/front/images/'.$work->banner_img)}}" alt="">
             </div>
     </section>
@@ -62,27 +62,9 @@
 
 
     <section class="ourworks ourworks__second">
-        <div style="background-image: url('https://images.ctfassets.net/pdf29us7flmy/4JU61ygq6O2SH7JFL4Kmwq/a414c63b49c1a13656cbde5f66597c55/shutterstock_1073291759_optimized__1_.jpeg?w=720&q=100&fm=jpg');" class="ourworks__header">
-            <div class="ourworks__header__body ourworks__header__body__second">
-                <div class="section__desc">
-                    Her yerden giris imkani
-                </div>
-                <div class="main__title">
-                    Biznesinizin inkisafi ucun her sey
-                </div>
-                <div class="section__desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo beatae, quis quasi impedit repellat
-                    ducimus fugit totam quos
-                </div>
-                <div class="ourworks__header__body__btns">
-                    <a href="" class="ourworks__header__body__btn first">
-                        Haqqimizda
-                    </a>
-                    <a href="" class="ourworks__header__body__btn second">
-                        Demo
-                    </a>
-                </div>
-            </div>
+        <div  class="ourworks__header">
+            <img style="width: 100%; height: 100%; object-fit: cover" src="{{asset('assets/front/images/'.$work->banner_img)}}" alt="">
+        </div>
 
     </section>
     <section class="our__team ourteam-main">
