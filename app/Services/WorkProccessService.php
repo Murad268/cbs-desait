@@ -6,11 +6,12 @@ namespace App\Services;
 use App\Models\WorkProccess;
 use App\Services\İmageService;
 use App\Services\DataServices;
+use App\Services\OrderService;
 use Exception;
 
 class WorkProccessService
 {
-    public function __construct(private İmageService $imageService, private DataServices $dataServices){}
+    public function __construct(private OrderService $orderService, private İmageService $imageService, private DataServices $dataServices){}
 
     public function create($request) {
         $result = $this->imageService->downloadImage($request, 'assets/front/icons/', 'proccess_icon', 'notfound.png');
@@ -46,5 +47,17 @@ class WorkProccessService
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+
+
+    public function top($id) {
+        $model = new WorkProccess();
+        $this->orderService->top($id, $model);
+    }
+
+    public function bottom($id) {
+        $model = new WorkProccess();
+        $this->orderService->bottom($id, $model);
     }
 }

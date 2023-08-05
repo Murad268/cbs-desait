@@ -13,7 +13,7 @@ class WorkProccessController extends Controller
 {
     public function __construct(private WorkProccessService $workProccessService){}
     public function index() {
-        $proccessess = WorkProccess::orderBy('desc')->get();
+        $proccessess = WorkProccess::orderBy('order')->get();
         return view('admin.workproccess.index', ['proccessess' => $proccessess]);
     }
 
@@ -39,5 +39,17 @@ class WorkProccessController extends Controller
     public function destroy($id) {
         $this->workProccessService->delete($id);
         return redirect()->route('admin.work__proccess.index')->with("message", "the information was deleted from the database");
+    }
+
+
+    public function top($id) {
+        $this->workProccessService->top($id);
+        return redirect()->route('admin.work__proccess.index');
+    }
+
+
+    public function bottom($id) {
+        $this->workProccessService->bottom($id);
+        return redirect()->route('admin.work__proccess.index');
     }
 }

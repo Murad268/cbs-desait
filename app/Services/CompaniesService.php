@@ -41,7 +41,6 @@ class CompaniesService
 
     public function top($id) {
         $model = new ChoseUsCompany();
-        dd($model);
         $this->orderService->top($id, $model);
     }
 

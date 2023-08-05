@@ -30,4 +30,16 @@ class ChoseUsCompaniesController extends Controller
         $this->companiesService->delete($id);
         return redirect()->route('admin.chose__us__companies.index')->with('message', 'the information was deleted from the database');
     }
+
+
+    public function top($id) {
+        $this->companiesService->top($id);
+        return redirect()->route('admin.chose__us__companies.index');
+    }
+
+
+    public function bottom($id) {
+        $this->companiesService->bottom($id);
+        return redirect()->route('admin.chose__us__companies.index');
+    }
 }

@@ -51,7 +51,7 @@ class ChoseUsCommentsService
 
     public function top($id) {
         $model = new ChooseUs_commentsb();
-        dd($model);
+  
         $this->orderService->top($id, $model);
     }
 

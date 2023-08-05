@@ -62,8 +62,21 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
         Route::get('/chose_us/bottom/{id}', [ChoseUsController::class, 'bottom'])->name('chose_us.bottom');
 
         Route::resource('/chose__us__companies', ChoseUsCompaniesController::class);
+        Route::get('/chose__us__companies/top/{id}', [ChoseUsCompaniesController::class, 'top'])->name('chose__us__companies.top');
+        Route::get('/chose__us__companies/bottom/{id}', [ChoseUsCompaniesController::class, 'bottom'])->name('chose__us__companies.bottom');
+
+
+
         Route::resource('/positions', PositionController::class);
+
+
         Route::resource('/work__proccess', WorkProccessController::class);
+        Route::get('/work__proccess/top/{id}', [WorkProccessController::class, 'top'])->name('work__proccess.top');
+        Route::get('/work__proccess/bottom/{id}', [WorkProccessController::class, 'bottom'])->name('work__proccess.bottom');
+
+
+
+
         Route::resource('/team', TeamController::class);
         Route::resource('/still', StillController::class);
         Route::resource('/contact__form', ContactFormController::class);

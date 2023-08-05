@@ -28,7 +28,9 @@
                 <a target="_blank" href="{{asset('assets/front/icons/'.$company->company_img)}}"><img style="width: 120px; height: 50px" src="{{asset('assets/front/icons/'.$company->company_img)}}" alt="{{$company->company_img}}"></a>
             </td>
             <td>
-                <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.chose__us__companies.destroy', $company->id)}}">
+                <a href="{{route('admin.chose__us__companies.top', $company->id)}}" class="btn btn-success">↑</a>
+                    <a href="{{route('admin.chose__us__companies.bottom', $company->id)}}" class="btn btn-success">↓</a>
+                <form class="mt-2" onclick="return confirm('are you sure?')" method="post" action="{{route('admin.chose__us__companies.destroy', $company->id)}}">
                     @csrf
                     @method("delete")
                     <input class="btn btn-danger" value="delete" type="submit">

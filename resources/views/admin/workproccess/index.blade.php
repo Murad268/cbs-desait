@@ -38,9 +38,11 @@
             <td>
                 {{$proccess->proccess_desc}}
             </td>
-            <td  >
+            <td >
+                <a href="{{route('admin.work__proccess.top', $proccess->id)}}" class="btn btn-success">↑</a>
+                <a href="{{route('admin.work__proccess.bottom', $proccess->id)}}" class="btn btn-success">↓</a>
                 <div style="display: flex; column-gap: 10px">
-                <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.work__proccess.destroy', $proccess->id)}}">
+                <form class="mt-2" onclick="return confirm('are you sure?')" method="post" action="{{route('admin.work__proccess.destroy', $proccess->id)}}">
                     @csrf
                     @method("delete")
                     <input class="btn btn-danger" value="delete" type="submit">
