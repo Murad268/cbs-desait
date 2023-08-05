@@ -12,8 +12,8 @@ class PortfolioMainController extends Controller
 {
     public function index() {
         $description = SectionTitles::all()[1];
-        $pFilter = PortfolioFilter::all();
-        $portfolio = Portfolio::paginate(10);
+        $pFilter = PortfolioFilter::orderBy('order')->get();
+        $portfolio = Portfolio::orderBy('order')->paginate(10);
         return view('front.portfolio', ['description' => $description, 'pFilter' => $pFilter, 'portfolio' => $portfolio]);
     }
 }

@@ -19,18 +19,18 @@ use App\Models\WorkProccess;
 class HomeController extends Controller
 {
     public function index() {
-        $headerBanner = HeaderBanner::all();
+        $headerBanner = HeaderBanner::orderBy('order')->get();;
         $descriptions = SectionTitles::all();
         $formTexts = ContactForm::firstOrFail();
         $settings = Setting::firstOrFail();
         $services = Services::where('service_id', 0)->get();
-        $pFilter = PortfolioFilter::all();
-        $portfolio = Portfolio::all();
-        $companies = ChoseUsCompany::all();
-        $comments = ChooseUs_commentsb::all();
-        $proccessess = WorkProccess::all();
+        $pFilter = PortfolioFilter::orderBy('order')->get();
+        $portfolio = Portfolio::orderBy('order')->get();
+        $companies = ChoseUsCompany::orderBy('order')->get();
+        $comments = ChooseUs_commentsb::orderBy('order')->get();
+        $proccessess = WorkProccess::orderBy('order')->get();;
         $still = Still::firstOrFail();
-        $team = Team::all();
+        $team = Team::orderBy('order')->get();
         return view('front.home', ['headerBanner' => $headerBanner, 'descriptions' => $descriptions, 'formTexts' => $formTexts, 'settings' => $settings, 'services' => $services, 'pFilter' => $pFilter, 'portfolio' => $portfolio, 'companies' => $companies, 'comments' => $comments, 'proccessess' => $proccessess, 'still' => $still, 'team' => $team]);
     }
 }

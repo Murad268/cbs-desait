@@ -8,7 +8,7 @@ use App\Models\Setting;
 class BlogsController extends Controller
 {
     public function index() {
-        $blogs = Blog::with('category')->get();
+        $blogs = Blog::with('category')->orderBy('order')->get();
 
         return view('front.blogs', ['blogs' => $blogs]);
     }
