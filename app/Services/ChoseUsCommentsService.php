@@ -18,6 +18,7 @@ class ChoseUsCommentsService
         $data['chose_us_img'] = $result;
         try {
             $ch = new ChooseUs_commentsb();
+            $data['order'] = $ch->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($ch, $data, 'create');
             return redirect()->route('admin.chose_us.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
@@ -51,7 +52,7 @@ class ChoseUsCommentsService
 
     public function top($id) {
         $model = new ChooseUs_commentsb();
-  
+
         $this->orderService->top($id, $model);
     }
 

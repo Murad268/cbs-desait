@@ -21,6 +21,7 @@ class BlogsService
 
         try {
             $blog = new Blog();
+            $data['order'] = $blog->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($blog, $data, 'create');
 
         } catch (Exception $e) {

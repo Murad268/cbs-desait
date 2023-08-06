@@ -18,6 +18,7 @@ class CompaniesService
         $data['company_img'] = $result;
         try {
             $company = new ChoseUsCompany();
+            $data['order'] = $company->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($company, $data, 'create');
         } catch (Exception $e) {
             echo $e->getMessage();

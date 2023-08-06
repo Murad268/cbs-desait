@@ -19,6 +19,7 @@ class WorkProccessService
         $data['proccess_icon'] = $result;
         try {
             $proccess = new WorkProccess;
+            $data['order'] = $proccess->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($proccess, $data, 'create');
         } catch (Exception $e) {
             echo $e->getMessage();

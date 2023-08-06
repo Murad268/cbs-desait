@@ -21,9 +21,7 @@ class HeaderBannerService
         $banner = new HeaderBanner();
 
         try {
-            $bannerLast = $banner::orderByDesc('order')->first();
-            $data['order'] = $bannerLast->order + 1;
-
+            $data['order'] = $banner->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($banner, $data, 'create');
         } catch (Exception $e) {
             echo $e->getMessage();

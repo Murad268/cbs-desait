@@ -15,7 +15,9 @@ class PortfolioFilterService
     public function create($request) {
         try {
             $filter = new PortfolioFilter();
-            $this->dataServices->save($filter, $request->all(), 'create');
+            $data = $request->all();
+            $data['order'] = $filter->orderByDesc('order')->first()->order+1;
+            $this->dataServices->save($filter, $data, 'create');
         }catch (Exception $e) {
             echo $e->getMessage();
         }

@@ -23,7 +23,7 @@ class PortfolioService
 
         try {
             $portfolio = new Portfolio();
-
+            $data['order'] = $portfolio->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($portfolio, $data, 'create', 'services', $request->portfolio__item__category_id);
         } catch (Exception $e) {
             echo $e->getMessage();
