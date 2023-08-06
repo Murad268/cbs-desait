@@ -13,6 +13,7 @@
 </style>
 @endsection
 @section('content')
+
 <main class="main__main">
     <section class="still">
         <div class="container">

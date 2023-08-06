@@ -81,6 +81,7 @@
                 @endforeach
             </div>
             <div class="portfolio__wrapper">
+
                 @foreach($portfolio as $item)
                 <a href="{{route('front.our__work', $item->slug)}}" class="portfolio__item">
                     <div class="portfolio__item__img">

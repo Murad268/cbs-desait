@@ -403,3 +403,16 @@ body {
 .btn_withBg {
     text-decoration: none;
 }
+
+.portfolio__wrapper {
+    position: relative !important;
+}
+.spinner {
+    position: absolute !important;
+    top: 0 !important;
+    left: 500px !important;
+}
+
+.portfolio {
+    height: 1000px;
+}

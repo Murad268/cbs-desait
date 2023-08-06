@@ -17,9 +17,19 @@
             triggers.forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
                     wrapper.innerHTML=''
+                    document.querySelector('.portfolio .btn__withoutBg').style.display="none"
+                    let spinner =
+                        `
+                        <div style="margin: 0 auto; width: 80px; height: 80px" class="spinner spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        `
+                    wrapper.insertAdjacentHTML('beforeend', spinner)
+
                     let id = e.target.getAttribute('data-id');
                     getData('http://127.0.0.1:8000/get_portfolio/'+id).then(res => {
-
+                        wrapper.innerHTML=''
+                        document.querySelector('.portfolio .btn__withoutBg').style.display="flex"
                         JSON.parse(res).forEach(item => {
 
 

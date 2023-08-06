@@ -17,6 +17,6 @@
         @enderror
     </div>
 
-    <button type="submit" class="mt-1 btn btn-primary">Add</button>
+    <button type="submit" class="mt-1 btn btn-primary">Change</button>
 </form>
 @endsection

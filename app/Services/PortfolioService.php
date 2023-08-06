@@ -33,21 +33,20 @@ class PortfolioService
 
 
     public function update($request, $id) {
+
         try {
             $portfolio = Portfolio::findOrFail($id);
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'portfolio_item_img', $portfolio->portfolio_item_img );
+            $result1= $this->imageService->updateImage($request, 'assets/front/images/', 'banner_img', $portfolio->banner_img );
             $data = $request->all();
-            if($request->hasFile('portfolio_item_img')) {
-                $result = $this->imageService->updateImage($request, 'assets/front/images/', 'portfolio_item_img', $portfolio->portfolio_item_img);
-                $data['portfolio_item_img'] = $result;
-            }
-            if($request->hasFile('banner_img')) {
-                $result1 = $this->imageService->updateImage($request, 'assets/front/images/', 'banner_img', $portfolio->banner_img);
-                $data['banner_img'] = $result1;
-            }
-// dd($request->all());
+            $data['portfolio_item_img'] = $result;
+            $data['banner_img'] = $result1;
 
 
-            // dd($request->all());
+
+
+
+
             unset($data['portfolio__item__category_id']);
             $this->dataServices->save($portfolio, $data, 'update', 'services', $request->portfolio__item__category_id);
         } catch (Exception $e) {

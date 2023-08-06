@@ -29,7 +29,7 @@
     </div>
     <div style="display: flex;">
         <div style="width:150px">About Text</div>
-        <div style="width:600px">{{$item->about_text}}</div>
+        <div style="width:600px">{!! $item->about_text !!}</div>
     </div>
     <a href="{{route('admin.about__us.edit', $item->id)}}" class="mt-3 btn btn-primary">Change</a>
 </div>
