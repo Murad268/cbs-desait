@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-use Exception;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 class İmageService
@@ -9,6 +9,7 @@ class İmageService
     public function downloadImage($request, $path, $check, $default)
 
     {
+   
         if ($request->hasFile($check)) {
             $img = $request->$check;
             $extension = $img->getClientOriginalExtension();
@@ -18,7 +19,7 @@ class İmageService
             $lasPath = $imagePath . $randomName . "." . $extension;
 
             Image::make($img)->save($lasPath);
-   
+
             return $lastName;
         } else {
             return $default;
