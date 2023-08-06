@@ -48,7 +48,7 @@
             </div>
             <div class="services__wrapper">
                 @foreach($services as $service)
-                <a href="" class="services__service">
+                <a href="{{route('front.service', $service->slug)}}" class="services__service">
                     <div class="services__service__icon">
                         <img src="{{asset('assets/front/icons/'.$service->services_item_icons)}}" alt="">
                     </div>

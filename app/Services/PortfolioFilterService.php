@@ -19,7 +19,8 @@ class PortfolioFilterService
             $data['order'] = $filter->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($filter, $data, 'create');
         }catch (Exception $e) {
-            echo $e->getMessage();
+            $data['order'] = 1;
+            $this->dataServices->save($filter, $data, 'create');
         }
     }
 

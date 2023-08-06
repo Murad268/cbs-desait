@@ -9,7 +9,6 @@ class İmageService
     public function downloadImage($request, $path, $check, $default)
 
     {
-   
         if ($request->hasFile($check)) {
             $img = $request->$check;
             $extension = $img->getClientOriginalExtension();

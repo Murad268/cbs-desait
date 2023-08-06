@@ -22,7 +22,8 @@ class TeamService
             $data['order'] = $team->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($team, $data, 'create');
         } catch (Exception $e) {
-            echo $e->getMessage();
+            $data['order'] = 1;
+            $this->dataServices->save($team, $data, 'create');
         }
     }
 

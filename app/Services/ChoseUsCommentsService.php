@@ -20,9 +20,9 @@ class ChoseUsCommentsService
             $ch = new ChooseUs_commentsb();
             $data['order'] = $ch->orderByDesc('order')->first()->order+1;
             $this->dataServices->save($ch, $data, 'create');
-            return redirect()->route('admin.chose_us.index')->with('message', 'The information was added to the database');
         } catch (Exception $e) {
-            echo $e->getMessage();
+            $data['order'] = 1;
+            $this->dataServices->save($ch, $data, 'create');
         }
     }
 

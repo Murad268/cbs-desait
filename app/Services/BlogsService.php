@@ -25,7 +25,8 @@ class BlogsService
             $this->dataServices->save($blog, $data, 'create');
 
         } catch (Exception $e) {
-            echo $e->getMessage();
+            $data['order'] = 1;
+            $this->dataServices->save($blog, $data, 'create');
         }
     }
 

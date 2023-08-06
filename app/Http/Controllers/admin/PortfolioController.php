@@ -47,6 +47,7 @@ class PortfolioController extends Controller
 
 
     public function update($id, UpdatePortfolioRequest $request) {
+        // dd($request->all());
         $this->portfolio->update($request, $id);
         return redirect()->route('admin.portfolio.index')->with("message", "the information has been updated to the database");
     }
