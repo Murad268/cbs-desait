@@ -41,7 +41,7 @@
             <td class="main__field">{!! mb_strlen($service->about_service) > 150 ? mb_substr($service->about_service, 0, 150):$service->about_service !!}</td>
             <td style="display: flex; column-gap: 10px">
                 <div style="display: flex; column-gap: 10px; height:100%">
-                    <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.services.destroy', $service->id)}}">
+                    <form onsubmit="return deleteConfirmation(event)" method="post" action="{{route('admin.services.destroy', $service->id)}}">
                         @csrf
                         @method("delete")
                         <input class="btn btn-danger" value="delete" type="submit">
@@ -70,7 +70,7 @@
             <td class="main__field">{!! mb_strlen($subservices->about_service) > 150 ? mb_substr($subservices->about_service, 0, 150).'...' : $subservices->about_service !!}</td>
             <td style="display: flex; column-gap: 10px">
                 <div style="display: flex; column-gap: 10px; height:100%">
-                    <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.services.destroy', $subservices->id)}}">
+                    <form onsubmit="return deleteConfirmation(event)" method="post" action="{{route('admin.services.destroy', $subservices->id)}}">
                         @csrf
                         @method("delete")
                         <input class="btn btn-danger" value="delete" type="submit">

@@ -2,7 +2,7 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{asset('assets/admin/scripts/script.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
     $('#portfolio__item__category_id').select2({
@@ -50,4 +50,23 @@
             imgBtn.disabled = false;
         }
     });
+
+
+    function deleteConfirmation(event, text = false) {
+        event.preventDefault();
+
+        Swal.fire({
+            title:  text?'Are you sure?' + text:'Are you sure?',
+            text: "This action cannot be undone!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.submit(); // Təsdiq edildikdə formu göndər
+            }
+        });
+    }
 </script>

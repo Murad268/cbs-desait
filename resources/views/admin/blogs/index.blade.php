@@ -44,7 +44,7 @@
             {!! $blogg->blog_content !!}
         </div>
     </div>
-    <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.blogs.destroy', $blogg->id)}}">
+    <form onsubmit="return deleteConfirmation(event)" method="post" action="{{route('admin.blogs.destroy', $blogg->id)}}">
         @csrf
         @method("delete")
         <input class="btn btn-danger" value="delete" type="submit">

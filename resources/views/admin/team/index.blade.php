@@ -37,7 +37,7 @@
               <div style="display: flex; column-gap: 5px">
               <a href="{{route('admin.team.top', $employer->id)}}" class="btn btn-success">↑</a>
               <a href="{{route('admin.team.bottom', $employer->id)}}" class="btn btn-success">↓</a>
-              <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.team.destroy', $employer->id)}}">
+              <form onsubmit="return deleteConfirmation(event)" method="post" action="{{route('admin.team.destroy', $employer->id)}}">
                     @csrf
                     @method("delete")
                     <input class="btn btn-danger" value="delete" type="submit">

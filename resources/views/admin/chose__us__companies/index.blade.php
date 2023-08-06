@@ -30,7 +30,7 @@
             <td>
                 <a href="{{route('admin.chose__us__companies.top', $company->id)}}" class="btn btn-success">↑</a>
                 <a href="{{route('admin.chose__us__companies.bottom', $company->id)}}" class="btn btn-success">↓</a>
-                <form class="mt-2" onclick="return confirm('are you sure?')" method="post" action="{{route('admin.chose__us__companies.destroy', $company->id)}}">
+                <form class="mt-2" onsubmit="return deleteConfirmation(event)" method="post" action="{{route('admin.chose__us__companies.destroy', $company->id)}}">
                     @csrf
                     @method("delete")
                     <input class="btn btn-danger" value="delete" type="submit">

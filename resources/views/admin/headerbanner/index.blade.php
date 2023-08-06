@@ -33,7 +33,7 @@
                 <div style="display: flex; column-gap: 10px">
                     <a href="{{route('admin.header__banner.top', $headerBannerItem->id)}}" class="btn btn-success">↑</a>
                     <a href="{{route('admin.header__banner.bottom', $headerBannerItem->id)}}" class="btn btn-success">↓</a>
-                    <form onclick="return confirm('are you sure?')" method="post" action="{{route('admin.header__banner.destroy', $headerBannerItem->id)}}">
+                    <form onsubmit="return deleteConfirmation(event)" method="post" action="{{route('admin.header__banner.destroy', $headerBannerItem->id)}}">
                         @csrf
                         @method("delete")
                         <input class="btn btn-danger" value="delete" type="submit">
