@@ -2,6 +2,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('assets/front/scripts/script.js')}}"></script>
 
 <script>
@@ -45,7 +46,13 @@
     document.addEventListener('DOMContentLoaded', function () {
         var successMessage = '{{ Session::get("success") }}';
         if (successMessage) {
-            alert(successMessage);
+            Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: successMessage,
+            showConfirmButton: false,
+            timer: 1500
+            })
         }
     });
 </script>

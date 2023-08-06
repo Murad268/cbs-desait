@@ -177,3 +177,6 @@ darkModeSelector.addEventListener('change', (e) => {
     basqaBirSey();
   }
 });
+
+
+

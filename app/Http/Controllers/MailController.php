@@ -21,7 +21,7 @@ class MailController extends Controller
             $message->to("agamedov94@mail.ru")->subject($subject);
         });
 
-        Session::flash('success', 'E-posta başarıyla gönderildi!');
+        Session::flash('success', 'E-mail has been sent successfully');
         return redirect()->route('front.index');
     }
 }
