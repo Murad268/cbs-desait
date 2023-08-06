@@ -46,14 +46,26 @@
          </div>
         <div class="service__bottom">
             <div class="service__bottom__accerdeon">
-                @foreach($service->services as $item)
-                <div class="service__bottom__accerdeon__main">
-                    <span><i class="fa-solid fa-angle-down"></i></span> <span>{{$item->name}}</span>
-                </div>
-                <div class="service__bottom__accerdeon__content section__desc">
-                    {!! $item->about_service !!}
-                </div>
-                @endforeach
+                @if($service->service_id == 0)
+                    @foreach($service->services as $item)
+                        <div class="service__bottom__accerdeon__main">
+                            <span><i class="fa-solid fa-angle-down"></i></span> <span>{{$item->name}}</span>
+                        </div>
+                        <div class="service__bottom__accerdeon__content section__desc">
+                            {!! $item->about_service !!}
+                        </div>
+                    @endforeach
+                @else
+                    @foreach($lastService->services as $item)
+                        <div class="service__bottom__accerdeon__main">
+                            <span><i class="fa-solid fa-angle-down"></i></span> <span>{{$item->name}}</span>
+                        </div>
+                        <div class="service__bottom__accerdeon__content section__desc">
+                            {!! $item->about_service !!}
+                        </div>
+                    @endforeach
+                @endif
+
             </div>
             @if($service->slug!='diger-xidmetler' and $service->service_id == 0 )
             <div class="service__bottom__contact">

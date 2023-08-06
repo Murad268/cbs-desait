@@ -32,7 +32,7 @@
             <ul class="footer__categories">
                 <li class="footer__categories__title">RƏQƏMSAL</li>
                 @foreach($services as $service)
-                <li><a href="">{{$service->name}}</a></li>
+                <li><a href="{{$service->slug}}">{{$service->name}}</a></li>
                 @endforeach
             </ul>
             <ul class="footer__categories">

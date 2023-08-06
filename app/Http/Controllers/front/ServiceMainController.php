@@ -11,7 +11,7 @@ class ServiceMainController extends Controller
     public function index($slug) {
 
         $service = Services::where('slug', $slug)->first();
-  
-        return view('front.service', ['service' => $service]);
+        $lastService = Services::where("slug", 'diger-xidmetler')->first();
+        return view('front.service', ['service' => $service, 'lastService' => $lastService]);
     }
 }
