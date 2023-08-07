@@ -3,7 +3,6 @@
     <div class="header__service">
         <div class="header__service__top">
             <span><a href="{{route('front.service', $service->slug)}}">{{$service->name}}</a></span>
-            <span></span>
         </div>
         <ul>
             @foreach($service->services as $subservice)

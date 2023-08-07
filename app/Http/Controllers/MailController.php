@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MailRequest;
-use App\Mail\ContactMail;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class MailController extends Controller
 {
@@ -17,7 +16,12 @@ class MailController extends Controller
         $contact_message = $request->contact_message;
         $subject = 'Cbs Contact Form';
 
-        Mail::send('mail', ['contact_name' => $contact_name, 'contact_phone' => $contact_phone, 'contact_email' => $contact_email, 'contact_message' => $contact_message], function ($message) use ($subject) {
+        Mail::send('mail', [
+            'contact_name' => $contact_name,
+            'contact_phone' => $contact_phone,
+            'contact_email' => $contact_email,
+            'contact_message' => $contact_message,
+        ], function ($message) use ($subject) {
             $message->to("agamedov94@mail.ru")->subject($subject);
         });
 

@@ -182,7 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Kalnoy\Nestedset\NestedSetServiceProvider::class,
-
+        Fruitcake\Cors\CorsServiceProvider::class,
         /*
          * Package Service Providers...
          */
